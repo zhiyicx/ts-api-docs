@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/plus/',
+  base: '/',
   title: 'Plus (ThinkSNS+)',
   description: 'Plus (ThinkSNS+) 是使用 Laravel 框架开发；一个功能强大、易于开发和动态拓展的社交系统。',
   head: require('./head'),
