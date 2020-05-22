@@ -112,5 +112,5 @@ SSL证书可以根据你自己的要求来处理，一般选择 `Let's Encrypt`�
 
 **网站配置完成**
 
-后面的步骤接着 [基础配置](http://localhost:8080/ts-api-docs/guide/installation/install-plus.html#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE)
+后面的步骤接着 [基础配置](/guide/installation/install-plus.html#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE)
 往下执行即可
