@@ -15,7 +15,7 @@ yum install -y git
 执行完成后我们将代码放到合适的位置，我们推荐放在 `/usr/local/src` 下面，所以输入 `cd /usr/local/src` 进入该目录，然后执行下面的命令：
 
 ```
-git clone https://github.com/slimkit/plus plus && cd plus
+git clone `官方授权的仓库地址` plus && cd plus
 ```
 
 好了，我们程序下载完成了，如果你原封不动复制的上面的命令，你随处目录为 `/usr/local/src/plus` 了。
@@ -23,7 +23,7 @@ git clone https://github.com/slimkit/plus plus && cd plus
 我们切换到最新的稳定版本吧，目前最新的稳定版本是 `2.0` 所以执行下面的命令：
 
 ```bash
-git checkout 2.0
+git checkout tsauth/thinksns3
 ```
 
 ## 创建数据库
@@ -105,6 +105,11 @@ composer self-update
 
 ```bash
 composer update -vvv
+```
+
+**如果出现内存溢出的情况请执行下面的命令**
+```shell script
+php -d memory_limit=-1 `which composer` install
 ```
 
 ## 生成应用秘钥

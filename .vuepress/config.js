@@ -48,6 +48,7 @@ module.exports = {
     sidebar: {
       '/guide/installation/': [
         '',
+          'via-bt-panel',
         'build-install-php',
         'build-install-mysql',
         'build-install-nginx',

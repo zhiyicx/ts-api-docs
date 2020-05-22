@@ -16,7 +16,7 @@ Plus (读音：**[plʌs]**，全称：`ThinkSNS+` **[θɪŋk es en es plʌs]**�
 
 ### PHP 版本
 
-您的 PHP 必须大于或者等于 **7.1.3** 版本，当然，我们推荐 **7.2.** 版本。
+您的 PHP 必须大于或者等于 **7.2.5** 版本，当然，我们推荐 **7.3.** 版本。
 
 ### 函数
 
@@ -56,18 +56,8 @@ Plus (读音：**[plʌs]**，全称：`ThinkSNS+` **[θɪŋk es en es plʌs]**�
 - `imagick` 此库是一个比 GD 库处理图片更好的一个拓展，可以用于替换 GD 库，此库为可选性，安装后不可卸载 GD 库，GD 库可以用于更加高效的图片基础处理。
 
 ## 数据库
-
-Plus 支持四种数据库的使用，但是我仅推荐使用两个数据库。
-
-- `MySQL` | `MariaDB`
-    - `MySQL` 请使用 **>= 5.7** 版本，当然，如果能用 MySQL 8 再好不过。
-    - `MariaDB` 是 MySQL 原作者后开发的一款关系型数据库，兼容 MySQL，如果你要使用，请选择大于或等于 **10.3** 版本。
-- `PostgreSQL` 数据库是及其推荐的一个数据库，费用高昂但是起计算性能非常好，有条件可以直接使用。
-- `SQLite` 是一个轻量级数据库，如果你只是想体验倒是不妨尝试，问题在于 SQLite 对于 Emoji 的储存有待改善（目前都不支持存储 Emoji）所以原则上 Plus 是不允许使用 SQLite 的。
-- `Microsoft SQL Server` 就像不推荐 SQLite 一样，我们同样不推荐 Microsoft SQL Server 除非你确定你的系统不适用 Emoji 那么你可以无顾虑的使用 Microsoft SQL Server 了，因为 Microsoft SQL Server 同样支持 utf8 字符集，却无法支持四位长度的 Emoji 字符。
-
 ::: warning
-😭答应我，在 SQLite 和 Microsoft SQL Server 没有很好默认支持 Emoji 之前，暂时用 MySQL 或者 PostgreSQL 好吗？我是认真的！不然你会遇到很多奇怪的问题！
+😭 由于程序中加入了很多特殊的查询语句，ThinkSNS Plus 3现在暂时只支持 `mysql 5.7.9+`, 并且暂时不支持 ~~mysql 8.x~~
 :::
 
 ## 教程说明

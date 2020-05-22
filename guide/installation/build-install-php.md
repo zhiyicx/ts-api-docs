@@ -4,6 +4,8 @@ title: 安装 PHP
 
 本章将会带领你在 **CentOS** `7.4` 系统上编译安装 **PHP** `7.2` 环境，以及缺少的拓展安装。 
 
+***运行ThinkSNS Plus 3的PHP最低要求为7.2.5***
+
 ## 下载源码
 
 我们打开[PHP 官网下载页](http://www.php.net/downloads.php)找到最新的 PHP 7.2 版本，以 7.2.9 为例：
