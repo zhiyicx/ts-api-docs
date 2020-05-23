@@ -63,7 +63,8 @@ bt
 
 登录宝塔面板地址，在左侧菜单中点击 `软件商店`
 并安装 `php 7.3`, `nginx 1.18`, `mysql 5.7`, `redis 5.*/6.*`
-安装需要的时间由服务器的硬件决定，
+安装需要的时间由服务器的硬件决定
+
 安装过程宝塔面板页面的左上角有安装任务的数量，当安装成功后任务数量会清零
 如果没有以外发生，这时候环境就安装完成了
 
@@ -71,7 +72,12 @@ bt
 等待上一步的安装完全安装成功之后，在`软件商店`中找到安装过的 `PHP 7.3`
 点击设置看到如下界面
 <img alt="PHP 7.3" :src="$withBase('/assets/img/php-7.3.png')" />
-点击`扩展安装`, 选择`fileinfo`,`opcache`,`redis`,`exif`,`imagemagick`
+点击`扩展安装`, 选择
+`fileinfo`,
+`opcache`,
+`redis`,
+`exif`,
+`imagemagick`
 依旧需要等待安装完成
 
 **环境安装结束**
@@ -89,6 +95,7 @@ bt
 1. cd /www/wwwroot 回车
 2. git clone https://github.com/zhiyicx/xxxxx xxx.com `xxxx为你的授权仓库名字`
 却发现提示xxx.com目录不是空的，那我们需要做一件事情，清空这个目录
+
 >目录里面有个.user.ini的文件怎么都删除不掉，就需要在宝塔控制面板上进入这个目录，在面板上操作删除这个目录，具体的原因就不多说了
 
 然后我们再来clone仓库，或者

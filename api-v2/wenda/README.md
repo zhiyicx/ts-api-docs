@@ -224,30 +224,6 @@ DELETE /api/v2/wendas/{wenda.id}/favorite
 Status: 204 No Content
 ```
 
-## 举报问题
-
-```
-POST /api/v2/wendas/{wenda.id}/reports
-```
-
-输入：
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `reason` | `string` | **可选**，举报原因 |
-
-响应：
-
-```
-Status: 201 Created
-```
-
-```json5
-{
-  "message": ["操作成功"]
-}
-```
-
 ## 分享问题
 
 ```

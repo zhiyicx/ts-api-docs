@@ -21,6 +21,10 @@ module.exports = {
     lastUpdated: '更新时间',
     nav: [
       {
+        text: '2.3文档➡️',
+        link: 'https://slimkit.github.io'
+      },
+      {
         text: '学习指南',
         items: [
           { text: '安装教程', link: '/guide/installation/' },
@@ -28,9 +32,14 @@ module.exports = {
         ]
       },
       {
+        text: '数据字典',
+        link: '/data-fields/'
+      },
+      {
         text: 'HTTP APIs',
         items: [
           // { text: '核心', link: '/core/api/v2/system' },
+          { text: '登录/注册', link: '/api-v2/passport/' },
           { text: '用户', link: '/api-v2/user/' },
           { text: '资讯', link: '/api-v2/info/' },
           { text: '活动', link: '/api-v2/event/' },
@@ -42,25 +51,29 @@ module.exports = {
           { text: '打赏', link: '/api-v2/reward/' },
           { text: '任务', link: '/api-v2/task/' },
           { text: '问答', link: '/api-v2/wenda/' },
+          { text: '条款,页面', link: '/api-v2/show-pages/' },
+          { text: '省市区', link: '/api-v2/location/' },
+          { text: '举报', link: '/api-v2/report/'}
         ]
       }
     ],
     sidebar: {
       '/guide/installation/': [
         '',
-          'via-bt-panel',
+        'via-bt-panel',
         'build-install-php',
         'build-install-mysql',
         'build-install-nginx',
         'install-plus',
         'using-nginx-and-fpm-publish-website',
       ],
-      '/api-v2/info/': [''],
+      '/api-v2/passport/': [''],
       '/api-v2/user/': [
         '',
         'vip',
         'notification'
       ],
+      '/api-v2/info/': [''],
       '/api-v2/event/': [
         ''
       ],
@@ -74,7 +87,10 @@ module.exports = {
       ],
       '/api-v2/feed/': [
         '',
-        'other'
+        'other',
+        'feeds-likes',
+        'feeds-collect',
+          'feeds-comments'
       ],
       '/api-v2/kd100/': [
         ''
@@ -82,7 +98,14 @@ module.exports = {
       '/api-v2/mini-program/': [''],
       '/api-v2/reward/': [''],
       '/api-v2/task/': [''],
-      '/api-v2/wenda/': ['']
+      '/api-v2/wenda/': [''],
+      '/api-v2/show-pages/': [
+          ''
+      ],
+      '/api-v2/location/': [
+          ''
+      ],
+      '/api-v2/report/': ['']
     }
   }
 }

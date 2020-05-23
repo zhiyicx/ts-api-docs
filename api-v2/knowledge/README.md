@@ -399,31 +399,6 @@ DELETE /api/v2/knowledge/{knowledge.id}/like
 Status: 204 No Content
 ```
 
-
-### 举报知识
-
-```
-POST /api/v2/knowledge/{knowledge.id}/reports
-```
-
-输入：
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `reason` | `string` | **可选**，举报原因 |
-
-响应：
-
-```
-Status: 201 Created
-```
-
-```json5
-{
-  "message": ["操作成功"]
-}
-```
-
 ### 统计可兑换的知识数量
 
 ```
@@ -615,30 +590,6 @@ DELETE /api/v2/knowledge/chapters/{chapter.id}
 
 ```
 Status: 204 No Content
-```
-
-### 举报章节
-
-```
-POST /api/v2/knowledge/chapters/{chapter.id}/reports
-```
-
-输入：
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `reason` | `string` | **可选**，举报原因 |
-
-响应：
-
-```
-Status: 201 Created
-```
-
-```json5
-{
-  "message": ["操作成功"]
-}
 ```
 
 ## 知识订单

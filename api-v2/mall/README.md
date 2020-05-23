@@ -808,30 +808,6 @@ DELETE /api/v2/mall/commodities/{commodity.id}/like
 Status: 204 No Content
 ```
 
-### 举报商品
-
-```
-POST /api/v2/mall/commodities/{commodity.id}/report
-```
-
-输入：
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `reason` | `string` | **可选**，举报原因 |
-
-响应：
-
-```
-Status: 201 OK
-```
-
-```json5
-{
-  "message": ["操作成功"]
-}
-```
-
 ### 检查用户能否发布商品
 
 ```

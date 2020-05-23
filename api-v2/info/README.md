@@ -354,30 +354,6 @@ DELETE /api/v2/infos/{info.id}/favorite
 Status: 204 No Content
 ```
 
-### 举报资讯
-
-```
-POST /api/v2/infos/{info.id}/reports
-```
-
-输入：
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `reason` | `string` | **可选**，举报原因 |
-
-响应：
-
-```
-Status: 201 Created
-```
-
-```json5
-{
-  "message": ["操作成功"]
-}
-```
-
 ### 分享资讯
 
 ```

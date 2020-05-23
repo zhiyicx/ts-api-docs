@@ -163,25 +163,6 @@ Status: 404 Not Found
 
 > 发布点评调用发布动态的接口，其中 `repostable_type` 设置为 `event`，`repostable_id` 设置要点评的活动ID。
 
-## 举报活动
-
-```http request
-PUT /user/events/{eventId}
-```
-| 参数 | 类型 | 描述 |
-|----|----|----|
-| `reason` | `string` | **必填**, 举报原因 |
-响应:
-```
-Status: 201 Created
-```
-响应体:
-```json5
-{
-  "message": "举报成功"
-}
-```
-
 ## 获取活动点评
 
 获取指定活动点评
