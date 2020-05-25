@@ -3,10 +3,10 @@ id: data-fields-advertising-space
 title: advertising-space
 ---
 
-广告位列表
+# 广告位列表 advertising_space
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | int | 自增id |
 | channel | varchar | 广告位所在频道 |
 | space | varchar | 广告位位置标示 |

@@ -3,10 +3,10 @@ id: data-fields-wendas
 title: wendas
 ---
 
-采纳的答案
+### 问题 wendas
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | bigint | 自增id |
 | author_id | int(10) unsigned | 提问者 |
 | category_id | int(10) unsigned | 分类 |
@@ -25,3 +25,6 @@ title: wendas
 | recommend_at | timestamp | 推荐，有值表示已被推荐 |
 | topped_at | timestamp | 置顶，有值表示已被置顶 |
 | category_topped_at | timestamp | 分类置顶，有值表示被置顶到分类 |
+| created_at | timestamp | 创建时间 |
+| updated_at | timestamp | 最后更新时间 |
+| deleted_at | timestamp | 软删除时间 |

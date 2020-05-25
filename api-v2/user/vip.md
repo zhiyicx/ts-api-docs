@@ -144,38 +144,36 @@ Status: 201 Created
 响应体
 ```json5
 {
-    "pay_method": "Alipay_AopApp", // 付款方式
-    "quantity": 1, // 购买数量
-    "duration": "3", // 购买时长
-    "level": "middle", // 会员等级
-    "vip_info": { // vip信息
-        "level": "middle",
-        "name": "钻石会员",
-        "duration": 3,
-        "price": 5400, // 价格 分
-        "iap": "203",
-        "iap_price": 60,
-        "timezone": "Asia/Shanghai",
+    "pay_method":"WechatPay_App",
+    "quantity":1,
+    "duration":"1","level":"low",
+    "vip_info":{ 
+        "level":"low",
+        "name":"白金会员",
+        "duration":1,
+        "price":1,
+        "iap":"001",
+        "iap_price":12,
+        "currency":10,
+        "timezone":"Asia/Shanghai"
     },
-    "user_id": 1,
-    "pay_amount": 5400, // 价格 分
-    "total_amount": 5400, // 价格 分
-    "pay_status": 0, // 状态
-    "updated_at": "2019-12-24 03:56:40",
-    "created_at": "2019-12-24 03:56:40",
-    "id": 11,
-    "trade_no": "20191224115640878MOB", // 内部订单号
-    // 以下两个字段这是为了区分，正确的字段`pay_data`， Iap支付不会返回此字段，只会在服务端创建订单
-    "pay_data_alipay": "alipay_sdk=lokielse%2Fomnipay-alipay&app_id=2019071565853380&biz_content=%7B%22subject%22%3A%22%5Cu8d2d%5Cu4e70%5Cu4f1a%5Cu5458%22%2C%22out_trade_no%22%3A%2220191224115640878MOB%22%2C%22timeout_express%22%3A%2215m%22%2C%22total_amount%22%3A54%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%7D&charset=UTF-8&format=JSON&method=alipay.trade.app.pay&notify_url=http%3A%2F%2Fplus-domo.test%2Fapi%2Fv2%2Fvip%2Forders%2F11%2Falipay-callback&sign_type=RSA2&timestamp=2019-12-24+03%3A56%3A40&version=1.0&sign=Ky2rlTHM8WcQkArTaIKN21VUwN%2BLmPqDpTswWWFbCtt3d%2BKyTob609Ti0%2Fx9JjLmttPeTC5RaqbdpcXiHi4YgirTbwKxniyamcco6JRVUmDYVaGd%2BdXZc3dNyjNB6PYmLUyhJ79ddOI6GWW6j9QkEeMmB3iZiGLh0kDxol9Bt75r235du0NgQR%2BGTv20IJT7uLldE8XKfc6EdLMzG01a8aOMjK0F6SmtrdrLG26baccBXRGILsRTYvpThcqE1v6Enqhm%2FD1c57sa43moCc00GeLaTwWsvCv013L5fuQp%2FvJhLho6G3P8WQtNZdDVVZzj7JgpNMfL%2FW91w%2FMCwrcfLA%3D%3D", // 支付宝付款信息
-    "pay_data_wechat": {
-                         "appid": "wxfdbfcc9bf46384bf",
-                         "partnerid": "1486014122",
-                         "prepayid": "wx241158214833621041eaed8d1959441900",
-                         "package": "Sign=WXPay",
-                         "noncestr": "376f6c564f9c16b3d4570581fea8511f",
-                         "timestamp": 1577159901,
-                         "sign": "8ABB0AEC593AFD41940F670518798FD1"
-                     }
+    "user_id":8,
+    "pay_amount":1,
+    "total_amount":1,
+    "pay_status":0,
+    "updated_at":"2020-05-21T08:21:08Z",
+    "created_at":"2020-05-21T08:21:08Z",
+    "id":89,
+    "trade_no":"20200521162108287MO2H",
+    "pay_data":{ 
+        "appid":"wxfdbfcc9bf46384bf",
+        "partnerid":"1486014122",
+        "prepayid":"wx211621088964897b0f7bb9141256071600",
+        "package":"Sign=WXPay",
+        "noncestr":"2b370611bf1a5af065c587b221c4df2f",
+        "timestamp":1590049268,
+        "sign":"D4873472BFA320CCBBD819C5B438DEA8"
+    }
 }
 ```
 

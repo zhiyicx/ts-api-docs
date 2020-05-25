@@ -3,10 +3,10 @@ id: data-fields-mall-orders
 title: mall-orders
 ---
 
-商城分类
+### 商城订单 mall_orders
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | bigint | 自增id |
 | trade_no | varchar(32) | 交易号 |
 | multiple_trade_no | varchar(191) | 购物车付款订单号 |
@@ -38,3 +38,5 @@ title: mall-orders
 | expresses_count | tinyint(3) unsigned | 快递数量 |
 | user_deleted_at | timestamp | 买家删除订单 |
 | shop_deleted_at | timestamp | 卖家删除订单 |
+| created_at | timestamp | 创建时间 |
+| updated_at | timestamp | 最后更新时间 |

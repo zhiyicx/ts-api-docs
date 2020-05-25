@@ -305,6 +305,19 @@ Status: 200 OK
     "type": "score",
     "price": 100,
     "score": 100,
+    "options": ["red", "green"],
+    "sku": [
+        {
+          "name": "red",
+          "extra": 2,
+          "inventory": 100
+        },
+        {
+          "name": "green",
+          "extra": 3,
+          "inventory": 100
+        }
+    ],
     "market_price": 0,
     "buy_limit_days": 7, // 限制购买的天数
     "buy_limit_qty": 1,  // 限制购买的数量
@@ -382,7 +395,19 @@ Status: 200 OK
     "price": 100,
     "score": 100,
     "market_price": 0,
-    "options": ["红色", "蓝色"],
+    "options": ["red", "green"],
+    "sku": [ // 新增的规格内容
+        {
+          "name": "red", // 规格名称，和options对应
+          "extra": 3, // 额外增加的积分或者金额
+          "inventory": 100 // 此规格的库存
+        },
+        {
+          "name": "green",
+          "extra": 2, // 额外增加的积分或者金额
+          "inventory": 100
+        }
+    ],
     "top_text": "顶部文字",
     "bottom_text": "底部文字",
     "content_images": [
@@ -501,6 +526,11 @@ POST /api/v2/mall/commodities
 | `score` | `integer` | **选填**，购买所需积分数量，没有则设置`0`，和 `price` 二选一  |
 | `market_price` | `integer` | **必须**，市场价，没有则设置`0` |
 | `options` | `array,null` | **可选**，商品的购买选项集合，如果为array则长度为1~100 |
+| `sku` | `array,null` | **可选**，商品的购买选项集合，如果为array则长度为1~100 |
+| `sku.*` | `array,null` | **可选**，单个规格的属性 |
+| `sku.*.name` | `string` | **必填**，规格名称，通options中的每一项对应|
+| `sku.*.extra` | `integer` | **选填**，规格价格，在基础价格上的增加|
+| `sku.*.inventory` | `integer` | **必填**，规格库存 |
 | `options.*` | `string` | **必须**，单个选项，最长60个字符 |
 | `top_text` | `string` | **可选**，顶部文字描述，最多20000字符 |
 | `bottom_text` | `string` | **可选**，底部文字描述，最多20000字符 |
@@ -572,6 +602,18 @@ Status: 201 Created
     "score": 100,
     "market_price": 0,
     "options": ["大号", "小号"],
+    "sku": [
+        {
+          "name": "red",
+          "extra": 2,
+          "inventory": 100
+        },
+        {
+          "name": "green",
+          "extra": 3,
+          "inventory": 100
+        }
+    ],
     "top_text": "顶部文字",
     "bottom_text": "底部文字",
     "content_images": [
@@ -806,6 +848,30 @@ DELETE /api/v2/mall/commodities/{commodity.id}/like
 
 ```
 Status: 204 No Content
+```
+
+### 举报商品
+
+```
+POST /api/v2/mall/commodities/{commodity.id}/report
+```
+
+输入：
+
+| 参数 | 类型 | 描述 |
+|:----:|----|----|
+| `reason` | `string` | **可选**，举报原因 |
+
+响应：
+
+```
+Status: 201 OK
+```
+
+```json5
+{
+  "message": ["操作成功"]
+}
 ```
 
 ### 检查用户能否发布商品

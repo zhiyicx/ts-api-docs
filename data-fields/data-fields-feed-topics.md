@@ -3,10 +3,10 @@ id: data-fields-feed-topics
 title: feed-topics
 ---
 
-圈子
+### 圈子 feed_topics
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | int unsigned | 自增ID |
 | name | string | 圈子名称 |
 | logo | string | 圈子图标 |
@@ -31,3 +31,5 @@ title: feed-topics
 | divide | int unsigned | 自增ID |
 | topic_category_id | int unsigned | 自增ID |
 | publish_permission | int unsigned | 自增ID |
+| created_at | timestamp | 创建时间 |
+| updated_at | timestamp | 最后更新时间 |

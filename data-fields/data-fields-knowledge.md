@@ -3,10 +3,10 @@ id: data-fields-knowledge
 title: knowledge
 ---
 
-知识
+### 知识 knowledge
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | bigint(20) unsigned | 自增ID |
 | author_id | int(10) unsigned | 作者 |
 | category_id | int(10) unsigned | 分类ID |
@@ -30,3 +30,5 @@ title: knowledge
 | author_topped_at | timestamp | 作者个人主页置顶，有值表示已被置顶 |
 | category_topped_at | timestamp | 分类置顶，有值表示已被置顶 |
 | status | tinyint(3) unsigned | 状态 |
+| created_at | timestamp | 创建时间 |
+| updated_at | timestamp | 最后更新时间 |

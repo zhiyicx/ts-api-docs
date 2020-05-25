@@ -3,10 +3,10 @@ id: data-fields-collections
 title: collections
 ---
 
-收藏
+### 收藏 【已弃用, deprecated】collections 
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | int | 自增id |
 | collectible_id | int | 被收藏的资源id |
 | collectible_type | varchar | 被收藏的资源类型 |

@@ -4,18 +4,19 @@ title: 数据字典
 ---
 # 数据字典
 
+**说明: 字典中的`created_at`和`updated_at`均表示记录的创建时间和最后更新时间，如果出现`deleted_at`
+则表示数据是可以被软删除的**
+
+
 - [apply_for_join_topic_logs - 加圈申请](apply_for_join_topic_logs.md)  
-- [black-lists - 黑名单](data-fields-black-lists.md)  
-- [brand-commodity - 商品-品牌关联表](data-fields-brand-commodity.md)  
-- [commodity-condition-shares - 商品购买条件之分享记录](data-fields-commodity-condition-shares.md)  
+- [black_lists - 黑名单](data-fields-black-lists.md)  
+- [brand_commodity - 商品-品牌关联表](data-fields-brand-commodity.md)  
+- [commodity_condition-shares - 商品购买条件之分享记录](data-fields-commodity-condition-shares.md)  
 - [abilities - 所有权限节点](data-fields-abilities.md)
 - [ability_role - 用户组权限](data-fields-ability-rule.md)
 - [advertising - 广告列表](data-fields-advertising.md)
 - [advertising_space - 广告位](data-fields-advertising-space.md)
 - [areas - 地区配置](data-fields-areas.md)
-- [around_amaps - 用户坐标](data-fields-around-amaps.md)
-- [certification_categories - 认证分类](data-fields-certification-categories.md)
-- [certifications - 用户认证](data-fields-certifications.md)
 - [checkin_logs - 签到记录](data-fields-checkin-logs.md)
 - [client_versions - 客户端版本控制](data-fields-client-versions.md)
 - [collections - 收藏](data-fields-collections.md)
@@ -80,6 +81,7 @@ title: 数据字典
 - [user_extras - 用户信息](data-fields-user-extras.md)
 - [user_follow - 用户关注关系](data-fields-user-follow.md)
 - [user_socialites - 用户三方信息绑定](data-fields-user-socialites.md)
+- [user_verifications - 认证记录](data-fields-user-verifications.md)
 - [user_unread_counts - 用户未读信息](data-fields-user-unread-counts.md)
 - [users - 用户](data-fields-users.md)
 - [users_recommended - 推荐用户](data-fields-users-recommended.md)

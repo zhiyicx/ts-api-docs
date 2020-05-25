@@ -3,10 +3,10 @@ id: data-fields-knowledge-orders
 title: knowledge-orders
 ---
 
-知识订单
+### 知识订单 knowledge_orders
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | bigint(20) unsigned | 自增ID |
 | trade_no | varchar(32) | 三方支付交易号 |
 | user_id | int(10) unsigned | 购买用户 |
@@ -31,3 +31,5 @@ title: knowledge-orders
 | last_read_cid | smallint(5) unsigned | 最后阅读的章节 |
 | user_deleted_at | timestamp | 用户删除订单，有值表示已删除 |
 | author_deleted_at | timestamp | 作者删除订单，有值表示已删除 |
+| created_at | timestamp | 创建时间 |
+| updated_at | timestamp | 最后更新时间 |

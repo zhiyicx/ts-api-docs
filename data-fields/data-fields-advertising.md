@@ -3,10 +3,10 @@ id: data-fields-advertising
 title: advertising
 ---
 
-广告列表
+### 广告列表 advertising
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | int | 自增id |
 | space_id | int | 广告位id |
 | title | varchar | 广告标题 |

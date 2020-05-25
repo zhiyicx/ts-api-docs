@@ -3,10 +3,10 @@ id: data-fields-vip-orders
 title: vip-orders
 ---
 
-用户购买VIP的订单记录
+### 用户购买VIP的订单记录 vip_orders
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | bigint | 自增id |
 | trade_no | varchar(32) | 提供给三方的交易订单号 |
 | user_id | int(10) unsigned | 用户 |
@@ -21,3 +21,5 @@ title: vip-orders
 | paid_at | timestamp | 支付时间 |
 | user_deleted_at | timestamp | 用户删除订单信息 |
 | platform_deleted_at | timestamp | 平台删除订单信息 |
+| created_at | timestamp | 创建时间 |
+| updated_at | timestamp | 最后更新时间 |

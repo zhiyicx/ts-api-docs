@@ -3,10 +3,10 @@ id: data-fields-wallet-orders
 title: wallet_orders
 ---
 
-钱包订单
+### 钱包订单记录 wallet_orders
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | int | 自增id |
 | owner_id | int | 记录所属者 |
 | target_type | varchar | 目标类型 |
@@ -16,3 +16,5 @@ title: wallet_orders
 | type | tinyint | 1：入账、-1：支出 |
 | amount | int | 订单金额 |
 | state | tinyint | 订单状态，0: 等待，1：成功，-1: 失败 |
+| created_at | timestamp | 创建时间 |
+| updated_at | timestamp | 最后更新时间 |

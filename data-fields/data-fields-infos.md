@@ -3,10 +3,10 @@ id: data-fields-infos
 title: infos
 ---
 
-资讯
+### 资讯 infos
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | bigint unsigned | 自增ID |
 | author_id | bigint(20) unsigned | 作者 |
 | category_id | int(10) unsigned | 分类ID |
@@ -22,3 +22,6 @@ title: infos
 | recommend_at | timestamp | 推荐时间，有值表示已被推荐 |
 | topped_at | timestamp | 置顶时间，有值表示已被置顶 |
 | category_topped_at | timestamp | 分类置顶时间，有值表示已被置顶 |
+| created_at | timestamp | 创建时间 |
+| updated_at | timestamp | 最后更新时间 |
+| deleted_at | timestamp | 软删除时间 |

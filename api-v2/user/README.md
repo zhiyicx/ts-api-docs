@@ -417,7 +417,9 @@ Status: 200 OK
         },
         "has_follower": false,
         "has_following": false,
-        "created_at": "2019-07-15T07:49:47Z"
+        "created_at": "2019-07-15T07:49:47Z",
+        "commodities_count":0,
+        "vip":null
     }
 ]
 ```
@@ -479,7 +481,9 @@ Status: 200 OK
         },
         "has_follower": false,
         "has_following": false,
-        "created_at": "2019-07-15T07:49:47Z"
+        "created_at": "2019-07-15T07:49:47Z",
+        "commodities_count":0,
+        "vip":null
     }
 ]
 ```
@@ -607,7 +611,7 @@ Status: 201 OK
     "pay_amount": 0,     // 使用第三方支付支付的金额
     "trade_no": "xxxxxx", // pay_method不为None时才有订单号
     "pay_method": "None", // 订单支付方式，如果用余额全额支付则为None，否则为传入的值
-    "pay_data": "",  // pay_method不为None时才有，用于第三方支付的数据，可能是任何数据类型。
+    "pay_data": {},  // pay_method不为None时才有，用于第三方支付的数据，可能是任何数据类型。
     "pay_status": 2, // 支付状态 0未支付、1已支付，但处理失败（三方平台支付的金额已充值到余额），2已支持且处理购买逻辑成功
     "paid_at": "2019-04-25 09:20:13", // 订单支付后才有此标识
     "updated_at": "2019-04-25 09:20:13",

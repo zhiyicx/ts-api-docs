@@ -3,10 +3,10 @@ id: data-fields-wallet-charges
 title: wallet_charges
 ---
 
-交易记录
+### 钱包交易记录 [弃用 deprecated] wallet_charges
 
 | 字段 | 类型 | 说明 |
-| :- | :- | :- |
+| ------ | ------ | ------ |
 | id | int | 自增id |
 | channel | varchar | 支付频道，参考 Ping++，增加 user 选项，表示站内用户凭据 |
 | user_id | varchar | 关联用户，可不存在，例如直接支付方式等。存在便于按照用户检索。 |
