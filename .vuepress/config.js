@@ -16,7 +16,6 @@ module.exports = {
     editLinks: true,
     editLinkText: '协助改善此文档',
     docsBranch: 'docs',
-    sidebar: 'auto',
     search: true,
     lastUpdated: '更新时间',
     nav: [
@@ -53,7 +52,13 @@ module.exports = {
           { text: '问答', link: '/api-v2/wenda/' },
           { text: '条款,页面', link: '/api-v2/show-pages/' },
           { text: '省市区', link: '/api-v2/location/' },
-          { text: '举报', link: '/api-v2/report/'}
+          { text: '举报', link: '/api-v2/report/'},
+          { text: '文件存储', link: '/api-v2/storage/'},
+          { text: '环信', link: '/api-v2/easemob/'},
+          { text: '验证码', link: '/api-v2/verification_code/'},
+          { text: '标签', link: '/api-v2/tags/'},
+          { text: '广告', link: '/api-v2/ad/'},
+          { text: '积分', link: '/api-v2/currency/'},
         ]
       }
     ],
@@ -105,7 +110,13 @@ module.exports = {
       '/api-v2/location/': [
           ''
       ],
-      '/api-v2/report/': ['']
+      '/api-v2/report/': [''],
+      '/api-v2/storage/': [''],
+      '/api-v2/easemob/': [''],
+      '/api-v2/verification/': [''],
+      '/api-v2/tags/': [''],
+      '/api-v2/ad/': [''],
+      '/api-v2/currency/': [''],
     }
   }
 }

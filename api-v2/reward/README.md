@@ -1,8 +1,9 @@
 ---
 sidebarDepth: 3
+title: 打赏接口文档
 ---
 
-# 打赏APIs文档
+# 打赏
 
 ## 我发出的打赏
 

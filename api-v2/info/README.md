@@ -1,5 +1,6 @@
 ---
 sidebarDepth: 3
+title: 资讯
 ---
 
 # 资讯模块APIs文档

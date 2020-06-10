@@ -1,5 +1,6 @@
 ---
 sidebarDepth: 2
+title: 其他内容
 ---
 # 其他内容
 

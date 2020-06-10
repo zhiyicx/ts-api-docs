@@ -1,5 +1,6 @@
 ---
 sidebarDepth: 2
+title: 会员
 ---
 
 # VIP相关接口

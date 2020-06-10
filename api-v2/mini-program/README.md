@@ -1,5 +1,6 @@
 ---
 sidebarDepth: 2
+title: 小程序
 ---
 
 # 微信小程序 APIs 接口

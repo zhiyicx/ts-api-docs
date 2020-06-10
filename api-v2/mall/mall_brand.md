@@ -1,5 +1,6 @@
 ---
 sidebarDepth: 3
+title: 品牌
 ---
 
 # 商城 - 品牌API文档

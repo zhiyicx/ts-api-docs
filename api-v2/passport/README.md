@@ -9,7 +9,6 @@ title: Json Web Token 授权
 - [用户退出](#logout)
 - [刷新 Token](#refresh)
 
-<a name="login"></a>
 ## 用户登录 
 
 ```
