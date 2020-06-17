@@ -650,6 +650,23 @@ Status: 200 OK
 }
 ```
 > `apply_for_status`说明：`none`表示没有记录， 其余内容则表示最新一条记录的状态，当`has_followed`字段为`true`时，请忽略此字段
+
+
+### 检测用户是否可以创建私密圈子
+
+```http request
+GET /api/v2/feed/topics/check-can-create
+```
+```
+Status: 200 OK
+```
+```json5
+{
+  "visible": false, // 可否创建公开圈子
+  "hidden": false // 可否创建私密圈子
+}
+```
+
 ### 创建圈子
 
 ```
