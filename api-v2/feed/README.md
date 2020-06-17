@@ -1,3 +1,8 @@
+---
+sidebarDepth: 3
+title: 动态
+---
+
 # 动态APIs文档
 
 ## 新数据返回结构
