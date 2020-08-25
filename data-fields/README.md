@@ -26,6 +26,7 @@ title: 数据字典
 - [currency_orders - 购买订单](data-fields-currency-orders.md)
 - [currency_types - 货币类型](data-fields-currency-types.md)
 - [event_categories - 活动分类](data-fields-event-categories.md)
+- [events - 活动](data-fields-events.md)
 - [wenda_categories - 问题分类](data-fields-wenda-categories.md)
 - [info_categories - 资讯分类](data-fields-info-categories.md)
 - [infos - 资讯](data-fields-infos.md)
