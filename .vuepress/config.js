@@ -35,6 +35,10 @@ module.exports = {
         link: '/data-fields/'
       },
       {
+        text: '常见问题',
+        link: '/Q&A/'
+      },
+      {
         text: 'HTTP APIs',
         items: [
           // { text: '核心', link: '/core/api/v2/system' },
