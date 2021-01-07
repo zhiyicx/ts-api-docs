@@ -81,7 +81,7 @@ module.exports = {
       '/api-v2/passport/': [''],
       '/api-v2/user/': [
         '',
-        ‘follow’,
+        'follow', 
         'vip',
         'notification'
       ],
