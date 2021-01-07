@@ -12,19 +12,25 @@ title: 会员
 ````http request
 GET /api/v2/vip/configs
 ````
+
 响应状态
+
 ```
 Status: 200 OK
 ```
+
 响应体
 > 响应体说明： `config` 字段为价格配置内容，`low`, `middle`, `high` 表示三个等级的会员
 > `enable` 表示是否启用此等级的会员
 > `{'low' | 'middle' | 'high' }` 下的 `setting` 则表示每个时间段的会员价格配置等信息
 >`exchange` 表示低等级到高等级兑换的天数
+
+<details>
+
 ```json5
 {
     "switch": true, // 会员功能是否开启
-    "exchange": 1,
+    "exchange": 1, //  exchange 表示低等级到高等级兑换的天数
     "config": {
         "low": {
             "enable": true, // 如果为false表示不显示
@@ -123,6 +129,77 @@ Status: 200 OK
 }
 ```
 
+</details>
+
+
+
+### 创建会员订单
+
+```
+POST /api/v2/vip/orders
+```
+
+输入：
+
+| 参数 | 类型 | 描述 |
+|:----:|----|----|
+| `vip_type` | `string` | **必须**，购买类型：month：月度会员；quarter：季度会员；year：年度会员 |
+| `buy_type` | `integer` | **必须**，购买方式：1：人民币购买；2：积分购买 |
+| `quantity` | `integer` | **必须**，购买数量，1~65535 |
+| `pay_score` | `integer` | **可选**，使用积分支付的数量，积分购买时必传 |
+| `pay_method` | `string` | **可选**，支付方法，余额和积分无法完成支付时必传，可选值：<br>`Alipay_AopApp` 支付宝APP支付<br>`Alipay_AopWap` 支付宝H5网页支付<br>`Alipay_AopPage` 支付宝PC网页支付<br>`WechatPay_App` 微信APP支付<br>`WechatPay_Js` 微信小程序、公众号支付 |
+| `pay_balance` | `integer` | **可选**，使用钱包余额支付的金额 |
+| `redirect_url` | `string` | **可选**，当`pay_method=Alipay_AopWap/Alipay_AopPage`时支付完成后的重定向URL，最长256个字符 |
+| `openid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前用户的openid |
+| `appid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的appid |
+| `app_type` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的APP类型，可选 app:公众号 micro:小程序，提供了此参数且没提供appid，系统将读取配置中的appid |
+
+成功响应：
+
+```
+Status: 201 OK
+```
+
+```json5
+{
+    "user_id": 1, // 订单所有者用户ID
+    "vip_type": "month", // 购买类型
+    'buy_type': 1,//购买方式
+    "quantity": 1, // 购买的数量
+    "total_amount": 1000, // 订单总金额/总积分
+    "pay_balance": 100,  // 使用余额支付的金额
+    "pay_score": 0,     // 使用积分支付的数量
+    "pay_amount": 0,     // 使用第三方支付支付的金额
+    "trade_no": "xxxxxx", // pay_method不为None时才有订单号
+    "pay_method": "None", // 订单支付方式，如果用余额全额支付则为None，否则为传入的值
+    "pay_data": {},  // pay_method不为None时才有，用于第三方支付的数据，可能是任何数据类型。
+    "pay_status": 2, // 支付状态 0未支付、1已支付，但处理失败（三方平台支付的金额已充值到余额），2已支持且处理购买逻辑成功
+    "paid_at": "2019-04-25 09:20:13", // 订单支付后才有此标识
+    "updated_at": "2019-04-25 09:20:13",
+    "created_at": "2019-04-25 09:20:13",
+    "id": 46,
+}
+```
+
+客户端错误响应：
+
+```
+Status: 400|403|422 OK
+```
+
+```json5
+{
+    // 错误消息，当为以下错误时才有此字段
+    // score_not_enough        可用的积分不足
+    // balance_not_enough      可用的余额不足
+    "error_type": "unsupported_area",
+    "message": "错误消息",
+}
+```
+
+
+
+
 ## 购买/续费会员
 ```http request
 POST /api/v2/vip/orders
@@ -143,6 +220,7 @@ Status: 201 Created
 ```
 
 响应体
+
 ```json5
 {
     "pay_method":"WechatPay_App",
@@ -179,6 +257,7 @@ Status: 201 Created
 ```
 
 ## 转为高等级会员
+
 ```http request
 PATCH /api/v2/vip/exchange-vip
 ```
@@ -197,6 +276,7 @@ Status: 403 Forbidden
 ```
 
 ## IAP支付结果检查
+
 ```http request
 POST /api/v2/vip/check-iap-result/{orderId}
 ```
@@ -206,10 +286,12 @@ POST /api/v2/vip/check-iap-result/{orderId}
 | `receipt` | `string` | **必选**，支付成功后的结果 |
 
 购买成功响应
+
 ```
 Status: 200 OK
 ```
 暂定其他响应
+
 ```
 Status: 500 Server Error
 ```
@@ -231,6 +313,7 @@ Status: 200 OK
 ```
 
 响应体
+
 ```json5
 [
     {
@@ -296,6 +379,7 @@ Status: 200 OK
 ```
 
 响应体
+
 ```json5
 {
         "id": 9,

@@ -5,6 +5,463 @@ title: 用户
 
 # 用户相关接口
 
+<details>
+<summary>点击查看用户数据结构</summary>
+
+用户铭感信息如：`phone`、`email` 等只有获取自己的才会返回
+
+| 字段 | 类型 | 描述 |
+|:----:|:----:|----|
+| id 	|  int 	|  用户唯一标识 |
+| name | String  | 用户名（唯一） |
+| email | String | 用户的邮箱地址。 |
+| phone | String | 用户的手机号。 |
+| bio 	 | String | 用户的简介文字。 |
+| sex 	 | int		 | 用户的性别 1`男` 2`女` 0`保密`。 |
+| location 	 | String		 | 用户的地区，如：中国 四川省 成都市 |
+| invite_code 	 | String		 | 用户的邀请码 |
+| avatar 	 | String/Object	 | 用户的头像地址，来着微信的返回`String`,App的为`Object` |
+| feed_topics_count 	 | int		 | 用户创建的圈子数量 |
+| commodities_count	 | int		 | 用户发布商品信息 |
+| extra 	 | Object		 | 用户内容数量 |
+| extra.user_id 	 | int		 | 用户 id |
+| extra.likes_count 	 | int		 | 被喜欢统计数 |
+| extra.comments_count 	 | int		 | 用户发出的评论统计 |
+| extra.followers_count 	 | int		 | 用户粉丝数 |
+| extra.followings_count 	 | int		 | 用户关注数|
+| extra.be_reward_count 	 | int		 | 用户被点赞所获得的积分数量 |
+| extra.questions_count 	 | int		 | 用户发布的问题数量 |
+| extra.answers_count 	 | int		 | 用户发布的回答数量 |
+| extra.feeds_count	 | int		 | 发布的动态统计，没有安装 动态应用则不存在 |
+| extra.rank	 | int		 | 用户积分排名 |
+| extra.checkin_count 	 | int		 | 用户签到次数|
+| extra.last_checkin_count 	 | int		 | 用户连续签到数量 |
+| extra.count	 | int		 | 排行数量 如粉丝排行榜即为粉丝数 根据点赞数来排行的 则为点赞的数量 |
+| verification	 | object		 | 用户认证信息 |
+| currency	 | object		 | 用户积分信息 |
+| wallet	 | object		 | 用户余额信息 |
+| wallet.balance	 | int		 | 用户余额 |
+| vip	 | object		 | 用户会员信息 |
+| has_follower	 | boolean		 | 基于这条消息的用户是否被我关注了 |
+| has_following	 | boolean		 | 基于这条消息的用户是否关注了我 |
+| created_at	 | String		 | 用户注册时间 |
+| updated_at	 | String		 | 用户更新用户信息的时间 |
+
+
+
+```json
+{
+    "id":4,
+    "name":"小小n",
+    "email":"335891510@qq.com",
+    "phone":"15694005009",
+    "bio":"😒丫头子哦送送送口粮出粗放出粗粗姑姑一幅幅预付费服7仿佛根据巨富夫妇。啦啦啦。好的哦",
+    "sex":2,
+    "location":"四川省 成都市",
+    "invite_code":"10ABC3",
+    "avatar":{
+        "url":"https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2021/01/05/dlZOEOmKCBaWjv3GPaAVjzU2GoRxJSF0yxldpaUZ0XxyOaBcWITz9laDAcB8OlAN.jpg",
+        "vendor":"aliyun-oss",
+        "mime":"image/jpeg",
+        "size":315576,
+        "dimension":{
+            "width":720,
+            "height":720
+        },
+        "node":"public:2021/01/05/dlZOEOmKCBaWjv3GPaAVjzU2GoRxJSF0yxldpaUZ0XxyOaBcWITz9laDAcB8OlAN.jpg"
+    },
+    "feed_topics_count":14,
+    "extra":{
+        "user_id":4,
+        "likes_count":119,
+        "comments_count":47,
+        "followers_count":13,
+        "followings_count":16,
+        "updated_at":"2021-01-06T07:35:01Z",
+        "feeds_count":129,
+        "checkin_count":0,
+        "last_checkin_count":0,
+        "be_reward_count":466
+    },
+    "verification":{
+        "type":"user",
+        "state":1,
+        "created_at":"2019-12-27T02:27:58Z",
+        "updated_at":"2019-12-27T02:29:11Z",
+        "desc":"快去快去说一下",
+        "slogan":"大美女",
+        "id_card":{
+            "number":"510904919901010100",
+            "rear":{
+                "url":"https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2019/12/27/BJs15jY3aFjw8oMvaZoFIV8KJ8oBu4RyBxgmh03BsuXKppqsRgUUWtgv7WCsTYGG.jpg",
+                "vendor":"aliyun-oss",
+                "mime":"image/jpeg",
+                "size":203022,
+                "dimension":{
+                    "width":1080,
+                    "height":1920
+                },
+                "node":"public:2019/12/27/BJs15jY3aFjw8oMvaZoFIV8KJ8oBu4RyBxgmh03BsuXKppqsRgUUWtgv7WCsTYGG.jpg"
+            },
+            "front":{
+                "url":"https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2019/12/27/7NDdvp9XCp9HugUNQ1cYTU3F4jzsjpPLr8Qc8k9E32oN4GbIZloSySFV3zKDhzeQ.jpg",
+                "vendor":"aliyun-oss",
+                "mime":"image/jpeg",
+                "size":293000,
+                "dimension":{
+                    "width":1920,
+                    "height":1200
+                },
+                "node":"public:2019/12/27/7NDdvp9XCp9HugUNQ1cYTU3F4jzsjpPLr8Qc8k9E32oN4GbIZloSySFV3zKDhzeQ.jpg"
+            }
+        },
+        "real_name":"七夜",
+        "phone_number":"15694005009",
+        "user_id":4
+    },
+    "currency":{
+        "owner_id":4,
+        "type":1,
+        "sum":2377
+    },
+    "wallet":{
+        "owner_id":4,
+        "balance":3902,
+        "total_income":544,
+        "total_expenses":800
+    },
+    "has_follower":false,
+    "has_following":false,
+    "created_at":"2019-11-20T07:32:34Z",
+    "updated_at":"2021-01-05T06:20:50Z",
+    "commodities_count":0,
+    "vip":{
+        "level":"middle",
+        "end_time":"2021-02-02T13:39:31Z",
+        "name":"钻石会员"
+    }
+}
+
+```
+
+</details>
+
+
+## 获取获取指定用户
+
+
+```
+GET api/v2/users/:user
+```
+
+变量：
+
+| 变量 | 描述 |
+|:---:|:---:|
+| `user` | 这个变量可以是「用户名」、「邮箱」、「手机号码」和「用户ID」 |
+
+#### 参数
+
+| 参数 | 类型 | 描述 |
+|:----:|:----:|----|
+| following | Integer | 检查请求用户是否关注了指定的用户，传递要检查的用户 ID，默认为当前登录用户。 |
+| follower | Integer | 检查请求用户是否被某个用户关注，传递要检查的用户 ID，默认为当前登录用户。 |
+
+响应:
+
+```
+Status: 200 OK
+```
+```json5
+ {
+ 用户信息
+ }
+```
+
+
+
+## 当前登录用户信息
+
+```
+GET /api/v2/user
+```
+响应:
+
+```
+Status: 200 OK
+```
+```json5
+ {
+ 用户信息
+ }
+```
+
+## 修改用户信息
+
+```
+PATCH /api/v2/user
+```
+
+输入:
+
+| 字段 | 类型 | 描述 |
+|:----:|:----:|----|
+| name | 字符串 | 用户新的用户名。 |
+| bio | 字符串 | 用户新的个人传记。 |
+| sex | 数字 | 用户新的性别。 |
+| location | 字符串 | 用户新的位置信息。 |
+| `avatar` | `FILE_STORAGE_NODE<string>` | **可选**，用户头像的 File node 值 |
+| `bg`     | `FILE_STORAGE_NODE<string>` | **可选**，用户背景图片的 File node 值 |
+
+
+响应:
+
+```
+Status: 204 No Content
+```
+
+### 更新认证用户的手机号码和邮箱
+
+```
+PUT api/v2/user
+```
+
+#### 输入
+
+| 字段 | 类型 | 描述 |
+|:----:|:----:|----|
+| phone | 字符串 | **如果 `email` 不存在则必须**，用户新的手机号码。 |
+| email | 字符串 | **如果 `phone` 不存在则必须**，用户新的邮箱地址。 |
+| verifiable_code | 字符串或者数字 | **必须**，验证码。 |
+
+##### 响应
+
+```
+Status: 204 No Content
+```
+
+### 更新认证用户密码
+
+```
+PUT api/v2/user/password
+```
+
+#### 输入
+
+| 名称 | 类型 | 描述 |
+|:----:|:----:|----|
+| old_password | 字符串 | **用户已设置密码时必须**，用户密码。 |
+| password | 字符串 | **必须**，用户的新密码 |
+| password_confirmation | 字符串 | **必须**，用户的新密码，必须和 `password` 一致。 |
+
+##### 响应
+
+```
+Status: 204 No Content
+```
+
+
+## 用户找回密码
+
+```
+PUT api/v2/user/retrieve-password
+```
+
+#### 输入
+
+| 名称 | 类型 | 描述 |
+|:----:|:----:|----|
+| verifiable_type | 枚举：`mail` 或者 `sms` | **必须**，验证码发送模式。 |
+| verifiable_code | 字符串或者整数 | **必须**，用户收到的验证码。 |
+| email | 字符串 | 如果 `verifiable_type` 值为 `mail`，那么这个字段为必须，用户邮箱。 |
+| phone | 字符串 | 如果 `verifiable_type` 值为 `sms`。那么这个字段为必须，用户手机号码。 |
+| password | 字符串 | 用户新密码。 |
+
+##### 响应
+
+```
+Status: 204 No Content
+```
+
+## 解除用户 Phone 或者 E-Mail 绑定
+
+解除用户 Phone 绑定:
+
+```
+DELETE /api/v2/user/phone
+```
+
+解除用户 E-Mail 绑定:
+
+```
+DELETE /api/v2/user/email
+```
+
+#### 输入
+
+| 名称 | 类型 | 描述 |
+|:-----:|:----:|----|
+| password | String | 用户密码。 |
+| verifiable_code | Int 或者 String | 手机号码或者邮箱验证码。 |
+
+#### 响应
+
+```
+Status: 204 No Content
+```
+
+
+## 用户列表
+
+
+## 获取所有用户
+
+```
+GET api/v2/users
+```
+
+输入
+
+| 名称 | 类型 | 描述 |
+|:----:|:----:|----|
+| `limit` | `integer` | **可选**，请求获取的数据量，默认为 `20` 条，最低获取 `1` 条，最多获取 `50` 条。 |
+| `order` | `string` | **可选**，排序方式，默认 `desc`，可选 `asc` 或 `desc`。 |
+| `since` | `integer` | **可选**，上次请求的最后一条的 `id` ，用于获取这个用户之后的数据。 |
+| `name` | `string` | **可选**用于检索包含 `name` 传递字符串用户名的用户；如果 `fetch_by` 是 `username` 那么这里就是完整的用户名，多个用户名使用 `,` 进行分割。 |
+| `fetch_by` | `string` | **可选**，获取数据的方式，默认是 `id` 已常规方式进行获取，允许值：`username` 使用 `name` 字段进行按照用户名获取、`id` 使用 `id` 字段按照用户 ID 进行获取。 |
+| `id` | `integer` or `string` | **可选**，获取一个或者多个指定的用户，如果获取多个请使用 `,` 将用户 ID进行字符串拼接。 |
+
+响应
+
+```
+Status: 200 OK
+```
+```json
+[
+    {
+      用户信息
+    }
+]
+```
+
+
+### 活跃用户
+
+```
+GET /api/v2/users
+```
+输入:
+
+| 参数 | 类型 | 描述 |
+|:----:|----|----|
+|`active` | integer | **必传**, 1 |
+| `limit` | integer | **可选** |
+| `offset` | integer | **可选**,偏移量，用于分页,第一次查询时，传0 |
+
+响应:
+
+```
+Status: 200 OK
+```
+```json5
+[
+ {用户信息}
+]
+```
+
+### 推荐用户
+```
+GET /api/v2/user/recommends
+```
+输入:
+
+| 参数 | 类型 | 描述 |
+|:----:|----|----|
+| `limit` | integer | **可选** |
+| `offset` | integer | **可选**,偏移量，用于分页,第一次查询时，传0 |
+
+响应:
+```
+Status: 200 OK
+```
+
+```json5
+[
+ {用户信息}  
+]
+```
+
+### 同城用户
+```
+GET /api/v2/user/nearby
+```
+输入:
+
+| 参数 | 类型 | 描述 |
+|:----:|----|----|
+| `limit` | integer | **可选** |
+| `offset` | integer | **可选**,偏移量，用于分页,第一次查询时，传0 |
+
+响应:
+
+```
+Status: 200 OK
+```
+
+```json5
+[
+ {用户信息}
+]
+```
+
+### 用户积分收入排名
+
+```
+GET /api/v2/user/currency/income-rank
+```
+
+> 目前排行榜数据每三分钟更新一次
+
+输入：
+
+| 参数 | 类型 | 描述 |
+|:----:|----|----|
+| `days` | `string` | **可选**，获取最近多少天的数据，默认不限天数 |
+| `city` | `string` | **可选**，获取地区排名，如"成都"，默认全部 |
+| `limit` | `integer` | **可选**，获取多少条，最多1000，默认100 |
+
+响应：
+
+```
+Status: 200 OK
+```
+
+```json5
+{
+    "rank_list":[
+        {
+            "user": { /* 用户数据 */ },
+            // 总收入金额
+            "amount_count": 100,
+            // 排名
+            "rank": "100",
+        }
+    ],
+    // 我的排名，未登录或不在查询的city则没有此字段
+    "my_rank": {
+      "user": { /* 用户数据 */ },
+      // 总收入金额
+      "amount_count": 0,
+      // 排名
+      "rank": "1000+",
+    }
+}
+```
+
+
+
+
+
 ## 禁用用户
 
 ```
@@ -298,363 +755,6 @@ DELETE /api/v2/user/addresses/{address.id}
 Status: 204 No Content
 ```
 
-### 活跃用户
-
-```
-GET /api/v2/users
-```
-输入:
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-|`active` | integer | **必传**, 1 |
-| `limit` | integer | **可选** |
-| `offset` | integer | **可选**,偏移量，用于分页,第一次查询时，传0 |
-
-响应:
-```
-Status: 200 OK
-```
-```json5
-[
-    {
-        "id": 13,
-        "name": "静静",
-        "bio": null,
-        "sex": 0,
-        "location": "四川省 成都市",
-        "invite_code": "10ABCC",
-        "avatar": {
-            "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2019/09/25/t70zZfQbvPYMrJX7n0ELitxlqWK7QPOPs6ijbHVZSbbB8tC37gWT6vpSZjsISvU9.jpg",
-            "vendor": "aliyun-oss",
-            "mime": "image/jpeg",
-            "size": 141896,
-            "dimension": {
-                "width": 512,
-                "height": 512
-            }
-        },
-        "feed_topics_count": 10,
-        "extra": {
-            "user_id": 13,
-            "likes_count": 87,
-            "comments_count": 17,
-            "followers_count": 8,
-            "followings_count": 2,
-            "updated_at": "2019-11-04T08:46:30Z",
-            "feeds_count": 138,
-            "checkin_count": 0,
-            "last_checkin_count": 0,
-            "be_reward_count": 14
-        },
-        "verification": {
-            "type": "user",
-            "state": 1,
-            "created_at": "2019-09-25T06:00:10Z",
-            "updated_at": "2019-10-12T06:51:47Z",
-            "desc": "放假吗",
-            "slogan": "放假吗"
-        },
-        "has_follower": false,
-        "has_following": false,
-        "created_at": "2019-07-15T07:49:47Z"
-    }
-]
-```
-
-### 推荐用户
-```
-GET /api/v2/user/recommends
-```
-输入:
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `limit` | integer | **可选** |
-| `offset` | integer | **可选**,偏移量，用于分页,第一次查询时，传0 |
-响应:
-```
-Status: 200 OK
-```
-```json5
-[
-    {
-        "id": 13,
-        "name": "静静",
-        "bio": null,
-        "sex": 0,
-        "location": "四川省 成都市",
-        "invite_code": "10ABCC",
-        "avatar": {
-            "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2019/09/25/t70zZfQbvPYMrJX7n0ELitxlqWK7QPOPs6ijbHVZSbbB8tC37gWT6vpSZjsISvU9.jpg",
-            "vendor": "aliyun-oss",
-            "mime": "image/jpeg",
-            "size": 141896,
-            "dimension": {
-                "width": 512,
-                "height": 512
-            }
-        },
-        "feed_topics_count": 10,
-        "extra": {
-            "user_id": 13,
-            "likes_count": 87,
-            "comments_count": 17,
-            "followers_count": 8,
-            "followings_count": 2,
-            "updated_at": "2019-11-04T08:46:30Z",
-            "feeds_count": 138,
-            "checkin_count": 0,
-            "last_checkin_count": 0,
-            "be_reward_count": 14
-        },
-        "verification": {
-            "type": "user",
-            "state": 1,
-            "created_at": "2019-09-25T06:00:10Z",
-            "updated_at": "2019-10-12T06:51:47Z",
-            "desc": "放假吗",
-            "slogan": "放假吗"
-        },
-        "has_follower": false,
-        "has_following": false,
-        "created_at": "2019-07-15T07:49:47Z",
-        "commodities_count":0,
-        "vip":null
-    }
-]
-```
-
-### 同城用户
-```
-GET /api/v2/user/nearby
-```
-输入:
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `limit` | integer | **可选** |
-| `offset` | integer | **可选**,偏移量，用于分页,第一次查询时，传0 |
-
-响应:
-```
-Status: 200 OK
-```
-```json5
-[
-    {
-        "id": 13,
-        "name": "静静",
-        "bio": null,
-        "sex": 0,
-        "location": "四川省 成都市",
-        "invite_code": "10ABCC",
-        "avatar": {
-            "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2019/09/25/t70zZfQbvPYMrJX7n0ELitxlqWK7QPOPs6ijbHVZSbbB8tC37gWT6vpSZjsISvU9.jpg",
-            "vendor": "aliyun-oss",
-            "mime": "image/jpeg",
-            "size": 141896,
-            "dimension": {
-                "width": 512,
-                "height": 512
-            }
-        },
-        "feed_topics_count": 10,
-        "extra": {
-            "user_id": 13,
-            "likes_count": 87,
-            "comments_count": 17,
-            "followers_count": 8,
-            "followings_count": 2,
-            "updated_at": "2019-11-04T08:46:30Z",
-            "feeds_count": 138,
-            "checkin_count": 0,
-            "last_checkin_count": 0,
-            "be_reward_count": 14
-        },
-        "verification": {
-            "type": "user",
-            "state": 1,
-            "created_at": "2019-09-25T06:00:10Z",
-            "updated_at": "2019-10-12T06:51:47Z",
-            "desc": "放假吗",
-            "slogan": "放假吗"
-        },
-        "has_follower": false,
-        "has_following": false,
-        "created_at": "2019-07-15T07:49:47Z",
-        "commodities_count":0,
-        "vip":null
-    }
-]
-```
-
-## 用户积分收入排名
-
-```
-GET /api/v2/user/currency/income-rank
-```
-
-> 目前排行榜数据每三分钟更新一次
-
-输入：
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `days` | `string` | **可选**，获取最近多少天的数据，默认不限天数 |
-| `city` | `string` | **可选**，获取地区排名，如"成都"，默认全部 |
-| `limit` | `integer` | **可选**，获取多少条，最多1000，默认100 |
-
-响应：
-
-```
-Status: 200 OK
-```
-
-```json5
-{
-    "rank_list":[
-        {
-            "user": { /* 用户数据 */ },
-            // 总收入金额
-            "amount_count": 100,
-            // 排名
-            "rank": "100",
-        }
-    ],
-    // 我的排名，未登录或不在查询的city则没有此字段
-    "my_rank": {
-      "user": { /* 用户数据 */ },
-      // 总收入金额
-      "amount_count": 0,
-      // 排名
-      "rank": "1000+",
-    }
-}
-```
-
-## 会员用户
-
-### 会员价格|购买方式配置
-
-```
-GET /api/v2/vip/configs
-```
-
-响应：
-
-```
-Status: 200 OK
-```
-
-| 会员类型 | 描述 |
-|:----:|----|
-| `month` | **月度会员** |
-| `quarter` | **季度会员** |
-| `year` | **年度会员** |
-
-```json5
-{
-    "month": {
-        "type": 1,//购买方式：1：人民币；2：积分兑换
-        "amount": 1000,//价格，当type为1时，单位为分
-        "is_open": true //是否开启此选项
-    },
-    "quarter": {
-        "type": 1,//购买方式：1：人民币；2：积分兑换
-        "amount": 2500,//价格，当type为1时，单位为分
-        "is_open": true //是否开启此选项
-    },
-    "year": {
-        "type": 1,//购买方式：1：人民币；2：积分兑换
-        "amount": 10000,//价格，当type为1时，单位为分
-        "is_open": true //是否开启此选项
-    }
-}
-```
-
-### 创建会员订单
-
-```
-POST /api/v2/vip/orders
-```
-
-输入：
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `vip_type` | `string` | **必须**，购买类型：month：月度会员；quarter：季度会员；year：年度会员 |
-| `buy_type` | `integer` | **必须**，购买方式：1：人民币购买；2：积分购买 |
-| `quantity` | `integer` | **必须**，购买数量，1~65535 |
-| `pay_score` | `integer` | **可选**，使用积分支付的数量，积分购买时必传 |
-| `pay_method` | `string` | **可选**，支付方法，余额和积分无法完成支付时必传，可选值：<br>`Alipay_AopApp` 支付宝APP支付<br>`Alipay_AopWap` 支付宝H5网页支付<br>`Alipay_AopPage` 支付宝PC网页支付<br>`WechatPay_App` 微信APP支付<br>`WechatPay_Js` 微信小程序、公众号支付 |
-| `pay_balance` | `integer` | **可选**，使用钱包余额支付的金额 |
-| `redirect_url` | `string` | **可选**，当`pay_method=Alipay_AopWap/Alipay_AopPage`时支付完成后的重定向URL，最长256个字符 |
-| `openid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前用户的openid |
-| `appid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的appid |
-| `app_type` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的APP类型，可选 app:公众号 micro:小程序，提供了此参数且没提供appid，系统将读取配置中的appid |
-
-成功响应：
-
-```
-Status: 201 OK
-```
-
-```json5
-{
-    "user_id": 1, // 订单所有者用户ID
-    "vip_type": "month", // 购买类型
-    'buy_type': 1,//购买方式
-    "quantity": 1, // 购买的数量
-    "total_amount": 1000, // 订单总金额/总积分
-    "pay_balance": 100,  // 使用余额支付的金额
-    "pay_score": 0,     // 使用积分支付的数量
-    "pay_amount": 0,     // 使用第三方支付支付的金额
-    "trade_no": "xxxxxx", // pay_method不为None时才有订单号
-    "pay_method": "None", // 订单支付方式，如果用余额全额支付则为None，否则为传入的值
-    "pay_data": {},  // pay_method不为None时才有，用于第三方支付的数据，可能是任何数据类型。
-    "pay_status": 2, // 支付状态 0未支付、1已支付，但处理失败（三方平台支付的金额已充值到余额），2已支持且处理购买逻辑成功
-    "paid_at": "2019-04-25 09:20:13", // 订单支付后才有此标识
-    "updated_at": "2019-04-25 09:20:13",
-    "created_at": "2019-04-25 09:20:13",
-    "id": 46,
-}
-```
-
-客户端错误响应：
-
-```
-Status: 400|403|422 OK
-```
-
-```json5
-{
-    // 错误消息，当为以下错误时才有此字段
-    // score_not_enough        可用的积分不足
-    // balance_not_enough      可用的余额不足
-    "error_type": "unsupported_area",
-    "message": "错误消息",
-}
-```
-
-### 获取会员信息
-
-```
-GET /api/v2/vip/configs
-```
-
-响应：
-
-```
-Status: 200 OK
-```
-
-```json5
-{
-    "is_vip":true,//是否为会员
-    "surplus_time":31,//会员剩余时间
-}
-```
 
 ### 注销账号
 ```http request
@@ -664,7 +764,7 @@ DELETE /api/v2/user
 Status: 401|202
 ```
 ```json5
-    {
-      "message": "操作成功,再见"
-    }
+{
+	"message": "操作成功,再见"
+}
 ```
