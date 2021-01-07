@@ -13,7 +13,7 @@ title: 评论
 ## 发布评论
 
 ```
-POST /feeds/:feed/comments
+POST api/v2/feeds/:feed/comments
 ```
 
 参数
@@ -50,7 +50,7 @@ Status: 201 Created
 ## 评论列表
 
 ```
-GET /feeds/:feed/comments
+GET api/v2/feeds/:feed/comments
 ```
 
 参数
@@ -113,7 +113,7 @@ Status: 200 OK
 ## 获取单个评论
 
 ```
-GET /feeds/:feed/comments/:comment
+GET api/v2/feeds/:feed/comments/:comment
 ```
 
 Response
@@ -150,10 +150,22 @@ Status: 200 OK
 ## 删除评论
 
 ```
-DELETE /feeds/:feed/comments/:comment
+DELETE api/v2/feeds/:feed/comments/:comment
 ```
 
 Response
+
+```
+Status: 204 No Content
+```
+
+## 删除评论
+
+```
+DELETE /api/v2/comments/{comment}
+```
+
+响应：
 
 ```
 Status: 204 No Content

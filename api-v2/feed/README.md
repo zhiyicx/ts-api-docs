@@ -226,6 +226,7 @@ GET feed/categories/{category}/feeds
 查询参数：
 
 | 名称 | 描述 |
+|:----:|:----:|
 | `limit` | 本次请求的数量 |
 | `after` | 上次请求最小的 `index` 值 |
 

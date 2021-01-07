@@ -83,6 +83,7 @@ module.exports = {
         '',
         'follow', 
         'vip',
+        'invite',
         'notification'
       ],
       '/api-v2/info/': [''],
@@ -99,7 +100,6 @@ module.exports = {
       ],
       '/api-v2/feed/': [
         '',
-        'other',
         'feeds-likes',
         'feeds-collect',
         'feeds-comments'
