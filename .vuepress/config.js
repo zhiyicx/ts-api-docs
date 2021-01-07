@@ -81,6 +81,7 @@ module.exports = {
       '/api-v2/passport/': [''],
       '/api-v2/user/': [
         '',
+        ‘follow’,
         'vip',
         'notification'
       ],
@@ -101,7 +102,7 @@ module.exports = {
         'other',
         'feeds-likes',
         'feeds-collect',
-          'feeds-comments'
+        'feeds-comments'
       ],
       '/api-v2/kd100/': [
         ''

@@ -147,7 +147,8 @@ title: 用户
 </details>
 
 
-## 获取获取指定用户
+##  获取用户信息
+### 获取指定用户
 
 
 ```
@@ -160,7 +161,7 @@ GET api/v2/users/:user
 |:---:|:---:|
 | `user` | 这个变量可以是「用户名」、「邮箱」、「手机号码」和「用户ID」 |
 
-#### 参数
+参数
 
 | 参数 | 类型 | 描述 |
 |:----:|:----:|----|
@@ -180,7 +181,7 @@ Status: 200 OK
 
 
 
-## 当前登录用户信息
+### 当前登录用户信息
 
 ```
 GET /api/v2/user
@@ -196,125 +197,8 @@ Status: 200 OK
  }
 ```
 
-## 修改用户信息
 
-```
-PATCH /api/v2/user
-```
-
-输入:
-
-| 字段 | 类型 | 描述 |
-|:----:|:----:|----|
-| name | 字符串 | 用户新的用户名。 |
-| bio | 字符串 | 用户新的个人传记。 |
-| sex | 数字 | 用户新的性别。 |
-| location | 字符串 | 用户新的位置信息。 |
-| `avatar` | `FILE_STORAGE_NODE<string>` | **可选**，用户头像的 File node 值 |
-| `bg`     | `FILE_STORAGE_NODE<string>` | **可选**，用户背景图片的 File node 值 |
-
-
-响应:
-
-```
-Status: 204 No Content
-```
-
-### 更新认证用户的手机号码和邮箱
-
-```
-PUT api/v2/user
-```
-
-#### 输入
-
-| 字段 | 类型 | 描述 |
-|:----:|:----:|----|
-| phone | 字符串 | **如果 `email` 不存在则必须**，用户新的手机号码。 |
-| email | 字符串 | **如果 `phone` 不存在则必须**，用户新的邮箱地址。 |
-| verifiable_code | 字符串或者数字 | **必须**，验证码。 |
-
-##### 响应
-
-```
-Status: 204 No Content
-```
-
-### 更新认证用户密码
-
-```
-PUT api/v2/user/password
-```
-
-#### 输入
-
-| 名称 | 类型 | 描述 |
-|:----:|:----:|----|
-| old_password | 字符串 | **用户已设置密码时必须**，用户密码。 |
-| password | 字符串 | **必须**，用户的新密码 |
-| password_confirmation | 字符串 | **必须**，用户的新密码，必须和 `password` 一致。 |
-
-##### 响应
-
-```
-Status: 204 No Content
-```
-
-
-## 用户找回密码
-
-```
-PUT api/v2/user/retrieve-password
-```
-
-#### 输入
-
-| 名称 | 类型 | 描述 |
-|:----:|:----:|----|
-| verifiable_type | 枚举：`mail` 或者 `sms` | **必须**，验证码发送模式。 |
-| verifiable_code | 字符串或者整数 | **必须**，用户收到的验证码。 |
-| email | 字符串 | 如果 `verifiable_type` 值为 `mail`，那么这个字段为必须，用户邮箱。 |
-| phone | 字符串 | 如果 `verifiable_type` 值为 `sms`。那么这个字段为必须，用户手机号码。 |
-| password | 字符串 | 用户新密码。 |
-
-##### 响应
-
-```
-Status: 204 No Content
-```
-
-## 解除用户 Phone 或者 E-Mail 绑定
-
-解除用户 Phone 绑定:
-
-```
-DELETE /api/v2/user/phone
-```
-
-解除用户 E-Mail 绑定:
-
-```
-DELETE /api/v2/user/email
-```
-
-#### 输入
-
-| 名称 | 类型 | 描述 |
-|:-----:|:----:|----|
-| password | String | 用户密码。 |
-| verifiable_code | Int 或者 String | 手机号码或者邮箱验证码。 |
-
-#### 响应
-
-```
-Status: 204 No Content
-```
-
-
-## 用户列表
-
-
-## 获取所有用户
+### 获取所有用户
 
 ```
 GET api/v2/users
@@ -460,6 +344,120 @@ Status: 200 OK
 
 
 
+
+## 修改用户信息
+
+```
+PATCH /api/v2/user
+```
+
+输入:
+
+| 字段 | 类型 | 描述 |
+|:----:|:----:|----|
+| name | 字符串 | 用户新的用户名。 |
+| bio | 字符串 | 用户新的个人传记。 |
+| sex | 数字 | 用户新的性别。 |
+| location | 字符串 | 用户新的位置信息。 |
+| `avatar` | `FILE_STORAGE_NODE<string>` | **可选**，用户头像的 File node 值 |
+| `bg`     | `FILE_STORAGE_NODE<string>` | **可选**，用户背景图片的 File node 值 |
+
+
+响应:
+
+```
+Status: 204 No Content
+```
+
+### 更新认证用户的手机号码和邮箱
+
+```
+PUT api/v2/user
+```
+
+#### 输入
+
+| 字段 | 类型 | 描述 |
+|:----:|:----:|----|
+| phone | 字符串 | **如果 `email` 不存在则必须**，用户新的手机号码。 |
+| email | 字符串 | **如果 `phone` 不存在则必须**，用户新的邮箱地址。 |
+| verifiable_code | 字符串或者数字 | **必须**，验证码。 |
+
+##### 响应
+
+```
+Status: 204 No Content
+```
+
+### 更新认证用户密码
+
+```
+PUT api/v2/user/password
+```
+
+#### 输入
+
+| 名称 | 类型 | 描述 |
+|:----:|:----:|----|
+| old_password | 字符串 | **用户已设置密码时必须**，用户密码。 |
+| password | 字符串 | **必须**，用户的新密码 |
+| password_confirmation | 字符串 | **必须**，用户的新密码，必须和 `password` 一致。 |
+
+##### 响应
+
+```
+Status: 204 No Content
+```
+
+
+## 用户找回密码
+
+```
+PUT api/v2/user/retrieve-password
+```
+
+#### 输入
+
+| 名称 | 类型 | 描述 |
+|:----:|:----:|----|
+| verifiable_type | 枚举：`mail` 或者 `sms` | **必须**，验证码发送模式。 |
+| verifiable_code | 字符串或者整数 | **必须**，用户收到的验证码。 |
+| email | 字符串 | 如果 `verifiable_type` 值为 `mail`，那么这个字段为必须，用户邮箱。 |
+| phone | 字符串 | 如果 `verifiable_type` 值为 `sms`。那么这个字段为必须，用户手机号码。 |
+| password | 字符串 | 用户新密码。 |
+
+##### 响应
+
+```
+Status: 204 No Content
+```
+
+## 解除用户 Phone 或者 E-Mail 绑定
+
+解除用户 Phone 绑定:
+
+```
+DELETE /api/v2/user/phone
+```
+
+解除用户 E-Mail 绑定:
+
+```
+DELETE /api/v2/user/email
+```
+
+#### 输入
+
+| 名称 | 类型 | 描述 |
+|:-----:|:----:|----|
+| password | String | 用户密码。 |
+| verifiable_code | Int 或者 String | 手机号码或者邮箱验证码。 |
+
+#### 响应
+
+```
+Status: 204 No Content
+```
 
 
 ## 禁用用户
