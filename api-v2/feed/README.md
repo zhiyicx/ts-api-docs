@@ -1,5 +1,5 @@
 ---
-sidebarDepth: 3
+sidebarDepth: 4
 title: 动态
 ---
 
@@ -163,6 +163,80 @@ POST /api/v2/feeds
 ```
 
 响应：与原动态保持不变
+
+
+
+## 删除动态
+
+```
+DELETE  /api/v2/feeds/:feed/currency
+```
+
+响应：
+
+```
+Status: 204 No Content
+```
+
+##  获取动态
+
+### 单条
+
+```
+GET  /api/v2/feeds/:feed
+```
+
+响应：
+
+```
+Status: 201
+```
+```json
+{
+ 动态信息
+}
+
+```
+
+### 批量
+
+#### 常规动态列表
+
+```
+GET  /api/v2/feeds
+```
+
+参数：
+
+| 名称 | 类型 | 描述 |
+|:----:|:----:|----|
+| limit | Integer | 可选，默认值 15 ，获取条数 |
+| after | Integer | 可选，上次获取到数据最后一条 ID，用于获取该 ID 之后的数据。 |
+| type | String | 可选，默认值 new，可选值 `new` 、`hot` 、 `newFollow` 、`users` |
+| search | String | type = `new`时可选，搜索关键字 |
+| user | Integer | type = `users` 时可选，默认值为当前用户id |
+| `id` | `integer` or `string` | **可选**，按照动态 ID 获取动态列表。 `,` 进行分割；如果存在本参数，除了 direction 外，其他参数均失效。 |
+| `hot` | `integer` | **可选，仅 `type=hot` 时有效**，用于热门数据翻页标记！上次获取数据最后一条的 `hot` 值 |
+| only_video | int | 可选，，固定值 1 则仅返回视频动态 |
+| recommended_at | String | 可选，上次获取列表最后的 recommended_at 值。 |
+| theme | String | 可选，话题id。 |
+
+
+响应：
+
+```
+Status: 200
+```
+```json
+[
+{
+ 动态信息
+}
+]
+```
+
+
+
 
 
 ## 动态推荐分类
