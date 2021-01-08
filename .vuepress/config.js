@@ -104,6 +104,12 @@ module.exports = {
         'feeds-collect',
         'feeds-comments'
       ],
+      '/api-v2/circle/': [
+       	''
+      ],
+       '/api-v2/topic/': [
+        ''
+      ],
       '/api-v2/kd100/': [
         ''
       ],
