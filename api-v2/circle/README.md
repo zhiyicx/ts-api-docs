@@ -5,7 +5,7 @@ title: 圈子
 
 # 圈子
 
-### 新数据返回结构（圈子）
+## 新数据返回结构（圈子）
 
 > 下面是完整结构，有些非必要字段实际情况为空则不会返回
 
@@ -38,20 +38,23 @@ title: 圈子
         "name": "999",
         "sort": 999
     },
+    “status”: “passed”,  // 圈子的审核状态 已通过passed,审核中waiting,未通过failed
     "desc": "成都最胆小玳瑁", // 圈子描述
     "creator_user_id": 1, // 创建者 ID
     "feeds_count": 2, // 下面的动态条数统计
     "reward_amount_count": 0, // 该圈子被打赏统计
+    "all_feeds_likes_count":0,  // 圈子下动态点赞数量
     "followers_count": 1, // 已加入圈子的用户数统计
     "has_followed": true, // 当前登录的用户是否加入了此圈子
-    "expense": 0, // 收费多少
-    "join_mode": "need-audit", // 是否需要审核
-    "visible": "hidden", // 是否私有圈子
-    "divide": 0, // 暂时忽略
-    "invited_audit": 1, // 被邀请是否需要审核
+    "expense": 0, // 收费多少 正整数,加圈费用，当visible为visible时，传递值无效
+    "join_mode": "need-audit", // 是否需要审核 [open: 开放, need-audit: 需要审核], 加圈方式，当visible参数为visible时，必选
+    "visible": "hidden", // 是否私有圈子 必选,圈子可见性, visible: 公开可见, hidden: 非公开可见
+    "divide": 0, // 可选,正整数,邀请加圈的分成,暂时无用,当visible为visible时,传递值无效，值必须 <= expense
+    "invited_audit": 1, // 被邀请是否需要审核 可选， [true, false, 0, 1], 被邀请用户是否需要审核，当join_mode为need-audit时，必选 ｜
+    "publish_permission":    // 圈子的发布权限 publish_permission string 圈子发言权限，默认 byManager byManager: 由圈主设置, creatorOnly: 仅圈主,memberOnly: 仅成员,allUser: 所有用户,specialUser: 特殊权限用户,
     "apply_for_status": "none", // 申请记录 {`none`, 'passed', `fail`, `waiting` }
     "logs_count": 1, // 需要处理的加圈申请
-    "first_log": { // 第一条需要处理加圈申请，按申请时间倒序排列
+    "first_log": { //最新申请加圈的人  第一条需要处理加圈申请，按申请时间倒序排列
           "id": 2,
           "name": "wayne",
           "bio": null,
@@ -120,7 +123,7 @@ Status: 200 HTTP:OK
 
 
 
-### 检测用户是否可以创建私密圈子
+## 检测用户是否可以创建私密圈子
 
 ```http request
 GET /api/v2/feed/topics/check-can-create
@@ -135,7 +138,7 @@ Status: 200 OK
 }
 ```
 
-### 创建圈子
+## 创建圈子
 
 ```
 POST /api/v2/feed/topics
@@ -172,7 +175,7 @@ Status: 201 Created
 }
 ```
 
-### 更新圈子
+## 更新圈子
 
 ```
 PATCH /feed/topics/:topicID
@@ -196,7 +199,7 @@ PATCH /feed/topics/:topicID
 Status: 204 No Content
 ```
 
-### 通过加圈申请
+## 通过加圈申请
 ```http request
 patch /user/feed-topics/{topicId}/logs/{log}
 ```
@@ -234,7 +237,7 @@ Status: 403
 ```
 
 
-### 拒绝加圈申请
+## 拒绝加圈申请
 ```http request
 delete /user/feed-topics/{topicId}/logs/{log}
 ```
@@ -262,7 +265,7 @@ Status: 204
 ```
 
 
-### 加入圈子
+## 加入圈子
 
 ```http request
 put /feed-topics/{topicId}
@@ -329,13 +332,13 @@ Status: 202 Accept
 }
 ```
 
-### 需要我审核的申请记录
+## 需要我审核的申请记录
 ```http request
 GET /user/applied-logs
 ```
 
 
-### 指定圈子的加入申请记录
+## 指定圈子的加入申请记录
 ```http request
 GET /user/feed-topics/{topic}/apply-logs
 ```
@@ -383,7 +386,7 @@ Status: 200 OK
 ]
 ```
 
-### 获取圈子分类
+## 获取圈子分类
 ```
 GET /feed/topics/categories
 ```
@@ -412,7 +415,7 @@ Status: 200 OK
 ```
 
 
-### 获取指定圈子
+## 获取指定圈子
 
 ```
 GET /api/v2/feed/topics
@@ -427,7 +430,7 @@ GET /api/v2/feed/topics
 
 响应：**同圈子列表**
 
-### 删除圈子
+## 删除圈子
 
 > 必须是自己的圈子或拥有`[feed] Delete Feed Topic`权限
 
@@ -441,7 +444,7 @@ DELETE /api/v2/feed/topics/{topicId}
 Status: 204 No Content
 ```
 
-### 获取用户的圈子
+## 获取用户的圈子
 
 接口如同「[获取全部话题](https://slimkit.github.io/docs/api-v2-feeds-topics.html#list-all-topics-%E8%8E%B7%E5%8F%96%E5%85%A8%E9%83%A8%E8%AF%9D%E9%A2%98)」一致，在请求查询参数中，增加了 `for_user` 字段，该字段用于过滤非指定的其他用户，只返回指定用户的圈子。
 
@@ -452,7 +455,7 @@ Status: 204 No Content
 | `status` | `String` | **可选**，要查询的状态，默认`passed`，可选值：全部`all`,已通过`passed`,审核中`waiting`,未通过`failed` |
 | `for_user` | `Number` | **可选**，要查询的用户ID |
 
-### 我加入、关注的圈子
+## 我加入、关注的圈子
 
 ```
 GET /api/v2/user/followed-topics
@@ -495,7 +498,7 @@ Status: 200 OK
 ]
 ```
 
-### 圈子用户列表
+## 圈子用户列表
 
 ```
 GET /api/v2/feed/topics/{topicId}/followers
@@ -542,7 +545,7 @@ Status: 200 OK
 /// 参考用户列表字段
 ```
 
-### 统计圈子数量
+## 统计圈子数量
 
 ```
 GET /api/v2/feed/topic/count
@@ -568,7 +571,7 @@ Status: 200 OK
 }
 ```
 
-### 圈子排行榜
+## 圈子排行榜
 
 ```
 GET /api/v2/topics-rank
@@ -739,7 +742,7 @@ Status: 200 OK
 }
 ```
 
-### 推荐圈子列表
+## 推荐圈子列表
 ```http request
 GET /api/v2/feed/topic/recommend
 ```
@@ -755,7 +758,7 @@ GET /api/v2/feed/topic/recommend
 Status: 200 OK
 ```
 
-### 热门圈子列表
+## 热门圈子列表
 
 ```
 GET /api/v2/feed/topic/hot
@@ -777,7 +780,38 @@ Status: 200 OK
 
 > body 部分和列表接口一致
 
-### 打赏圈子
+
+## 圈子列表
+
+```
+GET /api/v2/feed/topics
+```
+
+请求内容参数：
+
+| 名称 | 类型 | 描述 |
+|----|----|----|
+| `only` | `String` | 可选，该字段只有一个固定值 hot，当出现 only 值的时候其他参数全部失效，转而 API 只返回热门圈子数据。 |
+| `direction` | `String` | 用于基于数据 id 字段的排序方向设置，允许 asc 或者 desc，默认 desc |
+| `q` | `String` | 搜索关键词，允许任何字符串 |
+| `limit`  | `integer` | 每页数量   |
+| `index`  | `integer` |  数据查询定位值，来源于数据 id 字段，上一页数据最后一条数据的id |
+| `topic_category_id`  | `integer` | 圈子分类id   |
+| `forUser`  | `integer` | 某个用户的 id |
+| `status`  | `String` |   可选，要查询的状态，默认passed，可选值：已通过passed,审核中waiting,未通过failed, 全部 all|
+
+
+响应：
+
+```
+Status: 200 OK
+```
+
+> body 部分和列表接口一致
+
+
+
+## 打赏圈子
 
 ```
 POST /api/v2/feed/topics/:topicId/rewards
@@ -804,7 +838,7 @@ Status: 201 Created
 }
 ```
 
-### 圈子打赏榜
+## 圈子打赏榜
 
 ```
 GET /api/v2/feed/topics/:topicId/rewards-rank
@@ -835,7 +869,7 @@ Status: 200 OK
 ]
 ```
 
-### 圈子打赏日志
+## 圈子打赏日志
 
 ```
 GET /api/v2/feed/topics/:topicId/rewards-logs
@@ -957,180 +991,8 @@ GET /api/v2/feeds
 
 响应：**同动态响应**
 
-## 推荐的动态
 
-```
-GET /api/v2/feeds
-```
-
-请求查询参数：
-
-| 参数 | 类型 | 描述 |
-|----|----|-----|
-| `type` | `string` | **必须**，只能是 `recommended`。 |
-| `recommended_at` | `string` | **可选**，上次获取列表最后的 `recommended_at` 值。|
-| `limit` | `number` | **可选**，请求获取的数据条数，默认 `15` 条，最多 `100` 条。|
-| `only_video` | `number` | **可选**，固定值 `1`，存在这个查询条件仅返回视频动态。 |
-
-响应：**同动态响应**
-
-## 热门动态随机
-
-**排序方式：动态的`hot`值排序**
-
-热门随机也是兼容推荐分类的，但是表现形式有所差异，请**认真阅读参数**以达到接口多用的用途。
-
-```
-POST /api/v2/feeds-hot
-```
-
-输入：
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `category` | `Number` | **可选**，筛选某一个分类下的数据。传递该参数不受热门时间限制 |
-| `topic` | `Number` | **可选**，筛选某一个圈子下的数据。传递该参数不受热门时间限制 |
-| `only_video` | `any` | **可选**，筛选仅视频动态 |
-| `type` | `string` | **可选**，要获取的动态类型，默认全部，选项：<br>`image`仅获取带图片的动态<br>`video`仅获取带视频的动态<br>`image_or_video` 获取带图片或视频的动态 |
-| `exclude_feeds` | `array` | **可选**，例如 `[1, 2]`，传输排除的动态 ID，只要没有 `category` 和 `topic` 和 `repostable_id` 参数，将尽可能获取最近发布的 |
-| `theme` | `Number` | **可选**，筛选某一个话题下的动态 |
-| `repostable_type` | `string` | **可选**，关联数据类型，多个用逗号分隔，商品为`mall_commodities`，知识为`knowledge`，资讯为`infos` |
-| `repostable_id` | `integer` | **可选**，关联数据的ID |
-| `city` | `string` | **可选**，要获取的城市，如： 成都 |
-| `limit` | `integer` | **可选**，获取条数，默认15 |
-
-响应：
-
-```
-Status: 200 OK
-```
-```json5
-[
-    {
-        "id": 1,
-        "user_id": 1,
-        "user": {
-            "id": 1,
-            "name": "root",
-            "bio": null,
-            "sex": 0,
-            "location": null,
-            "avatar": null,
-            "feed_topics_count": 6,
-            "extra": {
-                "user_id": 1,
-                "likes_count": 0,
-                "comments_count": 0,
-                "followers_count": 0,
-                "followings_count": 0,
-                "updated_at": "2018-11-16 07:39:55",
-                "feeds_count": 4,
-                "checkin_count": 0,
-                "last_checkin_count": 0
-            },
-            "verified": null,
-            "created_at": "2018-10-12T01:45:02Z"
-        },
-        "topics": [
-            {
-                "id": 1,
-                "name": "猫咪宝贝",
-                "creator_user_id": 1,
-                "feeds_count": 1,
-                "reward_amount_count": 20,
-                "followers_count": 1
-            },
-            {
-                "id": 2,
-                "name": "三月",
-                "logo": {
-                    "url": "http://wm.local.medz.cn/storage/public:MjAxOC8xMC8xMi9hdDVFOGdiak1ZRk9JdEw5cmJUaDRCRXVLQXdGajg1R3FieGpCNWRlWnJNaEU5OGdLNlNUYnRCamVJQ3Zoa0h1LmpwZw==",
-                    "vendor": "local",
-                    "mime": "image/jpeg",
-                    "size": 802930,
-                    "dimension": {
-                        "width": 2800,
-                        "height": 1867
-                    }
-                },
-                "desc": "成都最胆小玳瑁",
-                "creator_user_id": 1,
-                "feeds_count": 2,
-                "reward_amount_count": 120,
-                "followers_count": 1
-            }
-        ],
-        "feed_content": "第一条带图片的动态",
-        "feed_from": 5,
-        "like_count": 0,
-        "feed_view_count": 584,
-        "feed_comment_count": 0,
-        "shares_count": 2,
-        "hot": 103,
-        "feed_mark": 1,
-        "images": [
-            {
-                "url": "http://wm.local.medz.cn/storage/public:MjAxOC8xLmpwZWc=",
-                "vendor": "local",
-                "mime": "image/jpeg",
-                "size": 456699,
-                "dimension": {
-                    "width": 1836,
-                    "height": 2448
-                }
-            },
-            {
-                "url": "http://wm.local.medz.cn/storage/public:MjAxOC8yLmpwZw==",
-                "vendor": "local",
-                "mime": "image/jpeg",
-                "size": 802930,
-                "dimension": {
-                    "width": 2800,
-                    "height": 1867
-                }
-            }
-        ],
-        "video": {
-            "cover": {
-                "url": "http://wm.local.medz.cn/storage/public:MjAxOC8xMC8xMi9hdDVFOGdiak1ZRk9JdEw5cmJUaDRCRXVLQXdGajg1R3FieGpCNWRlWnJNaEU5OGdLNlNUYnRCamVJQ3Zoa0h1LmpwZw==",
-                "vendor": "local",
-                "mime": "image/jpeg",
-                "size": 802930,
-                "dimension": {
-                    "width": 2800,
-                    "height": 1867
-                }
-            },
-            "resource": {
-                "url": "http://wm.local.medz.cn/storage/public:MjAxOC92aWRlby5tcDQ=",
-                "vendor": "local",
-                "mime": "video/mp4",
-                "size": 2024724
-            }
-        },
-        "created_at": "2018-12-20T05:55:08Z",
-        "categories": [
-            {
-                "id": 5,
-                "name": "哈哈哈",
-                "feeds_count": 1,
-                "created_at": "2018-12-06T09:22:29Z"
-            },
-            {
-                "id": 6,
-                "name": "猪一样",
-                "feeds_count": 1,
-                "created_at": "2018-12-06T09:22:34Z"
-            }
-        ]
-    }
-]
-```
-
-
-
-
-### 退出圈子
+## 退出圈子
 
 ```
 DELETE /user/feed-topics/:topicID
@@ -1147,7 +1009,7 @@ DELETE /user/feed-topics/:topicID
 Status: 204 No Content
 ```
 
-### 设置加入者是否能发布动态
+## 设置加入者是否能发布动态
 
 ```
 PATCH /api/v2/user/feed-topics/{topic}/can-pub
@@ -1166,7 +1028,7 @@ PATCH /api/v2/user/feed-topics/{topic}/can-pub
 Status: 204 No Content
 ```
 
-### 查询当前用户能否发布动态
+## 查询当前用户能否发布动态
 ```
 GET /api/v2/user/feed-topics/{topic}/can-pub
 ```
@@ -1184,7 +1046,7 @@ Status: 200 OK
 
 
 
-### 圈子相关通知
+## 圈子相关通知
 ```http request
 GET /api/v2/user/feed-topics/notifications
 ```
@@ -1238,7 +1100,7 @@ GET /api/v2/user/feed-topics/notifications
 ]
 ```
 
-### 个人主页需要处理的加圈申请
+## 个人主页需要处理的加圈申请
 ```http request
 GET /api/v2/user/feed-topics/logs-count
 ```
