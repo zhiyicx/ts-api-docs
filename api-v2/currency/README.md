@@ -15,12 +15,14 @@ title: 积分
 - [IAP帮助页面](#iap-help)
 
 <a name="get-currency-config"></a>
+
 ## 获取积分配置
 
 ``` http request
-GET /bootstrappers
+GET /api/v2/bootstrappers
 ```
 **此接口为启动接口，请读取其中的`currency`部分**
+
 ### 响应
 
 ```
@@ -58,11 +60,12 @@ Http Status 200
 | 名称 | 类型 | 描述 |
 |:----:|:----:|:-----|
 | setting | array | 积分相关设置 |
-| setting.recharge-options | string | 充值选项，人民币分单位 |
-| setting.recharge-max | int | 单笔最高充值额度 |
-| setting.recharge-min | int | 单笔最小充值额度 |
-| setting.cash-max | int | 单笔最高提现额度 |
-| setting.cash-min | int | 单笔最小提现额度 |
+| setting.recharge-ratio | int | 兑换比例，人民币一分钱可兑换的积分数量（例：ratio = 10，1分钱 = 10积分） |
+| setting.recharge-options | string | 充值选项，单位：积分 |
+| setting.recharge-max | int | 单笔最高充值额度，单位：积分 |
+| setting.recharge-min | int | 单笔最小充值额度，单位：积分 |
+| setting.cash-max | int | 单笔最高提现额度，单位：积分 |
+| setting.cash-min | int | 单笔最小提现额度，单位：积分 |
 | rule | string | 积分规则 |
 | iap | array | 苹果IAP积分充值相关 |
 | iap.only | boolean | 是否只支持IAP充值，仅对IOS有效 |
@@ -74,7 +77,7 @@ Http Status 200
 ## 积分流水
 
 ```
-GET /currency/orders
+GET /api/v2/currency/orders
 ```
 
 ### 可选参数
@@ -117,7 +120,7 @@ Http Status 200
 |:----:|:----:|:-----|
 | id   | int  | 数据id |
 | owner_id | int | 用户（所属者）id |
-| title | string | 记录标题 | 
+| title | string | 记录标题 |
 | body | string | 记录信息 |
 | type | int | 增减类型 `1` - 收入、 `-1` - 支出 |
 | target_type | string | 操作类型 目前有： `default` - 默认操作、`commodity` - 购买积分商品、`user` - 用户到用户流程（如采纳、付费置顶等）、`task` - 积分任务、`recharge` - 充值、`cash` - 积分提取 |
@@ -130,7 +133,7 @@ Http Status 200
 ## 发起充值
 
 ```
-POST /currencyRecharge/orders
+POST /api/v2/currencyRecharge/orders
 ```
 
 ### 输入参数
@@ -191,35 +194,6 @@ Status: 201 Created
 | WechatOrder | App使用微信支付 |
 | WechatWapOrder | 微信JSSDK |
 
-## 取回凭据
-
-```
-GET /api/v2/currency/orders/{order}
-```
-
-### 响应
-
-```
-HTTP Status 200
-```
-
-```json
-{
-    "id": 11,
-    "owner_id": 1,
-    "title": "积分充值",
-    "body": "充值积分：200积分",
-    "type": 1,
-    "target_type": "recharge",
-    "target_id": "0",
-    "currency": 1,
-    "amount": 200,
-    "state": 0,
-    "created_at": "2018-01-18 07:57:21",
-    "updated_at": "2018-01-18 07:57:21"
-}
-```
-
 ## 发起提现
 
 ```
@@ -247,7 +221,7 @@ Http Status 201
 ## 发起IAP充值
 
 ```
-POST /currency/recharge/apple-iap
+POST /api/v2/currency/recharge/apple-iap
 ```
 
 ### 输入参数
@@ -255,6 +229,7 @@ POST /currency/recharge/apple-iap
 | 字段 | 必须 | 类型 | 描述 |
 |----|:----:|:----:|:----:|
 | amount | 是 | int | 用户充值金额，单位为真实货币「分」单位，充值完成后会根据积分兑换比例增加相应数量的积分 |
+| apple_id | 是 | string | IAP产品对应的appleid |
 
 
 ### 响应
@@ -283,14 +258,14 @@ HTTP Status 201
 ## 验证IAP充值
 
 ```
-POST /currency/orders/:order/apple-iap/verify
+POST /api/v2/currency/orders/:order/apple-iap/verify
 ```
 
 ## 输入参数
 
 | 字段 | 类型 | 描述 |
 |:----:|:-----|:-----|
-| receipt | array | 数组格式的收据编码 |
+| receipt | string | 数组格式的收据编码 |
 
 ### 响应
 
@@ -318,7 +293,7 @@ HTTP Status 200
 ## 获取苹果IAP商品列表
 
 ```
-GET /currency/apple-iap/products
+GET /api/v2/currency/apple-iap/products
 ```
 ### 响应
 
@@ -328,7 +303,8 @@ GET /currency/apple-iap/products
         "product_id": "1",
         "name": "积分1",
         "apple_id": "11211",
-        "amount": "600"
+        "amount": "600",
+      	"showAmount": "1200"
     }
 ]
 ```
@@ -337,13 +313,15 @@ GET /currency/apple-iap/products
 
 | 名称 | 类型 | 描述 |
 |:----:|:-----|:-----|
-| product_id | string | 商品id |
+| product_id | string | 商品id（apple后台生成，删除后可重复创建） |
 | name | string | 商品名称 |
-| apple_id | string | |
-| amount | string | 商品金额 |
+| apple_id | string | 商品appleid（apple后台生成，唯一） |
+| amount | string | 支付给Apple的金额（apple后台配置金额），单位：分 |
+| showAmount | string | 实际到账金额（页面显示金额），单位：分 |
 
 ## IAP 帮助页面
 
 ```
-GET /currency/apple-iap/help
+GET /api/v2/currency/apple-iap/help
 ```
+
