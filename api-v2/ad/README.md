@@ -12,7 +12,7 @@ title: 广告
 ## 查询所有广告位
 
 ```
-GET /advertisingspace
+GET /api/v2/advertisingspace
 ```
 
 ### 响应
@@ -88,10 +88,25 @@ Status: 200 OK
 ]
 ```
 
+**space字段对应场景**
+
+|     space值      | 场景名称         |
+| :--------------: | :--------------- |
+|       boot       | 启动页广告       |
+|  feed:list:top   | 动态列表顶部广告 |
+|   feed:single    | 动态详情页广告   |
+| feed:list:analog | 动态列表中广告   |
+|     currency     | 积分广告         |
+|    theme:list    | 话题顶部广告     |
+|  mall:list:top   | 商城顶部广告     |
+|   user:active    | 达人列表顶部广告 |
+
+
+
 ## 获取一个广告位的广告列表
 
 ```
-GET /advertisingspace/:space/advertising
+GET /api/v2/advertisingspace/:space/advertising
 ```
 
 ### 响应
@@ -142,7 +157,7 @@ Status: 200 OK
 ## 批量获取广告列表
 
 ```
-GET /advertisingspace/advertising
+GET /api/v2/advertisingspace/advertising
 ```
 
 
