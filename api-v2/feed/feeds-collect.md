@@ -12,7 +12,7 @@ title: 收藏
 ## 收藏
 
 ```
-POST /feeds/:feed/collections
+POST api/v2/feeds/:feed/collections
 ```
 
 Response
@@ -31,7 +31,7 @@ Status: 201 Created
 ## 取消收藏
 
 ```
-DELETE /feeds/:feed/uncollect
+DELETE api/v2/feeds/:feed/uncollect
 ```
 
 Response
@@ -43,7 +43,7 @@ Status: 204 No Centent
 ## 收藏列表
 
 ```
-GET /feeds/collections
+GET api/v2/feeds/collections
 ```
 
 Parameters

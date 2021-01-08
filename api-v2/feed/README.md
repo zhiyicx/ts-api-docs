@@ -236,6 +236,45 @@ Status: 200
 ```
 
 
+#### 热门动态随机
+
+**排序方式：动态的`hot`值排序**
+
+热门随机也是兼容推荐分类的，但是表现形式有所差异，请**认真阅读参数**以达到接口多用的用途。
+
+```
+POST /api/v2/feeds-hot
+```
+
+输入：
+
+| 参数 | 类型 | 描述 |
+|:----:|----|----|
+| `category` | `Number` | **可选**，筛选某一个分类下的数据。 |
+| `topic` | `Number` | **可选**，筛选某一个圈子下的数据。 |
+| `only_video` | `any` | **可选**，筛选仅视频动态(建议使用`type`来过滤) |
+| `type` | `string` | **可选**，要获取的动态类型，默认全部，选项：<br>`image`仅获取带图片的动态<br>`video`仅获取带视频的动态<br>`image_or_video` 获取带图片或视频的动态 |
+| `exclude_feeds` | `array` | **可选**，例如 `[1, 2]`，传输排除的动态 ID，只要没有 `category` 和 `topic` 和 `repostable_id` 参数，将尽可能获取最近发布的 |
+| `theme` | `Number` | **可选**，筛选某一个话题下的动态 |
+| `repostable_type` | `string` | **可选**，关联数据类型，多个用逗号分隔，商品为`mall_commodities`，知识为`knowledge`，资讯为`infos` |
+| `repostable_id` | `integer` | **可选**，关联数据的ID |
+| `city` | `string` | **可选**，要获取的城市，如： 成都 |
+| `limit` | `integer` | **可选**，获取条数，默认15 |
+
+响应：
+
+```
+Status: 200 OK
+```
+```json5
+[
+  {
+   动态信息
+  }
+]
+```
+
+
 
 
 
