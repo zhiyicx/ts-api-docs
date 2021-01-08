@@ -6,7 +6,7 @@ title: 标签
 ## 获取所有标签
 
 ```
-GET api/v2/tags
+GET /api/v2/api/v2/tags
 ```
 
 ### 响应
@@ -48,13 +48,13 @@ Status: 200 OK
 ## 获取一个用户的标签
 
 ```
-GET /users/:user/tags
+GET /api/v2/users/:user/tags
 ```
 
 ## 获取当前认证用户的标签
 
 ```
-GET /user/tags
+GET /api/v2/user/tags
 ```
 
 响应
@@ -81,7 +81,7 @@ Status: 200 OK
 ## 当前认证用户附加一个标签
 
 ```
-PUT /user/tags/:tag
+PUT /api/v2/user/tags/:tag
 ```
 
 
@@ -94,7 +94,7 @@ Status: 204 No Content
 ## 当前认证用户分离一个标签
 
 ```
-DELETE /user/tags/:tag
+DELETE /api/v2/user/tags/:tag
 ```
 
 
