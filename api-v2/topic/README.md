@@ -212,6 +212,11 @@ Status: 204 No Content
 
 调用动态列表接口，传递话题id , [常规动态列表](./../feed/#批量)
 
+```
+GET  api/v2/feeds?type=new&after=0&limit=15&theme=21
+
+```
+
 
 ## 话题下热门动态
 
