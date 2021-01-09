@@ -45,6 +45,9 @@ GET /api/v2/wechat/mini-program/wxacodeunlimit
 | `params` | `string` | **必须**，要传给小程序的参数 |
 
 示例：
+> 
+> 二维码的获取需要提交审核成功后才能获取到
+> 
 > /api/v2/wechat/mini-program/wxacodeunlimit?params={"scene":"1"}
 
 > 参数细节和返回值参考： [小程序文档](https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html)
