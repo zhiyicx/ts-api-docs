@@ -1,4 +1,5 @@
 ---
+sidebarDepth: 3
 title: 话题
 ---
 
