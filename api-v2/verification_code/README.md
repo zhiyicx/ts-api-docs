@@ -9,13 +9,13 @@ title: 验证码
 非注册用户发送：
 
 ``` http request
-POST /verifycodes/register
+POST /api/v2/verifycodes/register
 ```
 
 注册用户发送：
 
 ``` http request
-POST /verifycodes
+POST /api/v2/verifycodes
 ```
 
 ## 输入
