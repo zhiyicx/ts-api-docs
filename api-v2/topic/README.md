@@ -44,7 +44,7 @@ Status: 200 HTTP:OK
 > 当`create_permission`的值为 `specialUser`时，需要用户拥有`theme:creator`权限才可创建话题
 
 
-### 获取话题列表
+## 获取话题列表
 
 ```
 GET /api/v2/feed-themes
@@ -123,7 +123,7 @@ Status: 200 OK
 ]
 ```
 
-### 获取话题详情
+## 获取话题详情
 
 > 这个基本用不到，以为获取指定话题列表动态的时候每条动态都会带有当前话题最新数据，建议在列表为空的情况下使用！
 
@@ -147,7 +147,7 @@ Status: 200 OK
 }
 ```
 
-### 创建动态话题
+## 创建动态话题
 
 > 仅拥有 `[feed] Manage Theme` 权限可操作
 
@@ -173,7 +173,7 @@ Status: 201 Created
 }
 ```
 
-### 更新动态话题
+## 更新动态话题
 
 > 仅拥有 `[feed] Manage Theme` 权限可操作
 
@@ -194,7 +194,7 @@ PUT|PATCH /api/v2/feed-themes/{theme}
 Status: 204 No Content
 ```
 
-### 删除动态话题
+## 删除动态话题
 
 > 仅拥有 `[feed] Manage Theme` 权限可操作
 
@@ -208,12 +208,12 @@ DELETE /api/v2/feed-themes/{theme}
 Status: 204 No Content
 ```
 
-### 话题下最新动态
+## 话题下最新动态
 
-调用动态列表接口，传递话题id , [常规动态列表](./feed/#批量)
+调用动态列表接口，传递话题id , [常规动态列表](./../feed/#批量)
 
 
-### 话题下热门动态
+## 话题下热门动态
 
 ```
 GET /api/v2/feed-themes/{theme}/feeds
