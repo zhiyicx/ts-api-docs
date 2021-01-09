@@ -5,8 +5,178 @@ title: 商城
 
 # 商城APIs文档
 
+
+## 单个商品数据结构
+
+<details>
+
+``` json
+
+{
+    "id": 1,
+    "user_id": 1,  // 商家 id
+    "category_id": 1,  // 分类id
+    "brand_id": 1, // 查询参数with需要携带 brands 才会返回此项和brand
+    "brand": {  // 品牌信息
+      "name": "品牌名字",
+      "desc": "品牌简介",
+      "avatar": "品牌图标",
+      "sub_avatar": "品牌小图标"
+     },
+    "photos": [   // 商品的图片信息，最多4张图片，或者其中一个为视频
+        {
+            "image": {
+                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
+                "vendor": "local",
+                "mime": "image/jpeg",
+                "size": 61587,
+                "dimension": {
+                    "width": 540,
+                    "height": 960
+                },
+                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
+            },
+            "video": {
+                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9aTXBXeXJwNUJLYzZIWHYxbmRJMldRbnA4Y0pTOFNrcGRwRHV6WDVBMEhFSTRiNGhrOHY1cnZmZ3RTNVRwY3RpLm1wNA==",
+                "vendor": "local",
+                "mime": "video/mp4",
+                "size": 2088674,
+                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
+            }
+        }
+    ],
+    "title": "标题",  // 商品标题
+    "type": "score",   // 商品类型， score 积分商品， member 会员商品
+    "price": 100,      // 商品的价格
+    "score": 100,      // 所需积分数量 
+    "buying_read": "购买前必读内容，有内容时会在用户购买前弹窗提示用户，最多20000字符"
+    "extra": { // 如果 `type` 为 `member` 此项有，则不为null
+    	"low": 200,  // 低等级会员的价格 单位 分
+    	"middle": 150 // 高等级会员的价格 单位 分
+    },
+    "sku": [ // 商品规格
+        {
+          "name": "red",  // 规格名字
+          "extra": 2,     // 对应的规格需要额为支付的积分或者人民币分，根据type来确定
+          "inventory": 100  // 对应规格的库存数量
+        },
+        {
+          "name": "green",
+          "extra": 3,
+          "inventory": 100
+        }
+    ],
+    "market_price": 0,    // 市场价格
+    "remote_areas":[{"新疆"}], //  可选，偏远地区，最多50个；偏远地区暂时将限制购买
+    "buy_limit_days": 7, // 限制购买的天数范围：1-65535；如果不限制，设置为0或null
+    "buy_limit_qty": 1,  // 限制购买的数量范围：1-65535；如果不限制，设置为0或null
+    "order_min_qty": 1,  // 每次下单最少购买数量，范围：1-65535；如果不限制，设置为0或null
+    "order_max_qty": 1,  // 每次下单最多购买数量，范围：1-65535；如果不限制，设置为0或null
+    "buy_conditions":{  // 已经设置的商品购买条件
+	     "topics": 0,    // 限制需要创建成功的圈子数量1-1000
+   		  "invite_users": 0,   // 限制需要邀请用户数量1-100000   		  "share_topics": 0,    // 限制需要分享圈子数量1-100000   		  "topic_feeds": 0,   // 限制需要圈子中发布的动态数量1-100000
+    	  "comments": 0, // 限制需要总发布的评论数量1-100000
+    	  "checkin": 0, // 限制连续签到数量1-100000
+    	  "share_commodities": 0, // 限制当前商品分享数量1-100000
+    },
+    "user_done_stats":{  // 已经完成的商品购买条件
+	     "topics": 0,    // 限制需要创建成功的圈子数量1-1000
+   		  "invite_users": 0,   // 限制需要邀请用户数量1-100000   		  "share_topics": 0,    // 限制需要分享圈子数量1-100000   		  "topic_feeds": 0,   // 限制需要圈子中发布的动态数量1-100000
+    	  "comments": 0, // 限制需要总发布的评论数量1-100000
+    	  "checkin": 0, // 限制连续签到数量1-100000
+    	  "share_commodities": 0, // 限制当前商品分享数量1-100000
+    },
+    "top_text": "顶部文字",
+    "bottom_text": "底部文字",
+    "content_images": [
+        {
+            "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
+            "vendor": "local",
+            "mime": "image/jpeg",
+            "size": 61587,
+            "dimension": {
+                "width": 540,
+                "height": 960
+            },
+            "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
+        }
+    ],
+    "views_count": 0,    // 浏览量
+    "shares_count": 0,   // 分享数量
+    "likes_count": 0,    // 喜欢数量
+    "orders_count": 0,   // 订单数量
+    "comments_count": 0, // 点评数量
+    "third_parties": {    // 对接淘宝商品，已废弃
+        "taobao": {
+            "id": "1234567890"
+        },
+        // 对应的其他平台商品
+    },
+    "liked": false, // 是否已收藏
+    "freight_qty": 3,    // 多少件内
+    "freight": 0,        // 邮费价格
+    "incr_qty": 1,       // 每增加多少件
+    "incr_freight": 3,   // 邮费增加价格
+    "created_at": "2019-04-16 09:34:20",
+    "updated_at": "2019-04-16 09:51:32",
+    "deleted_at": "2019-04-16 09:51:32",
+    "user": { // 卖家用户信息
+        "id": 1,
+        "name": "root",
+        "bio": null,
+        "sex": 0,
+        "location": null,
+        "avatar": null,
+        "bg": null,
+        "email_verified_at": null,
+        "phone_verified_at": null,
+        "feed_topics_count": 0,
+        "created_at": "2019-04-16 09:24:44",
+        "updated_at": "2019-04-16 09:24:44",
+        "deleted_at": null,
+        "verification": {
+          // 认证信息，如果没有则为 null
+        },
+        "has_follwing": false,
+        "has_follower": false
+    },
+    "shop_info": { // 卖家信息
+        "user_id": 4,
+        "is_original": null,
+        "qrCode": {  // 卖家微信二维码
+            "url": "http://ts.test/storage/public:MjAyMC8wNC8yNi9lOTk4SFdNT2FsbWRVQkNiek1UM2NCSDRnTkppT04xS2lXcWhqZ3VVVWpYemFDNFdXRDRwQ01UWVFKYVVvb1RFLkpQRw==",
+            "vendor": "local",
+            "mime": "image/jpeg",
+            "size": 320452,
+            "dimension": {
+              "width": 800,
+              "height": 800
+            },
+            "node": "public:2020/04/26/e998HWMOalmdUBCbzMT3cBH4gNJiON1KiWqhjguUUjXzaC4WWD4pCMTYQJaUooTE.JPG"
+        },
+        "weChat": "2341", // 卖家微信号
+        "phone": "12341"  // 卖家手机号
+    },
+    "category": { // 分类信息
+        "id": 1,
+        "name": "分类一",
+        "sort": 0,
+        "selling_count": 3,
+        "trashed_count": 1,
+        "created_at": "2019-04-16 09:25:48",
+        "updated_at": "2019-04-16 09:51:32",
+        "deleted_at": null,
+        "commodities_count": 4
+    }
+}
+
+```
+
+</details>
+
 ## 商城配置
-> 商城配置在启动接口中返回`mall`，配置详情如下：
+> 商城配置在启动接口`/api/v2/bootstrappers`中返回`mall`，配置详情如下：
+
 ```json5
 {
   // 成为店主的条件，对店主的定义，可选:
@@ -130,6 +300,8 @@ POST /api/v2/mall/categories
 |:----:|----|----|
 | `name` | `string` | **必须**，分类名称，不能重复，最大长度24（GB18030长度） |
 | `sort` | `integer` | **必须**，排序值，越大越靠前 |
+| `icon ` | `String` | 可选，分类图标的 storage none |
+
 
 响应：
 
@@ -165,6 +337,7 @@ PUT|PATCH /api/v2/mall/categories/{category.id}
 | `name` | `string` | **可选**，分类名称，不能重复，最大长度24（GB18030长度） |
 | `sort` | `integer` | **可选**，排序值，越大越靠前 |
 | `deleted` | `boolean` | **可选**，软删除/恢复分类 |
+| `icon ` | `String` | 可选，分类图标的 storage none |
 
 响应：
 
@@ -189,7 +362,7 @@ Status: 200 OK
 
 > 只有拥有 `mall:admin` 权限的用户才能为商品设置购买权限
 
-> 每次调用此设置接口，都将覆盖之前的设置
+> **注意：**每次调用此设置接口，都将覆盖之前的设置
 
 ```
 PUT /api/v2/mall/commodities/{commodity.id}/buy-conditions
@@ -199,11 +372,11 @@ PUT /api/v2/mall/commodities/{commodity.id}/buy-conditions
 
 | 参数 | 类型 | 描述 |
 |:----:|----|----|
-| `topics` | `integer` | **可选**，限制猫咪数量1-1000 |
-| `invite_users` | `integer` | **可选**，限制邀请用户数量1-100000 |
-| `share_topics` | `integer` | **可选**，限制分享猫咪数量1-100000 |
-| `topic_feeds` | `integer` | **可选**，限制猫咪动态数量1-100000 |
-| `comments` | `integer` | **可选**，限制评论数量1-100000 |
+| `topics` | `integer` | **可选**，限制需要创建成功的圈子数量1-1000 |
+| `invite_users` | `integer` | **可选**，限制需要邀请用户数量1-100000 |
+| `share_topics` | `integer` | **可选**，限制需要分享圈子数量1-100000 |
+| `topic_feeds` | `integer` | **可选**，限制需要圈子中发布的动态数量1-100000 |
+| `comments` | `integer` | **可选**，限制需要总发布的评论数量1-100000 |
 | `checkin` | `integer` | **可选**，限制连续签到数量1-100000 |
 | `share_commodities` | `integer` | **可选**，限制当前商品分享数量1-100000 |
 
@@ -219,7 +392,7 @@ Status: 200 OK
 
 ### 删除商品分类
 
-> 商品分类只有拥有 `mall:admin` 权限的用户才能删除，且commodities_count>0时禁止删除
+> 商品分类只有拥有 `mall:admin` 权限的用户才能删除，真实删除不可恢复，且commodities_count>0时禁止删除
 
 ```
 DELETE /api/v2/mall/categories/{category.id}
@@ -269,76 +442,9 @@ GET /api/v2/mall/commodities
 Status: 200 OK
 ```
 ```json5
-[{
-    "id": 1,
-    "user_id": 1,
-    "category_id": 1,
-    "brand_id": 1, // 查询参数with需要携带 brands 才会返回此项和brand
-    "brand": {
-      "name": "品牌名字",
-      "desc": "品牌简介",
-      "avatar": "品牌图标",
-      "sub_avatar": "品牌小图标"
-     },
-    "photos": [
-        {
-            "image": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
-                "vendor": "local",
-                "mime": "image/jpeg",
-                "size": 61587,
-                "dimension": {
-                    "width": 540,
-                    "height": 960
-                },
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            },
-            "video": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9aTXBXeXJwNUJLYzZIWHYxbmRJMldRbnA4Y0pTOFNrcGRwRHV6WDVBMEhFSTRiNGhrOHY1cnZmZ3RTNVRwY3RpLm1wNA==",
-                "vendor": "local",
-                "mime": "video/mp4",
-                "size": 2088674,
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            }
-        }
-    ],
-    "title": "标题",
-    "type": "score",
-    "price": 100,
-    "score": 100,
-    "options": ["red", "green"],
-    "sku": [
-        {
-          "name": "red",
-          "extra": 2,
-          "inventory": 100
-        },
-        {
-          "name": "green",
-          "extra": 3,
-          "inventory": 100
-        }
-    ],
-    "market_price": 0,
-    "buy_limit_days": 7, // 限制购买的天数
-    "buy_limit_qty": 1,  // 限制购买的数量
-    "order_min_qty": 1,  // 每次下单最少需要购买的数量
-    "views_count": 0,
-    "shares_count": 0,
-    "likes_count": 0,
-    "orders_count": 0,
-    "comments_count": 0,
-    "third_parties": {
-        "taobao": {
-            "id": "1234567890"
-        },
-        // 对应的其他平台商品
-    },
-    "liked": false, // 是否已收藏
-    "created_at": "2019-04-16 09:34:20",
-    "updated_at": "2019-04-16 09:51:32",
-    "deleted_at": "2019-04-16 09:51:32",
-}]
+[
+{单个商品}
+]
 
 ```
 
@@ -353,153 +459,7 @@ GET /api/v2/mall/commodities/{commodity.id}
 ```
 Status: 200 OK
 ```
-```json5
-{
-    "id": 1,
-    "user_id": 1,
-    "category_id": 1,
-    "brand_id": 1, // 品牌id,
-    "brand": { // 如果brand_id为null, 此项为null
-      "name": "品牌名字",
-      "desc": "品牌简介",
-      "avatar": "品牌图标",
-      "sub_avatar": "品牌小图标"
-     },
-    "photos": [
-        {
-            "image": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
-                "vendor": "local",
-                "mime": "image/jpeg",
-                "size": 61587,
-                "dimension": {
-                    "width": 540,
-                    "height": 960
-                },
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            },
-            "video": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9aTXBXeXJwNUJLYzZIWHYxbmRJMldRbnA4Y0pTOFNrcGRwRHV6WDVBMEhFSTRiNGhrOHY1cnZmZ3RTNVRwY3RpLm1wNA==",
-                "vendor": "local",
-                "mime": "video/mp4",
-                "size": 2088674,
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            }
-        }
-    ],
-    "title": "标题",
-    "type": "member", // 商品类型 member: 会员专享，score: 积分兑换
-    "extra": { // 如果 `type` 为 `member` 此项有，则不为null
-      "low": 200,
-      "middle": 150
-    },
-    "price": 100,
-    "score": 100,
-    "market_price": 0,
-    "options": ["red", "green"],
-    "sku": [ // 新增的规格内容
-        {
-          "name": "red", // 规格名称，和options对应
-          "extra": 3, // 额外增加的积分或者金额
-          "inventory": 100 // 此规格的库存
-        },
-        {
-          "name": "green",
-          "extra": 2, // 额外增加的积分或者金额
-          "inventory": 100
-        }
-    ],
-    "top_text": "顶部文字",
-    "bottom_text": "底部文字",
-    "content_images": [
-        {
-            "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
-            "vendor": "local",
-            "mime": "image/jpeg",
-            "size": 61587,
-            "dimension": {
-                "width": 540,
-                "height": 960
-            },
-            "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-        }
-    ],
-    "buy_limit_days": 7, // 限制购买的天数
-    "buy_limit_qty": 1,  // 限制购买的数量
-    "order_min_qty": 1,  // 每次下单最少需要购买的数量
-    "buying_read": "买前必读的内容",
-    "remote_areas": ["西藏", "新疆"],
-    "has_freight": true, // 是否有邮费，true表示有
-    "freight_qty": 3,    // 多少件内
-    "freight": 0,        // 邮费价格
-    "incr_qty": 1,       // 每增加多少件
-    "incr_freight": 3,   // 邮费增加价格
-    "views_count": 0,
-    "shares_count": 0,
-    "likes_count": 0,
-    "orders_count": 0,
-    "comments_count": 0,
-    "third_parties": {
-        "taobao": {
-            "id": "1234567890"
-        },
-        // 对应的其他平台商品
-    },
-    "liked": false, // 是否已收藏
-    "can_comment": true, // 当前用户是否可以评论此商品
-    "created_at": "2019-04-16 09:34:20",
-    "updated_at": "2019-04-16 09:51:32",
-    "deleted_at": "2019-04-16 09:51:32",
-    "user": {
-        "id": 1,
-        "name": "root",
-        "bio": null,
-        "sex": 0,
-        "location": null,
-        "avatar": null,
-        "bg": null,
-        "email_verified_at": null,
-        "phone_verified_at": null,
-        "feed_topics_count": 0,
-        "created_at": "2019-04-16 09:24:44",
-        "updated_at": "2019-04-16 09:24:44",
-        "deleted_at": null,
-        "verification": {
-          // 认证信息，如果没有则为 null
-        },
-        "has_follwing": false,
-        "has_follower": false
-    },
-    "shop_info": {
-        "user_id": 4,
-        "is_original": null,
-        "qrCode": {
-            "url": "http://ts.test/storage/public:MjAyMC8wNC8yNi9lOTk4SFdNT2FsbWRVQkNiek1UM2NCSDRnTkppT04xS2lXcWhqZ3VVVWpYemFDNFdXRDRwQ01UWVFKYVVvb1RFLkpQRw==",
-            "vendor": "local",
-            "mime": "image/jpeg",
-            "size": 320452,
-            "dimension": {
-              "width": 800,
-              "height": 800
-            },
-            "node": "public:2020/04/26/e998HWMOalmdUBCbzMT3cBH4gNJiON1KiWqhjguUUjXzaC4WWD4pCMTYQJaUooTE.JPG"
-        },
-        "weChat": "2341",
-        "phone": "12341"
-    },
-    "category": {
-        "id": 1,
-        "name": "分类一",
-        "sort": 0,
-        "selling_count": 3,
-        "trashed_count": 1,
-        "created_at": "2019-04-16 09:25:48",
-        "updated_at": "2019-04-16 09:51:32",
-        "deleted_at": null,
-        "commodities_count": 4
-    }
-}
-```
+[单个商品数据结构](#单个商品数据结构)
 
 ### 添加商品
 
@@ -523,16 +483,14 @@ POST /api/v2/mall/commodities
 | `brand_id` | `integer` | **可选**，商品所属的品牌id） |
 | `type` | `string` | **必须**，商品类型，可选类型 { `score`: 积分兑换商品, `member`: 会员专享商品 }，默认为score |
 | `extra` | `json` | **可选**，`type`为`member`时必填，eg: {"low": 100, "middle": 50} |
-| `price` | `integer` | **选填**，商品价格，单位`分` ，没有则设置`0`，和 `score` 二选一,**但是当`type` 为 `member`的时候也是需要填写的** |
-| `score` | `integer` | **选填**，购买所需积分数量，没有则设置`0`，和 `price` 二选一  |
-| `market_price` | `integer` | **必须**，市场价，没有则设置`0` |
-| `options` | `array,null` | **可选**，商品的购买选项集合，如果为array则长度为1~100 |
+| `price` | `integer` | **选填**，商品价格，单位`分` ，没有则设置`0`，,**但是当`type` 为 `member`的时候也是需要填写的可以和market_price保持一致** |
+| `score` | `integer` | **选填**，购买所需积分数量，没有则设置`0` |
+| `market_price` | `integer` | **必须**，市场价，没有则设置`0`，市场价应该保持比会员价和price更大或者等于 |
 | `sku` | `array,null` | **可选**，商品的购买选项集合，如果为array则长度为1~100 |
 | `sku.*` | `array,null` | **可选**，单个规格的属性 |
 | `sku.*.name` | `string` | **必填**，规格名称，通options中的每一项对应|
 | `sku.*.extra` | `integer` | **选填**，规格价格，在基础价格上的增加|
 | `sku.*.inventory` | `integer` | **必填**，规格库存 |
-| `options.*` | `string` | **必须**，单个选项，最长60个字符 |
 | `top_text` | `string` | **可选**，顶部文字描述，最多20000字符 |
 | `bottom_text` | `string` | **可选**，底部文字描述，最多20000字符 |
 | `content_images` | `array` | **可选**，中间的内容图片 |
@@ -543,9 +501,9 @@ POST /api/v2/mall/commodities
 | `buying_read` | `string` | **可选**，买前必读，最多20000字符 |
 | `remote_areas` | `array,null` | **可选**，偏远地区，最多50个；偏远地区暂时将限制购买 |
 | `remote_areas.*` | `string` | **必须**，表示地区的字符串， 如新疆、内蒙古等，最多8个字符 |
-| `has_freight` | `boolean` | **可选**，是否有邮费，false包邮 |
+| `has_freight` | `boolean` | **可选**，是否有邮费，false包邮 【暂未使用】目前使用freigt字段，该字段可做扩展|
 | `freight_qty` | `integer` | **可选**，多少件内，1-65535；当has_freight=true时填写 |
-| `freight` | `integer` | **可选**，邮费价格，0-65535；当has_freight=true时填写 |
+| `freight` | `integer` | **可选**，邮费价格，0-65535；当为0时免邮 |
 | `incr_qty` | `integer` | **可选**，每加多少件，1-65535；当has_freight=true时填写 |
 | `incr_freight` | `integer` | **可选**，邮费加多少元，0-65535；当has_freight=true时填写 |
 | `topped` | `boolean` | **可选**，是否全局置顶商品，需要权限`mall:admin` |
@@ -559,100 +517,10 @@ POST /api/v2/mall/commodities
 ```
 Status: 201 Created
 ```
+
 ```json5
 {
-    "id": 1,
-    "user_id": 1,
-    "category_id": 1,
-    "photos": [
-        {
-            "image": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
-                "vendor": "local",
-                "mime": "image/jpeg",
-                "size": 61587,
-                "dimension": {
-                    "width": 540,
-                    "height": 960
-                },
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            },
-            "video": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9aTXBXeXJwNUJLYzZIWHYxbmRJMldRbnA4Y0pTOFNrcGRwRHV6WDVBMEhFSTRiNGhrOHY1cnZmZ3RTNVRwY3RpLm1wNA==",
-                "vendor": "local",
-                "mime": "video/mp4",
-                "size": 2088674,
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            }
-        }
-    ],
-    "extra": {
-      "low": 88,
-      "middle": 68
-    },
-    "brand_id": 1, // 品牌id,
-    "brand": { // 如果brand_id为null, 此项为null
-      "name": "品牌名字",
-      "desc": "品牌简介",
-      "avatar": "品牌图标",
-      "sub_avatar": "品牌小图标"
-     },
-    "type": "member",
-    "title": "标题",
-    "price": 100,
-    "score": 100,
-    "market_price": 0,
-    "options": ["大号", "小号"],
-    "sku": [
-        {
-          "name": "red",
-          "extra": 2,
-          "inventory": 100
-        },
-        {
-          "name": "green",
-          "extra": 3,
-          "inventory": 100
-        }
-    ],
-    "top_text": "顶部文字",
-    "bottom_text": "底部文字",
-    "content_images": [
-        {
-            "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
-            "vendor": "local",
-            "mime": "image/jpeg",
-            "size": 61587,
-            "dimension": {
-                "width": 540,
-                "height": 960
-            },
-            "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-        }
-    ],
-    "buy_limit_days": 7,
-    "buy_limit_qty": 1,
-    "order_min_qty": 1,
-    "buying_read": "买前必读的内容",
-    "remote_areas": ["西藏", "新疆"],
-    "has_freight": true, // 是否有邮费，true表示有
-    "freight_qty": 3,    // 多少件内
-    "freight": 0,        // 邮费价格
-    "incr_qty": 1,       // 每增加多少件
-    "incr_freight": 3,   // 邮费增加价格
-    "views_count": 0,
-    "shares_count": 0,
-    "likes_count": 0,
-    "orders_count": 0,
-    "comments_count": 0,
-    "third_parties": {
-        "taobao": {
-            "id": "1234567890"
-        },
-        // 对应的其他平台商品
-    },
-    "created_at": "2019-04-16 09:34:20",
-    "updated_at": "2019-04-16 09:51:32"
+单个商品信息
 }
 ```
 
@@ -681,8 +549,11 @@ PUT|PATCH /api/v2/mall/commodities/{commodity.id}
 | `price` | `integer` | **可选**，商品价格，单位`分` ，没有则设置`0` |
 | `score` | `integer` | **可选**，购买所需积分数量，没有则设置`0`  |
 | `market_price` | `integer` | **可选**，市场价，没有则设置`0` |
-| `options` | `array` | **可选**，商品的购买选项集合 |
-| `options.*` | `string` | **必须**，单个选项，最长60个字符 |
+| `sku` | `array,null` | **可选**，商品的购买选项集合，如果为array则长度为1~100 |
+| `sku.*` | `array,null` | **可选**，单个规格的属性 |
+| `sku.*.name` | `string` | **必填**，规格名称，通options中的每一项对应|
+| `sku.*.extra` | `integer` | **选填**，规格价格，在基础价格上的增加|
+| `sku.*.inventory` | `integer` | **必填**，规格库存 |
 | `top_text` | `string` | **可选**，顶部文字描述 |
 | `bottom_text` | `string` | **可选**，底部文字描述 |
 | `content_images` | `array` | **可选**，中间的内容图片 |
@@ -693,9 +564,9 @@ PUT|PATCH /api/v2/mall/commodities/{commodity.id}
 | `buying_read` | `string` | **可选**，买前必读，最多20000字符 |
 | `remote_areas` | `array,null` | **可选**，偏远地区，最多50个；偏远地区暂时将限制购买 |
 | `remote_areas.*` | `string` | **必须**，表示地区的字符串， 如新疆、内蒙古等，最多8个字符 |
-| `has_freight` | `boolean` | **可选**，是否有邮费，false包邮 |
+| `has_freight` | `boolean` | **可选**，是否有邮费，false包邮 【暂未使用，作为扩展】|
 | `freight_qty` | `integer` | **可选**，多少件内，1-65535；当has_freight=true时填写 |
-| `freight` | `integer` | **可选**，邮费价格，0-65535；当has_freight=true时填写 |
+| `freight` | `integer` | **可选**，邮费价格，0-65535；当为0时免邮 |
 | `incr_qty` | `integer` | **可选**，每加多少件，1-65535；当has_freight=true时填写 |
 | `incr_freight` | `integer` | **可选**，邮费加多少元，0-65535；当has_freight=true时填写 |
 | `topped` | `boolean` | **可选**，是否全局置顶商品，需要权限`mall:admin` |
@@ -711,85 +582,10 @@ PUT|PATCH /api/v2/mall/commodities/{commodity.id}
 ```
 Status: 200 OK
 ```
+
 ```json5
 {
-    "id": 1,
-    "user_id": 1,
-    "category_id": 1,
-    "photos": [
-        {
-            "image": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
-                "vendor": "local",
-                "mime": "image/jpeg",
-                "size": 61587,
-                "dimension": {
-                    "width": 540,
-                    "height": 960
-                },
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            },
-            "video": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9aTXBXeXJwNUJLYzZIWHYxbmRJMldRbnA4Y0pTOFNrcGRwRHV6WDVBMEhFSTRiNGhrOHY1cnZmZ3RTNVRwY3RpLm1wNA==",
-                "vendor": "local",
-                "mime": "video/mp4",
-                "size": 2088674,
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            }
-        }
-    ],
-    "brand_id": 1, // 品牌id,
-    "brand": { // 如果brand_id为null, 此项为null
-      "name": "品牌名字",
-      "desc": "品牌简介",
-      "avatar": "品牌图标",
-      "sub_avatar": "品牌小图标"
-     },
-    "title": "标题",
-    "type": "member",
-    "price": 100,
-    "score": 0,
-    "extra": {
-      "low": 88,
-      "middle": 68
-    },
-    "market_price": 0,
-    "options": ["红色", "蓝色"],
-    "top_text": "顶部文字",
-    "bottom_text": "底部文字",
-    "content_images": [
-        {
-            "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
-            "vendor": "local",
-            "mime": "image/jpeg",
-            "size": 61587,
-            "dimension": {
-                "width": 540,
-                "height": 960
-            },
-            "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-        }
-    ],
-    "buy_limit_days": 7,
-    "buy_limit_qty": 1,
-    "order_min_qty": 1,
-    "buying_read": "买前必读的内容",
-    "remote_areas": ["西藏", "新疆"],
-    "has_freight": false,
-    "views_count": 0,
-    "shares_count": 0,
-    "likes_count": 0,
-    "orders_count": 0,
-    "comments_count": 0,
-    "third_parties": {
-        "taobao": {
-            "id": "1234567890"
-        },
-        // 对应的其他平台商品
-    },
-    "created_at": "2019-04-16 09:34:20",
-    "updated_at": "2019-04-16 09:51:32",
-    "deleted_at": "2019-04-16 09:51:32"
+ 单个商品信息
 }
 ```
 
@@ -931,7 +727,7 @@ Status: 201 Created
 
 ## 商品订单
 
-> 未支付的商品订单服务器将会定期清除，一般仅保留1~2小时
+> 未支付的商品订单服务器将会定期清除，一般仅保留15分钟
 
 
 ### 订单弹幕
@@ -962,7 +758,7 @@ POST /api/v2/mall/orders
 | 参数 | 类型 | 描述 |
 |:----:|----|----|
 | `commodity_id` | `integer` | **必须**，要购买的商品ID |
-| `commodity_option` | `string` | **可选**，选择的商品选项，最长150个字符 |
+| `commodity_option` | `string` | **可选**，选择的商品规格，如果商品有规格则为必选 |
 | `is_orig_price` | `boolean` | **可选**，是否原价购买 |
 | `is_share_discount` | `boolean` | **可选**，是否通过分享获得的优惠价格购买 |
 | `quantity` | `integer` | **必须**，购买数量，1~65535 |
@@ -1057,6 +853,7 @@ GET /api/v2/mall/shopping-carts-count
 Status: 200 OK
 ```
 响应体
+
 ```json5
 {
   "count": 100
@@ -1078,6 +875,7 @@ POST /api/v2/mall/shopping-carts
 Status: 201 Created
 ```
 响应体
+
 ```json5
 {
   "message": "操作成功"
@@ -1090,10 +888,12 @@ POST /api/v2/mall/shopping-carts
 ```
 
 响应
+
 ```
 Status: 200 OK
 ```
 响应体
+
 ```json5
 [
   {
@@ -1116,10 +916,12 @@ PATCH /api/v2/mall/shopping-carts/{shoppingCartID}
 | `quantity` | `integer` | **必填**，**如果此参数 <= 0, 则删除此条购物车记录** |
 
 响应
+
 ```
 Status: 202 Accept
 ```
 响应体
+
 ````json5
 {
   "message": "操作成功"
@@ -1127,15 +929,18 @@ Status: 202 Accept
 ````
 
 ### 删除购物车记录
+
 ```http request
 DELETE /api/v2/mall/shopping-carts/{shoppingCartID}
 ```
 响应
+
 ```
 Status: 204 No Content
 ```
 
 ### 批量删除购物车记录
+
 ```http request
 POST /api/v2/mall/shopping-carts/multiple-destroy
 ```
@@ -1151,9 +956,11 @@ Status: 204 No Content
 ```
 
 ### 购物车结算
+
 ```http request
 POST /api/v2/mall/multipleOrders
 ```
+
 | 参数 | 类型 | 描述 |
 |:----:|----|----|
 | `commodities` | `array` | **必须**，批量付款的商品信息 [{"commodity_id": 1, "quantity": 1, "commodity_option": "红色"}] |
@@ -1297,15 +1104,20 @@ Status: 200 OK
 ```
 
 ### 确认收货
+
 ```http request
 POST /api/v2/mall/orders/{order}/confirm
 ```
+
 错误响应包含：`422` 表示不能被确认收货，和 `403` 表示没有权限操作确认收货「情况为订单和当前操作人不是同一用户」
 响应:
+
 ```
 Status: 201 Created
 ```
+
 响应体：
+
 ```json5
 {
   "message": "操作成功"
@@ -1352,6 +1164,7 @@ Status: 200 OK
 ```
 
 ### 订单通知及消息说明
+
 > 当一个订单支付成功后，系统将推送一条通知到商家端，通知类型`notification:mall-selling-commodity`。对于消息数处理都调用`user/notification*`接口。
 
 > 未查看(处理)订单消息数，接口`GET /api/v2/user/notification-statistics` 返回结果中`badges`和`lastCreatedAts`增加了字段`mall_selling_commodity`，分别为新订单数量统计和最新订单的创建时间。
