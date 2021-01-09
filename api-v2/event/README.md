@@ -259,7 +259,7 @@ GET api/v2/event-categories
 ```
 Status: 200 OK
 ```
-> 响应内容 [[单个活动分类](event.md#活动分类数据结构)...]
+> 响应内容 [[单个活动分类](#活动分类数据结构)...]
 
 ### 获取单个活动分类
 
@@ -270,5 +270,5 @@ GET api/v2/event-categories/{event-category-id}
 ```
 Status: 200 OK
 ```
-> 响应体： 响应内容 [单个活动分类](event.md#活动分类数据结构)
+> 响应体： 响应内容 [单个活动分类](#活动分类数据结构)
 
