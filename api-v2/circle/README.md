@@ -915,44 +915,6 @@ Status: 200 OK
 ```
 
 
-
-## 关注一个圈子
-```http request
-PUT PUT /user/feed-topics/{topicID}
-```
-传递参数
-
-| 参数 | 类型 | 描述 |
-|----|----|----|
-| `invitor` | `integer` | **可选**, 邀请者id |
-
-成功响应：
-```
-Status: 204 NO CONTENT
-```
-积分不足
-```
-Status: 403 Forbidden
-```
-```json5
-{
-    "message": "积分不足"
-}
-```
-
-等待审核
-```
-Status: 202 Accepted
-```
-
-```json5
-{
-    "message": "请等待审核"
-}
-```
-
-
-
 ## 关注的圈子、用户、自己的动态
 
 ```
