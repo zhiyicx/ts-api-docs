@@ -17,13 +17,13 @@ title: 举报
 ## 举报一个用户
 
 ```
-POST /report/users/:user
+POST /api/v2/report/users/{userId}
 ```
 
 ## 举报一条评论
 
 ```
-POST /report/comments/:comment
+POST /api/v2/report/comments/{commentId}
 ```
 
 可选参数
@@ -121,7 +121,7 @@ Status: 201 Created
 ## 举报活动
 
 ```http request
-PUT /user/events/{eventId}
+PUT /api/v2/user/events/{eventId}
 ```
 | 参数 | 类型 | 描述 |
 |----|----|----|
@@ -188,7 +188,7 @@ Status: 201 Created
 ## 举报一个动态
 
 ```
-POST /feeds/:feed/reports
+POST /api/v2/feeds/{feedId}/reports
 ```
 
 可选参数
