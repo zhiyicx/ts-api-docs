@@ -1,7 +1,9 @@
 # 知识模块APIs文档
 
 ## 知识模块配置
-> 知识模块配置在启动接口中返回`knowledge`，配置详情如下：
+
+> 知识模块配置在启动接口`api/v2/bootstrappers`中返回`knowledge`，配置详情如下：
+
 ```json5
 {
   // 成为作者的条件、对作者的定义，可选:
@@ -17,7 +19,7 @@
   // price 仅价格，积分只能设置0
   // score 仅积分，价格只能设置0
   // both  需要同时设置价格和积分
-  "pricing_policy": "both",
+  "pricing_policy": "both", // TS 目前项目设置的仅积分，为了兼容ios上架
   // 如果 pricing_policy=both 则配置积分所占百分比
   "score_min_percent": 0,
   // 浮点数，用户下单后平台对金额的抽成比例
