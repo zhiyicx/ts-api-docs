@@ -7,7 +7,7 @@ title: 话题
 
 # 话题
 
-在最新接口中和热门接口中支持设置 `theme` 参数指定话题筛选数据列表。
+在动态模块最新接口中和热门接口中支持设置 `theme` 参数指定话题筛选数据列表。
 
 发布带有话题的动态在话题的**输入**里面增加 `theme` 字段指定要发布到话题的 ID。返回的动态数据中 `theme` 存放话题数据。
 
@@ -28,9 +28,9 @@ Status: 200 HTTP:OK
     "permission": "theme:creator"
   },
   "create_permissions": [
-    {"label": "全部", "value": "all", "intro": "任何用户都可创建圈子"},
-    {"label": "仅认证用户", "value": "verification", "intro": "只有通过了认证的用户才能创建圈子"},
-    {"label": "特定权限用户", "value": "specialUser", "intro": "仅拥有创建圈子权限的用户可以发言"}
+    {"label": "全部", "value": "all", "intro": "任何用户都可创建话题"},
+    {"label": "仅认证用户", "value": "verification", "intro": "只有通过了认证的用户才能创建话题"},
+    {"label": "特定权限用户", "value": "specialUser", "intro": "仅拥有特定权限的用户可以创建话题"}
   ]
 }
 ```
@@ -38,8 +38,8 @@ Status: 200 HTTP:OK
 
 | 名称 | 类型 | 描述 | 同级选项 |
 |----|----|----|----|
-| `create_permission` | `string` | 创建圈子的权限，默认 `all` | `verification`: 认证用户, `all`: 所有用户,`specialUser`: 特殊权限用户, 此项的权限由 `permission`字段的值决定 |
-| `permission` | `string` | 创建圈子的特殊用户权限，默认 `theme:creator` | `null` |
+| `create_permission` | `string` | 创建话题的权限，默认 `all` | `verification`: 认证用户, `all`: 所有用户,`specialUser`: 特殊权限用户, 此项的权限由 `permission`字段的值决定 |
+| `permission` | `string` | 创建话题的特殊用户权限，默认 `theme:creator` | 用户所拥有的的权限信息，可查看用户的权限列表，匹配其中是否拥有对应的权限信息 |
 
 > 当`create_permission`的值为 `specialUser`时，需要用户拥有`theme:creator`权限才可创建话题
 
@@ -207,6 +207,11 @@ DELETE /api/v2/feed-themes/{theme}
 ```
 Status: 204 No Content
 ```
+
+### 话题下最新动态
+
+调用动态列表接口，传递话题id , [常规动态列表](./feed/#批量)
+
 
 ### 话题下热门动态
 
