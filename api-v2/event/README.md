@@ -1,18 +1,20 @@
 ---
-sidebarDepth: 2
+sidebarDepth: 3
 title: 活动
 ---
-# 活动API
+# 活动
 
 ## 单条活动数据结构
+<details>
+
 ```json5
 {
     "id": 3,
-    "title": "1234",
-    "category": {
+    "title": "1234",  // 活动标题
+    "category": { // 活动分类
         "id": 1,
-        "name": "普通活动",
-        "avatar": {
+        "name": "普通活动", // 分类名字
+        "avatar": {    //  分类图标
             "url": "http://plus-domo.test/storage/public:MjAxOS8xMS8yNi9IaFB3UURLZ25xUTVsUkdtdEJxbjJvTnJjazk1SXlMWHVnd2pmbExBc1FNcGJZM0ZhUFprRzg3dzB5U3RmZDF1LmpwZw==",
             "vendor": "local",
             "mime": "image/jpeg",
@@ -23,7 +25,7 @@ title: 活动
             }
         }
     },
-    "creator": {
+    "creator": { // 活动创建者
         "id": 1,
         "name": "root",
         "email": null,
@@ -40,8 +42,8 @@ title: 活动
         "created_at": "2019-11-29T06:41:52Z",
         "updated_at": "2019-11-29T10:23:27Z"
     },
-    "user_id": 1,
-    "avatar": {
+    "user_id": 1, // 活动创建者 id
+    "avatar": {   // 活动封面
         "url": "http://plus-domo.test/storage/public:MjAxOS8xMS8yNi9IaFB3UURLZ25xUTVsUkdtdEJxbjJvTnJjazk1SXlMWHVnd2pmbExBc1FNcGJZM0ZhUFprRzg3dzB5U3RmZDF1LmpwZw==",
         "vendor": "local",
         "mime": "image/jpeg",
@@ -51,23 +53,28 @@ title: 活动
             "height": 200
         }
     },
-    "wantJoin": true,
-    "want_joins_count": 1,
-    "interested": false,
-    "interesteds_count": 0,
-    "date": "2019-12-03 14:40:00",
-    "content": "hhhh",
-    "area": "四川省 成都市 高新区",
-    "address": null,
-    "expense": 0,
-    "validate": 1
+    "wantJoin": true,  // 想参加， true 已经提价想参加， false 未操作
+    "want_joins_count": 1, // 有多少人想参加
+    "interested": false,   // 感兴趣
+    "interesteds_count": 0, // 感兴趣的数量
+    "date": "2019-12-03 14:40:00", // 活动进行的日期
+    "content": "hhhh",   // 活动说明内容
+    "area": "四川省 成都市 高新区", // 活动进行的地区
+    "address": null, // 活动进行的详情地址
+    "expense": 0,   // 活动人均费用，单位 分
+    "validate": 1  // 验证，暂未使用
 }
 ```
 
-## 创建活动
+</details>
+
+
+## 活动接口
+
+### 创建活动
 
 ```http request
-POST /events
+POST  api/v2/events
 ```
 传递参数
 
@@ -80,29 +87,33 @@ POST /events
 | `content` | `string` | **必选**, 活动内容，小于65000字节 |
 | `area` | `string` | **可选**, 和`address`至少存在一项 |
 | `address` | `string` | **可选**, 和`area`至少存在一项 |
-| `expense` | `integer` | **可选**, 活动费用，`元`为单位 |
+| `expense` | `integer` | **可选**, 活动费用，`分`为单位 |
+| `latitude` | `Double` | **可选**, 活动纬度 |
+| `longitude` | `Double` | **可选**, 活动经度 |
+
+
 
 响应:
 ```
 Status: 201 Created
 ```
-> 响应体: [单个活动结构](event.md#单条活动数据结构)
+> 响应体: [单个活动结构](#单条活动数据结构)
 
-## 获取单条活动
+### 获取单条活动
 
 ```http request
-GET /events/{evnetId}
+GET api/v2/events/{evnetId}
 ```
 响应:
 ```
 Status: 200 OK
 ```
-> 响应体：[单个活动结构](event.md#单条活动数据结构)
+> 响应体：[单个活动结构](#单条活动数据结构)
 
-## 活动列表
+### 活动列表
 
 ```http request
-GET /events
+GET api/v2/events
 ```
 参数列表：
 
@@ -117,10 +128,22 @@ GET /events
 | `page` | `string` | **可选**, page分页模式，与`offset`二选一 |
 | `ob` | `string` | **可选**, 排序默认会将超过当前时间的活动排到最后，并且为`date asc`排序, 支持： `id:{desc,asc}`, `date:{desc,asc}` |
 
-## 想要参加活动
+响应:
+```
+Status: 200 OK
+```
+
+```json
+[
+{单个活动}
+]
+
+```
+
+### 想要参加活动
 
 ```http request
-POST /events/{eventId}/want-join
+POST api/v2/events/{eventId}/want-join
 ```
 响应:
 ```
@@ -128,10 +151,10 @@ Status: 204 No Content
 ```
 > 对于已经加入过的和未加入过的，请求该接口都返回204状态
 
-## 对活动感兴趣
+### 对活动感兴趣
 
 ```http request
-POST /events/{eventId}/interest
+POST api/v2/events/{eventId}/interest
 ```
 响应:
 ```
@@ -139,10 +162,10 @@ Status: 204 No Content
 ```
 > 对于已经感兴趣的和未感兴趣的，请求该接口都返回204状态
 
-## 删除活动
+### 删除活动
 
 ```http request
-DELETE /events/{eventId}
+DELETE api/v2/events/{eventId}
 ```
 
 删除成功响应:
@@ -160,11 +183,11 @@ Status: 403 Forbidden
 Status: 404 Not Found
 ```
 
-## 发布活动点评
+### 发布活动点评
 
 > 发布点评调用发布动态的接口，其中 `repostable_type` 设置为 `event`，`repostable_id` 设置要点评的活动ID。
 
-## 获取活动点评
+### 获取活动点评
 
 获取指定活动点评
 ```
@@ -195,14 +218,15 @@ Status: 200 OK
 ]
 ```
 
+## 活动分类
 
-## 活动分类数据结构
+### 活动分类数据结构
 
 ```json5
 {
   "id": 1,
-  "name": "普通活动",
-  "avatar": {
+  "name": "普通活动", // 活动标题
+  "avatar": {  // 活动封面
       "url": "http://plus-domo.test/storage/public:MjAxOS8xMS8yNi9IaFB3UURLZ25xUTVsUkdtdEJxbjJvTnJjazk1SXlMWHVnd2pmbExBc1FNcGJZM0ZhUFprRzg3dzB5U3RmZDF1LmpwZw==",
       "vendor": "local",
       "mime": "image/jpeg",
@@ -212,16 +236,16 @@ Status: 200 OK
           "height": 200
       }
   },
-  "sort": 0,
-  "parent_id": 0,
-  "events_count": 7
+  "sort": 0, // 活动分类排序字段，越大越靠前
+  "parent_id": 0, // 父级分类
+  "events_count": 7 // 分类下的活动数量
 }
 ```
 
-## 活动分类列表
+### 活动分类列表
 
 ```http request
-GET /event-categories
+GET api/v2/event-categories
 ```
 查询参数：
 
@@ -237,10 +261,10 @@ Status: 200 OK
 ```
 > 响应内容 [[单个活动分类](event.md#活动分类数据结构)...]
 
-## 获取单个活动分类
+### 获取单个活动分类
 
 ```http request
-GET /event-categories/{event-category-id}
+GET api/v2/event-categories/{event-category-id}
 ```
 响应: 
 ```
