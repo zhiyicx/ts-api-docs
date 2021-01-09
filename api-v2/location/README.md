@@ -7,14 +7,14 @@ title: 位置
 ## 搜索地区
 
 ```
-GET /locations/search
+GET /api/v2/locations/search
 ```
 
 参数
 
 | 名称 | 类型 | 描述 |
 |:----:|:----:|----|
-| name | 字符串 | 位置关键词。 |
+| name | string | 位置关键词 |
 
 响应
 
@@ -56,10 +56,10 @@ Status: 200 OK
 ```
 
 | 字段 | 描述 |
-|:----:|----|
-| items | 搜索的选中地址的下一级所有地区列表。 |
-| tree | 搜索的选中地区树。 |
-| tree.parent | 父级地区数据。 |
+|:----:|------|
+| items | 搜索的选中地址的下一级所有地区列表 |
+| tree | 搜索的选中地区树 |
+| tree.parent | 父级地区数据 |
 | *.name | 地区名称 |
 
 > 如果搜索的地区树达到三级，则 `items` 为 `null`。
@@ -68,7 +68,7 @@ Status: 200 OK
 ## 热门城市
 
 ```
-GET /locations/hots
+GET /api/v2/locations/hots
 ```
 响应
 
