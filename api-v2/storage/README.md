@@ -75,6 +75,19 @@ Status: 201 Created
 }
 ```
 
+|       字段       | 类型       | 描述                   |
+| :--------------: | ---------- | ---------------------- |
+|       url        | string     | 文件请求地址，GET 方式 |
+|      vendor      | string     | 厂商名称               |
+|       mime       | string     | 文件 MIME              |
+|       size       | int        | 文件大小，单位：字节   |
+|    dimension     | dictionary | 图片尺寸信息           |
+| dimension.width  | double     | 图片宽度，单位：像素   |
+| dimension.height | double     | 图片高度，单位：像素   |
+|       node       | string     | 文件系统中的node       |
+
+
+
 ## 文件处理规则
 
 文件处理规则是在得到文件请求地址后，使用「查询参数」`rule` 进行传递参数。这里的参数是根据 `vendor` 自动客户端自行调整的。
