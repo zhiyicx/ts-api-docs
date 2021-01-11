@@ -135,6 +135,10 @@ module.exports = {
       '/api-v2/tags/': [''],
       '/api-v2/ad/': [''],
       '/api-v2/currency/': [''],
+      '/Q&A/server/':[''],
+      '/Q&A/android/':[''],
+      '/Q&A/ios/':[''],
+      '/Q&A/miniprogram/':[''],
     }
   }
 }
