@@ -115,7 +115,10 @@ module.exports = {
       ],
       '/api-v2/mini-program/': [''],
       '/api-v2/reward/': [''],
-      '/api-v2/task/': [''],
+      '/api-v2/task/': [
+      	'',
+      	'checkin'
+      ],
       '/api-v2/wenda/': [''],
       '/api-v2/show-pages/': [
           ''
