@@ -53,7 +53,7 @@ module.exports = {
           { text: '知识', link: '/api-v2/knowledge/' },
           { text: '小程序', link: '/api-v2/mini-program/' },
           { text: '快递100', link: '/api-v2/kd100/' },
-          { text: '打赏', link: '/api-v2/reward/' },
+          { text: '礼物/打赏', link: '/api-v2/reward/' },
           { text: '任务', link: '/api-v2/task/' },
           { text: '问答', link: '/api-v2/wenda/' },
           { text: '条款,页面', link: '/api-v2/show-pages/' },
