@@ -42,6 +42,7 @@ module.exports = {
         text: 'HTTP APIs',
         items: [
           // { text: '核心', link: '/core/api/v2/system' },
+          { text: '序', link: '/api-v2/' },
           { text: '登录/注册', link: '/api-v2/passport/' },
           { text: '用户', link: '/api-v2/user/' },
           { text: '动态', link: '/api-v2/feed/' },
@@ -78,6 +79,7 @@ module.exports = {
         'install-plus',
         'using-nginx-and-fpm-publish-website',
       ],
+      '/api-v2/': [''],
       '/api-v2/passport/': [''],
       '/api-v2/user/': [
         '',
