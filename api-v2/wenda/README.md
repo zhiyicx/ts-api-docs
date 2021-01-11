@@ -7,7 +7,7 @@ title: 问答
 
 ## 发布问题
 ```http request
-POST /api/v2/wendas
+POST /api/v2/api/v2/wendas
 ```
 传递参数
 
@@ -15,7 +15,6 @@ POST /api/v2/wendas
 |----|----|----|
 | `title` | `string` | **必填**, 问题，`?` 或者 `？`结尾 |
 | `content` | `string` | **必填**, 问题详情 |
-| `offer` | `integer` | **必填**, 悬赏的积分数量，无悬赏请传`0` |
 | `offer` | `integer` | **必填**, 悬赏的积分数量，无悬赏请传`0` |
 
 响应
@@ -28,9 +27,9 @@ Status: 201 Created
     "id": 11,
     "author_id": 3,
     "category_id": 1,
-    "title": "fdsfdsafdsafdsafdsaf？",
+    "title": "这儿是问题标题吗？",
     "content": "<p>fdsafdsafdsaf</p><img data-width=\"690\" data-height=\"1035\" src=\"http://local.thinksns-plus.com/storage/public:MjAyMC8wMS8wOC9yWmw5UWl5Yk5TalpZeGJ6ekxZWDVnRmdERklWcWt3YWNJVHFiN1RkV0hueFUxWXFNU2Jrcm0wQkpkaWx0QkpOLmpwZWc=\" data-src-node=\"public:2020/01/08/rZl9QiybNSjZYxbzzLYX5gFgDFIVqkwacITqb7TdWHnxU1YqMSbkrm0BJdiltBJN.jpeg\"><img data-width=\"970\" data-height=\"820\" src=\"http://local.thinksns-plus.com/storage/public:MjAyMC8wMS8wOC9TVTNFUmc0STREQ3N1MzdHcDhvS0Z2eWpTaUVBV0pJaHBBdHlkclVzYVhLbDk4b0dmMnNycEdnMEt6NHdEYWdFLmpwZw==\" data-src-node=\"public:2020/01/08/SU3ERg4I4DCsu37Gp8oKFvyjSiEAWJIhpAtydrUsaXKl98oGf2srpGg0Kz4wDagE.jpg\"><p><br></p>",
-    "offer": 0,
+    "offer": 0,//
     "adoption": 0,
     "views_count": 85,
     "likes_count": 0,
@@ -80,7 +79,7 @@ GET /api/v2/wendas/{wenda.id}
 ```
 | 参数 | 类型 | 描述 |
 |----|----|----|
-| `with` | `array`,`string` | **可选**, [`author`, `author.verification`]  |
+| `with` | `array`,`string` | **可选**, [`author`, `author.verification`]，`author`：创建者信息（默认不返回认证信息），`author.verification`：创建者信息中返回认证信息 |
 响应 
 ```
 Status: 200 OK
@@ -93,25 +92,23 @@ Status: 200 OK
 ## 查询问题列表
 请求
 ```http request
-GET /api/v2/wendas
+GET /api/v2/api/v2/wendas
 ```
-query参数
-
 | 参数 | 类型 | 描述 |
 |:----:|----|----|
 | `id` | `integer,string` | **可选**，问题ID，多个逗号分隔 |
-| `author_id` | `integer,string` | **可选**，作者用户ID，不提供则查询全部用户，多个逗号分隔 |
-| `category_id` | `integer,string` | **可选**，分类ID，不提供则查询全部分类，多个逗号分隔 |
-| `trashed` | `string` | **可选**，默认`without`，选项：<br>`without`不包括已删除的问题<br>`with`包括已删除的问题<br>`only`·仅已删除的问题 |
+| `author_id` | `integer,string` | **可选**，作者用户ID，不设置则查询全部用户，多个逗号分隔 |
+| `category_id` | `integer,string` | **可选**，分类ID，不设置则查询全部分类，多个逗号分隔 |
+| `trashed` | `string` | **可选**，默认`without`，选项：<br>`without`不包括已删除的问题<br>`with`包括已删除的问题<br>`only`仅已删除的问题 |
 | `recommend` | `integer` | **可选**，查询推荐状态，默认不限，选项：0,1 |
 | `keyword` | `string` | **可选**，查询关键字，仅在标题中搜索 |
-| `liked` | `string` | **可选**，无默认值，选项：<br>`check`返回列表中包含`liked`字段表示点赞状态 |
-| `favorited` | `string` | **可选**，无默认值，选项：<br>`check`返回列表中包含`favorited`字段表示收藏状态 |
+| `liked` | `string` | **可选**，无默认值，默认不返回点赞状态<br>`check`返回列表中包含`liked`字段表示点赞状态 |
+| `favorited` | `string` | **可选**，无默认值，默认不返回收藏状态<br>`check`返回列表中包含`favorited`字段表示收藏状态 |
 | `list_type` | `string` | **可选**，无默认值，选项：<br>`only_liked`仅返回已点赞的问题<br>`only_favorited`仅返回已收藏的问题 |
 | `offset` | `integer` | **可选**，本地已有加载数据数量 |
 | `limit` | `integer` | **可选**，获取条数，默认15 |
 | `order` | `string` | **可选**，排序，多个逗号分隔；支持的排序字段：<br>id, views_count, likes_count, favorites_count, <br>comments_count, shares_count, hot_index, recommend_at, topped_at, <br>category_topped_at, created_at, updated_at, deleted_at<br>如：topped_at desc,created desc |
-| `page` | `integer` | **可选**，第几页，如果有此参数，则返回分页模式的数据 |
+| `page` | `integer` | **可选**，第几页，如果有此参数，则返回分页模式的数据(多为后台使用，app端建议使用offset) |
 | `with` | `string,array<string>` | **可选**，需要返回的关联数据，可选：`author`,`author.verification`,`category` |
 
 响应
@@ -245,7 +242,7 @@ Status: 201 Created
 
 ```json5
 {
-  "amount": 2
+  "amount": 2 //分享获得的积分奖励，单位：积分
 }
 ```
 
@@ -329,11 +326,13 @@ Status: 200 OK
 
 ## 问答相关推送类型
 
+系统通知接口`api/v2/user/notification-statistics`中返回对应字段
+
 `notification:question-answered` 问题被评论
 
 `notification:answer-adopted` 回答被采纳
 
-## 问答相关通知
+## 问答相关通知列表
 ```http request
 GET /api/v2/user/wenda/notifications
 ```
