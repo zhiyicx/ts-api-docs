@@ -43,6 +43,7 @@ module.exports = {
         items: [
           // { text: '核心', link: '/core/api/v2/system' },
           { text: '序', link: '/api-v2/preface/' },
+          { text: '系统配置', link: '/api-v2/config/' },
           { text: '登录/注册', link: '/api-v2/passport/' },
           { text: '用户', link: '/api-v2/user/' },
           { text: '动态', link: '/api-v2/feed/' },
@@ -80,6 +81,7 @@ module.exports = {
         'using-nginx-and-fpm-publish-website',
       ],
       '/api-v2/preface/': [''],
+      '/api-v2/config/': [''],
       '/api-v2/passport/': [''],
       '/api-v2/user/': [
         '',
