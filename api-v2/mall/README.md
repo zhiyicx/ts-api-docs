@@ -1084,7 +1084,7 @@ GET /api/v2/mall/orders
 | `user_trashed` | `string` | **可选**，role=user时可用，默认`without`，选项：<br>`without`不包括已删除的订单<br>`with`包括已删除的订单<br>`only`·仅已删除的订单 |
 | `shop_trashed` | `string` | **可选**，role=shopkeeper时可用，默认`without`，选项：<br>`without`不包括已删除的订单<br>`with`包括已删除的订单<br>`only`·仅已删除的订单 |
 | `commodity_id` | `integer` | **可选**，商品ID，多个用逗号分隔或数组传递 |
-| `pay_status` | `integer` | **可选**，订单的支付状态，选项 `0,1,2`，多个用逗号分隔或数组传递 `0`失败 `1` 待支付 `2` 支付成功 ｜
+| `pay_status` | `integer` | **可选**，订单的支付状态，选项 `0,1,2`，多个用逗号分隔或数组传递 `0`未支付 `1` 支付出现异常 `2` 支付成功 ｜
 | `receipted` | `integer` | **可选**，订单的收货状态，选项 `'',0,1` `''`表示所有，`0` 未确认收货，`1` 已确认收货 ｜
 | `commented` | `integer` | **可选**，订单的评论状态，选项 `0,1` |
 | `start_time` | `string` | **可选**，开始时间，支持大部分时间格式，需包含时区部分 |
