@@ -725,121 +725,6 @@ Status: 201 Created
 }
 ```
 
-## 商品订单
-
-> 未支付的商品订单服务器将会定期清除，一般仅保留15分钟
-
-
-### 订单弹幕
-```http request
-/api/v2/mall/commodities/{commodity}/orders-subtitles
-```
->请求参数 「commodity」为商品ID
-> 单次请求，最多返回20个内容
-
-```json5
-[{
-     "id": 87,
-     "name": "用户8fs6c3",
-     "updated_at": "2019-11-20 03:38:41"
- }]
-```
-
-
-
-### 创建商品订单
-
-```
-POST /api/v2/mall/orders
-```
-
-输入：
-
-| 参数 | 类型 | 描述 |
-|:----:|----|----|
-| `commodity_id` | `integer` | **必须**，要购买的商品ID |
-| `commodity_option` | `string` | **可选**，选择的商品规格，如果商品有规格则为必选 |
-| `is_orig_price` | `boolean` | **可选**，是否原价购买 |
-| `is_share_discount` | `boolean` | **可选**，是否通过分享获得的优惠价格购买 |
-| `quantity` | `integer` | **必须**，购买数量，1~65535 |
-| `pay_score` | `integer` | **可选**，使用积分支付的数量，范围0~commodity.score*quantity，默认最大值 |
-| `pay_method` | `string` | **可选**，支付方法，余额和积分无法完成支付时必传，可选值：<br>`Alipay_AopApp` 支付宝APP支付<br>`Alipay_AopWap` 支付宝H5网页支付<br>`Alipay_AopPage` 支付宝PC网页支付<br>`WechatPay_App` 微信APP支付<br>`WechatPay_Js` 微信小程序、公众号支付 |
-| `pay_balance` | `integer` | **可选**，使用钱包余额支付的金额 |
-| `user_remark` | `string` | **可选**，用户对此订单的备注，最长150个字符 |
-| `address_id` | `integer` | **可选**，收货地址ID，必须是当前用户收货地址 |
-| `address` | `object` | **可选**，自定义的收货地址，如果提供此参数则忽略`address_id`参数 |
-| `address.name` | `string` | **必须**，收货人姓名 |
-| `address.phone` | `string` | **必须**，手机号码 |
-| `address.province` | `string` | **可选**，所在省份 |
-| `address.city` | `string` | **可选**，所在城市 |
-| `address.county` | `string` | **可选**，所在区县 |
-| `address.detail` | `string` | **必须**，详细地址 |
-| `address.postcode` | `string` | **可选**，邮政编码 |
-| `redirect_url` | `string` | **可选**，当`pay_method=Alipay_AopWap/Alipay_AopPage`时支付完成后的重定向URL，最长256个字符 |
-| `openid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前用户的openid |
-| `appid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的appid |
-| `app_type` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的APP类型，可选 app:公众号 micro:小程序，提供了此参数且没提供appid，系统将读取配置中的appid |
-
-成功响应：
-
-```
-Status: 201 OK
-```
-
-```json5
-{
-    "user_id": 1, // 订单所有者用户ID
-    "commodity_id": 1, // 购买的商品ID
-    "shopkeeper_id": 2, // 店主用户ID
-    "quantity": 1, // 购买的数量
-    "total_score": 1, // 订单积分总额
-    "shop_score": 1,  // 订单积分（商家应得部分）
-    "tax_score": 0,   // 订单积分（平台抽取部分）
-    "total_amount": 100, // 订单总金额
-    "shop_amount": 100,  // 订单金额（商家应得部分）
-    "tax_amount": 0,     // 订单金额（平台抽取部分）
-    "pay_balance": 100,  // 使用余额支付的金额
-    "pay_amount": 0,     // 使用第三方支付支付的金额
-    "address": { // 订单收货地址
-        "name": "姓名",
-        "phone": "18888888888",
-        "province": "四川省",
-        "city": "成都市",
-        "county": "高新区",
-        "detail": "XXXXX号",
-        "postcode": "610000"
-    },
-    "freight": 0, // 邮费、快递费
-    "trade_no": "xxxxxx", // pay_method不为None时才有订单号
-    "pay_method": "None", // 订单支付方式，如果用余额全额支付则为None，否则为传入的值
-    "pay_data": "",  // pay_method不为None时才有，用于第三方支付的数据，可能是任何数据类型。
-    "pay_status": 2, // 支付状态 0未支付、1已支付，但处理失败（三方平台支付的金额已充值到余额），2已支持且处理购买逻辑成功
-    "paid_at": "2020-03-26T05:46:46.000000Z", // 订单支付后才有此标识
-    "receipt_at": "2020-03-26T05:46:46.000000Z", // 确认收货，此字段存在则表示已经确认收货
-    "updated_at": "2020-03-26T05:46:46.000000Z",
-    "created_at": "2020-03-26T05:46:46.000000Z",
-    "id": 46,
-}
-```
-
-客户端错误响应：
-
-```
-Status: 400|403|422 OK
-```
-
-```json5
-{
-    // 错误消息，当为以下错误时才有此字段
-    // unsupported_area        %s地区暂不支持购买
-    // order_min_qty           该商品%d件起购
-    // buy_limit_qty_and_days  该商品限购%d件 || 该商品%d天内限购%d件
-    // score_not_enough        可用的积分不足
-    // balance_not_enough      可用的余额不足
-    "error_type": "unsupported_area",
-    "message": "错误消息",
-}
-```
 
 ## 购物车
 
@@ -980,6 +865,123 @@ POST /api/v2/mall/multipleOrders
 | `openid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前用户的openid |
 | `appid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的appid |
 | `app_type` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的APP类型，可选 app:公众号 micro:小程序，提供了此参数且没提供appid，系统将读取配置中的appid |
+
+
+## 商品订单
+
+> 未支付的商品订单服务器将会定期清除，一般仅保留15分钟
+
+
+### 订单弹幕
+```http request
+/api/v2/mall/commodities/{commodity}/orders-subtitles
+```
+>请求参数 「commodity」为商品ID
+> 单次请求，最多返回20个内容
+
+```json5
+[{
+     "id": 87,
+     "name": "用户8fs6c3",
+     "updated_at": "2019-11-20 03:38:41"
+ }]
+```
+
+
+
+### 创建商品订单
+
+```
+POST /api/v2/mall/orders
+```
+
+输入：
+
+| 参数 | 类型 | 描述 |
+|:----:|----|----|
+| `commodity_id` | `integer` | **必须**，要购买的商品ID |
+| `commodity_option` | `string` | **可选**，选择的商品规格，如果商品有规格则为必选 |
+| `is_orig_price` | `boolean` | **可选**，是否原价购买 |
+| `is_share_discount` | `boolean` | **可选**，是否通过分享获得的优惠价格购买 |
+| `quantity` | `integer` | **必须**，购买数量，1~65535 |
+| `pay_score` | `integer` | **可选**，使用积分支付的数量，范围0~commodity.score*quantity，默认最大值 |
+| `pay_method` | `string` | **可选**，支付方法，余额和积分无法完成支付时必传，可选值：<br>`Alipay_AopApp` 支付宝APP支付<br>`Alipay_AopWap` 支付宝H5网页支付<br>`Alipay_AopPage` 支付宝PC网页支付<br>`WechatPay_App` 微信APP支付<br>`WechatPay_Js` 微信小程序、公众号支付 |
+| `pay_balance` | `integer` | **可选**，使用钱包余额支付的金额 |
+| `user_remark` | `string` | **可选**，用户对此订单的备注，最长150个字符 |
+| `address_id` | `integer` | **可选**，收货地址ID，必须是当前用户收货地址 |
+| `address` | `object` | **可选**，自定义的收货地址，如果提供此参数则忽略`address_id`参数 |
+| `address.name` | `string` | **必须**，收货人姓名 |
+| `address.phone` | `string` | **必须**，手机号码 |
+| `address.province` | `string` | **可选**，所在省份 |
+| `address.city` | `string` | **可选**，所在城市 |
+| `address.county` | `string` | **可选**，所在区县 |
+| `address.detail` | `string` | **必须**，详细地址 |
+| `address.postcode` | `string` | **可选**，邮政编码 |
+| `redirect_url` | `string` | **可选**，当`pay_method=Alipay_AopWap/Alipay_AopPage`时支付完成后的重定向URL，最长256个字符 |
+| `openid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前用户的openid |
+| `appid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的appid |
+| `app_type` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的APP类型，可选 app:公众号 micro:小程序，提供了此参数且没提供appid，系统将读取配置中的appid |
+
+成功响应：
+
+```
+Status: 201 OK
+```
+
+```json5
+{
+    "user_id": 1, // 订单所有者用户ID
+    "commodity_id": 1, // 购买的商品ID
+    "shopkeeper_id": 2, // 店主用户ID
+    "quantity": 1, // 购买的数量
+    "total_score": 1, // 订单积分总额
+    "shop_score": 1,  // 订单积分（商家应得部分）
+    "tax_score": 0,   // 订单积分（平台抽取部分）
+    "total_amount": 100, // 订单总金额
+    "shop_amount": 100,  // 订单金额（商家应得部分）
+    "tax_amount": 0,     // 订单金额（平台抽取部分）
+    "pay_balance": 100,  // 使用余额支付的金额
+    "pay_amount": 0,     // 使用第三方支付支付的金额
+    "address": { // 订单收货地址
+        "name": "姓名",
+        "phone": "18888888888",
+        "province": "四川省",
+        "city": "成都市",
+        "county": "高新区",
+        "detail": "XXXXX号",
+        "postcode": "610000"
+    },
+    "freight": 0, // 邮费、快递费
+    "trade_no": "xxxxxx", // pay_method不为None时才有订单号
+    "pay_method": "None", // 订单支付方式，如果用余额全额支付则为None，否则为传入的值
+    "pay_data": "",  // pay_method不为None时才有，用于第三方支付的数据，可能是任何数据类型。
+    "pay_status": 2, // 支付状态 0未支付、1已支付，但处理失败（三方平台支付的金额已充值到余额），2已支持且处理购买逻辑成功
+    "paid_at": "2020-03-26T05:46:46.000000Z", // 订单支付后才有此标识
+    "receipt_at": "2020-03-26T05:46:46.000000Z", // 确认收货，此字段存在则表示已经确认收货
+    "updated_at": "2020-03-26T05:46:46.000000Z",
+    "created_at": "2020-03-26T05:46:46.000000Z",
+    "id": 46,
+}
+```
+
+客户端错误响应：
+
+```
+Status: 400|403|422 OK
+```
+
+```json5
+{
+    // 错误消息，当为以下错误时才有此字段
+    // unsupported_area        %s地区暂不支持购买
+    // order_min_qty           该商品%d件起购
+    // buy_limit_qty_and_days  该商品限购%d件 || 该商品%d天内限购%d件
+    // score_not_enough        可用的积分不足
+    // balance_not_enough      可用的余额不足
+    "error_type": "unsupported_area",
+    "message": "错误消息",
+}
+```
 
 
 
