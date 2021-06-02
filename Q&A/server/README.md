@@ -58,8 +58,9 @@ php artisan jwt:secret --force
 
 [查看解决方案](https://github.com/slimkit/thinksns-plus-guide/issues/37)
 
-### 5. SQLSTATE[22003]错误
-#### 5.1 常见为部署运行数据库迁移时 ```php artisan migrate --seed -v```
+### 5. 数据库异常
+#### 5.1 SQLSTATE[22003]错误
+##### 5.1.1 常见为部署运行数据库迁移时 ```php artisan migrate --seed -v```
 ```sql
 SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'type' at row 1 (SQL: insert into `sign_config` (`created_at`, `day`, `type`, `updated_at`, `value`) values (2021-05-31 02:17:12, 1, 999, 2021-05-31 02:17:12, 1), (2021-05-31 02:17:12, 2, 999, 2021-05-31 02:17:12, 2), (2021-05-31 02:17:12, 3, 999, 2021-05-31 02:17:12, 3), (2021-05-31 02:17:12, 4, 999, 2021-05-31 02:17:12, 4), (2021-05-31 02:17:12, 5, 999, 2021-05-31 02:17:12, 5), (2021-05-31 02:17:12, 6, 999, 2021-05-31 02:17:12, 6), (2021-05-31 02:17:12, 7, 999, 2021-05-31 02:17:12, 7))
 ```

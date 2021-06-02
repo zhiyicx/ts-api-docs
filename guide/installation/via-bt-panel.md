@@ -113,6 +113,14 @@ git clone https://github.com/zhiyicx/xxxxx
 
 **运行目录必须选择 `public`目录**
 
+**必须将程序目录设置为www:www这个用户和用户组所有（宝塔面板安装的php默认使用此用户和用户组运行）**
+1. 进入站点列表
+2. 点击要设置的站点的根目录
+3. 进入`/www/wwwroot/`目录中，右侧有`权限`按钮，点击后会弹出窗口，选择www并设置755权限，并应用到子目录
+<img :src="$withBase('/assets/img/guide/installation/specified- permission@2x.png')" />
+然后确定就ok了
+4. !!注意!!: 使用命令行执行过操作后，都建议使用此方法来修正程序运行所需要的权限，避免不可预知的权限问题出现 
+
 **伪静态必须选择 `laravel5`**
 
 SSL证书可以根据你自己的要求来处理，一般选择 `Let's Encrypt`来处理

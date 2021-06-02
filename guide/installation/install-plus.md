@@ -153,6 +153,9 @@ php artisan migrate -vvv
 php artisan db:seed -vvv
 ```
 
+## `迁移数据表` 和 `数据库填充可能会出现的问题`
+[数据库异常](/Q&A/server/README.md#数据库异常)
+
 ## 静态资产发布
 
 走到这一步，基本上就算安装完成了，但是对于后端等还有一些静态资产需要发布：
