@@ -1,9 +1,14 @@
 ---
 home: true
+
 heroImage: /assets/img/plus.png
+
 actionText: 开始学习 →
+
 actionLink: /guide/installation/
+
 footer: Apache-2.0 Licensed | Copyright © 2016-Present Chengdu ZhiYiChuangXiang Technology Co., Ltd. All rights reserved.
+
 features:
     - title: PHP 7
       details: 使用 PHP 7 并使用「严格模式」进行开发，增强代码可读性的同时，强类型约束避免许多弱级异常！
