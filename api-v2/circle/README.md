@@ -268,7 +268,7 @@ Status: 204
 ## 加入圈子
 
 ```http request
-put /feed-topics/{topicId}
+put /user/feed-topics/{topicId}
 ```
 
 请求参数
