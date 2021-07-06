@@ -88,7 +88,8 @@ module.exports = {
         'follow', 
         'vip',
         'invite',
-        'notification'
+        'notification',
+        'signin'
       ],
       '/api-v2/info/': [''],
       '/api-v2/event/': [
