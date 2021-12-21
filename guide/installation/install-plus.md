@@ -107,6 +107,14 @@ composer self-update
 composer update -vvv
 ```
 
+
+**如果出现下面的异常，就打开`php.ini`中搜索`disable_functions`并移除`proc_open`，如果使用宝塔，在php的配置信息中可以看到**
+
+```shell script
+The Process class relies on proc_open, which is not available on your PHP installation.
+
+```
+
 **如果出现内存溢出的情况请执行下面的命令**
 ```shell script
 php -d memory_limit=-1 `which composer` install

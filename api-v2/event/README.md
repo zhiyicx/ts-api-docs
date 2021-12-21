@@ -119,6 +119,7 @@ GET api/v2/events
 
 | 参数 | 类型 | 描述 |
 |----|----|----|
+| `recommended` | `integer` | **可选**, recommended=1 返回推荐列表 |
 | `keyword` | `string` | **可选**, 对活动名称进行搜索 |
 | `c` | `integer` | **可选**, 根据活动分类进行筛选 |
 | `area` | `string` | **可选**, 根据地区筛选 |
