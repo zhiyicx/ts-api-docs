@@ -16,21 +16,29 @@ sidebarDepth: 3
 
 ## 安装步骤
 ### 找到合适服务器操作系统的版本
-[宝塔面板官方安装教程](https://www.bt.cn/bbs/thread-19376-1-1.html)
-例如我现在有一台 Centos 7.*的服务器, 打开上面的页面之后，找到下图中的内容
+1. 方案一：在宝塔官网登录后，在管理后台导航栏里面点击安装；
+
+2. 方案二：[宝塔面板官方安装教程](https://www.bt.cn/bbs/thread-19376-1-1.html)
+例如我现在有一台 Centos 8.*的服务器, 打开上面的页面之后，找到下图中的内容
+
 ```shell script
 yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && sh install.sh
 ```
-<img alt="Centos 7.*安装宝塔面板" :src="$withBase('/assets/img/centos-install-bt.png')" />
+
+<img alt="Centos 8.*安装宝塔面板" :src="$withBase('/assets/img/centos-install-bt.png')" />
 
 将上面的命令粘贴到服务器的命令行中，回车然后等待运行结束
 命令行中会提示
+
 ```shell script
 Bt-Panel: http://ip:8888/xxxx
 username: username
 password: password
 ```
+
 的内容，并提示你放行服务器的安全组`腾讯`,`阿里云`都需要放行
+
+
 
 ### 安全组放行
 
@@ -62,16 +70,16 @@ bt
 ### 安装所需环境
 
 登录宝塔面板地址，在左侧菜单中点击 `软件商店`
-并安装 `php 7.3`, `nginx 1.18`, `mysql 5.7`, `redis 5.*/6.*`
+并安装 `php 7.4`, `nginx 1.21`, `mysql 5.7`, `redis 5.*/6.*`
 安装需要的时间由服务器的硬件决定
 
 安装过程宝塔面板页面的左上角有安装任务的数量，当安装成功后任务数量会清零
 如果没有以外发生，这时候环境就安装完成了
 
 ### 安装PHP扩展
-等待上一步的安装完全安装成功之后，在`软件商店`中找到安装过的 `PHP 7.3`
+等待上一步的安装完全安装成功之后，在`软件商店`中找到安装过的 `PHP 7.4`
 点击设置看到如下界面
-<img alt="PHP 7.3" :src="$withBase('/assets/img/php-7.3.png')" />
+<img alt="PHP 7.4" :src="$withBase('/assets/img/php-7.4.png')" />
 点击`扩展安装`, 选择
 `fileinfo`,
 `opcache`,
@@ -79,6 +87,10 @@ bt
 `exif`,
 `imagemagick`
 依旧需要等待安装完成
+
+#### 禁用函数
+
+php 安装后会自带禁用掉部分函数，需要删除 `putenv`
 
 **环境安装结束**
 
@@ -99,15 +111,17 @@ bt
 >目录里面有个.user.ini的文件怎么都删除不掉，就需要在宝塔控制面板上进入这个目录，在面板上操作删除这个目录，具体的原因就不多说了
 
 然后我们再来clone仓库，或者
+
 ```shell script
-git clone https://github.com/zhiyicx/xxxxx
+git clone https://github.com/zhiyicx/xxxxx (该地址为您的源代码地址)
+
 ```
-让git自己生成一个目录，上面的命令会生成`xxxxx`目录
+让git自己生成一个目录，上面的命令会生成`xxxxx`目录。
 
 如果你克隆仓库的时候执行的是后面的这个命令，
 那就需要在克隆完成之后，在面板的网站列表重新指定一下站点的目录位置，设置按钮在站点右侧
 点击之后看到如下弹窗
-<img alt="PHP 7.3" :src="$withBase('/assets/img/site-setting.png')" />
+<img alt="PHP 7.4" :src="$withBase('/assets/img/site-setting.png')" />
 
 点击网站目录，选择上面的 `/www/wwwroot/xxxxx`目录，然后点击保存，
 

@@ -145,6 +145,34 @@ charset: utf8mb4 # 使用的字符集，配置为 utf8mb4
 collation: utf8mb4_unicode_ci # 按照这里的配置为 utf8mb4_unicode_ci 即可
 ```
 
+## 配置接口、存储回调地址
+在打开的 `storage/configure/plus.yml` 文件中找到 `app` 与 `filesystems ` 修改对应的的 `url`为项目的域名,其他的如项目名字`name`可根据自身需求调整
+
+```yaml
+app:
+  name: Plus # 项目名字
+  env: local                        # Values: `local` and `production`, default `local`
+  debug: true                      # Application Debug Mode
+  url: https://www.thinksns.com            # Application URL
+  timezone: UTC                     # Application Timezone
+  locale: zh_CN                     # Application Locale Configuration
+  fallback_locale: en               # Application Fallback Locale
+  data_limit: 15                    # RESTFul APIs data limit
+  https: false                      # 强制生成https协议的url
+  de_brute_force_attack: true       # 开启防暴力破解
+  strongPwd: false                  # 开启强密码限制
+  decayMinutes: 5                   # 锁定时间[分钟]
+  maxAttempts: 5                    # 密码错误次数
+
+filesystems:
+  default: public
+  disks:
+    public:
+      url: https://www.thinksns.com/storage
+
+
+```
+
 ## 迁移数据表
 
 我们在 Plus 程序中已经为你制作好了数据库表迁移文件，你只需要执行下面的命令即可：
@@ -174,14 +202,18 @@ php artisan vendor:publish --all -vvv
 
 ## 查看安装
 
-好了，我们已经安装完成了，安装完成后，默认创始人帐号密码均为 `root`，为了方便我们查看，运行下面的命令进行查看站点：
+好了，我们已经安装完成了，安装完成后，默认创始人帐号密码均为 `root`，为了方便我们查看，
 
-```bash
-php artisan serve --host=0.0.0.0 --port=80
-```
+1. 部署后的 `域名/admin`访问；
 
-> 如果你不想用 80 或者 80 端口已经被占用，请更换其他
+2. 运行下面的命令进行查看站点：
 
-执行后，命令行会进入 watch 状态，我们打开服务器的 IP 进行查看站点。
+	```bash
+	php artisan serve --host=0.0.0.0 --port=80
+	```
 
-查看完成后按键盘上的 `ctrl` + `C` 退出。
+	> 如果你不想用 80 或者 80 端口已经被占用，请更换其他
+
+	执行后，命令行会进入 watch 状态，我们打开服务器的 IP 进行查看站点。
+
+	查看完成后按键盘上的 `ctrl` + `C` 退出。

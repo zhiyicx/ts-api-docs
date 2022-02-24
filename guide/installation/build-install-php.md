@@ -2,17 +2,17 @@
 title: 安装 PHP
 ---
 
-本章将会带领你在 **CentOS** `7.4` 系统上编译安装 **PHP** `7.2` 环境，以及缺少的拓展安装。 
+本章将会带领你在 **CentOS** `8` 系统上编译安装 **PHP** `7.4` 环境，以及缺少的拓展安装。 
 
-***运行ThinkSNS Plus 3的PHP最低要求为7.2.5***
+***运行ThinkSNS Plus 3的PHP最低要求为7.4***
 
 ## 下载源码
 
-我们打开[PHP 官网下载页](http://www.php.net/downloads.php)找到最新的 PHP 7.2 版本，以 7.2.9 为例：
+我们打开[PHP 官网下载页](http://www.php.net/downloads.php)找到 PHP 7.4 版本，以 7.4.28 为例：
 
 <img :src="$withBase('/assets/img/guide/installation/php-download-page.png')" />
 
-我们点击**绿色**框部分的的地址，最后我们通过选择地区后得到最终地址为：`http://cn2.php.net/distributions/php-7.2.9.tar.xz` 
+我们点击**绿色**框部分的的地址，最后我们通过选择地区后得到最终地址为：`http://cn2.php.net/distributions/php-7.4.28.tar.xz` 
 
 我们得到文件下载地址后，登入 Linux，我们现在在服务器下载 PHP 源码，下载我们使用 **curl** 命令下载，检查你的服务器是否有这个命令输入 `curl --help` 如果有很大一串内容输出，则表示有该命令，如果输出内容为：
 
@@ -29,18 +29,18 @@ yum install -y curl
 等待命令执行完成即可，执行完成后，我们下载 PHP 源码：
 
 ```bash
-curl -o php-7.2.9.tar.xz http://cn2.php.net/distributions/php-7.2.9.tar.xz
+curl -o php-7.4.28.tar.xz http://cn2.php.net/distributions/php-7.4.28.tar.xz
 ```
 
 ::: warning
-如果你无法找到准确的文件下载地址，那么你点击**绿色**框的链接，会进入地区选择页面，例如你选择 `China` 地区，你会看到一个 `cn2.php.net` 的链接，鼠标放上去，「右键」点击「复制链接地址」你粘贴后会得到 `http://cn2.php.net/get/php-7.2.9.tar.xz/from/this/mirror` 这样的地址，如图：
+如果你无法找到准确的文件下载地址，那么你点击**绿色**框的链接，会进入地区选择页面，例如你选择 `China` 地区，你会看到一个 `cn2.php.net` 的链接，鼠标放上去，「右键」点击「复制链接地址」你粘贴后会得到 `http://cn2.php.net/get/php-7.4.28.tar.xz/from/this/mirror` 这样的地址，如图：
 
 <img :src="$withBase('/assets/img/guide/installation/php-download-copy-link.png')" />
 
 复制得到地址后，我们运行下面的命令进行下载：
 
 ```bash
-curl -L -o php-7.2.9.tar.xz http://cn2.php.net/get/php-7.2.9.tar.xz/from/this/mirror
+curl -L -o php-7.4.28.tar.xz http://cn2.php.net/get/php-7.4.28.tar.xz/from/this/mirror
 ```
 :::
 
@@ -55,18 +55,18 @@ yum install -y tar xz
 然后我们先将 XZ 归档解压为 tar 归档：
 
 ```bash
-xz -d php-7.2.9.tar.xz
+xz -d php-7.4.28.tar.xz
 ```
 
-执行完成后，我们输入 `ls` 命令，你会看到现在 `php-7.2.9.tar.xz` 文件已经消失，而多出一个 `php-7.2.9.tar` 归档。此时我们来解压这个 tar 归档：
+执行完成后，我们输入 `ls` 命令，你会看到现在 `php-7.4.28.tar.xz` 文件已经消失，而多出一个 `php-7.4.28.tar` 归档。此时我们来解压这个 tar 归档：
 
 ```bash
-tar -xvf php-7.2.9.tar
+tar -xvf php-7.4.28.tar
 ```
 
-解压完成后，运行 `ls` 命令会看到，多出一个 `php-7.2.9` 的目录了，好了我们现在就得到了源码。
+解压完成后，运行 `ls` 命令会看到，多出一个 `php-7.4.28` 的目录了，好了我们现在就得到了源码。
 
-> 如果你解压步骤失败，可能是下载的文件不是 `.tar.xz` 后缀归档，也有可能是下载过程中数据丢包，不用担心。你重新下运行 `rm -rf php-7.2.9*` 命令，将你之前下载的删除，然后重新下载即可。
+> 如果你解压步骤失败，可能是下载的文件不是 `.tar.xz` 后缀归档，也有可能是下载过程中数据丢包，不用担心。你重新下运行 `rm -rf php-7.4.28*` 命令，将你之前下载的删除，然后重新下载即可。
 
 ## 编译 PHP
 
@@ -94,7 +94,7 @@ systemd-devel openjpeg-devel
 groupadd php-fpm && useradd -s /sbin/nologin -g php-fpm -M php-fpm
 ```
 
-现在，我们使用 `cd php-7.2.9` 进入源码目录，上面都是开始编译前的必要设置，但是我们还有一步没有完成，就是生成编译配置（如果你很想知道下面的参数有什么用，请访问[这里](https://www.cnblogs.com/zsl123/p/5962944.html)查看参数详解）：
+现在，我们使用 `cd php-7.4.28` 进入源码目录，上面都是开始编译前的必要设置，但是我们还有一步没有完成，就是生成编译配置（如果你很想知道下面的参数有什么用，请访问[这里](https://www.cnblogs.com/zsl123/p/5962944.html)查看参数详解）：
 
 ```bash
 ./configure \
@@ -157,7 +157,7 @@ make
 make install
 ```
 
-执行完成后，你会看到 `php-7.2.9` 目录下有 `php.ini-development` 和 `php.ini-production` 两个文件，因为我们是教程，所以选择开发环境的配置文件:
+执行完成后，你会看到 `php-7.4.28` 目录下有 `php.ini-development` 和 `php.ini-production` 两个文件，因为我们是教程，所以选择开发环境的配置文件:
 
 ```bash
 cp php.ini-development /usr/local/php/etc/php.ini
@@ -197,7 +197,7 @@ pid = /usr/local/php/var/run/php-fpm.pid
 
 然后保存并退出，我们再只 `cd /usr/local/php/etc/php-fpm.d` 进入 FPM 配置目录，这个目录下有一个 `www.conf.default` 文件，我们执行 `cp www.conf.default www.conf` 命令将其发布为可被加载的配置文件。
 
-接下来，我们需要对 FPM 做一些系统级的配置，我们进入之前解压的 PHP 源码目录，如果你跟随教程执行下来，应该在 `/root/php-7.2.9` 目录，如果不是，自行进入你下载后解压的所在目录。进入该目录后，我们复制服务文件：
+接下来，我们需要对 FPM 做一些系统级的配置，我们进入之前解压的 PHP 源码目录，如果你跟随教程执行下来，应该在 `/root/php-7.4.28` 目录，如果不是，自行进入你下载后解压的所在目录。进入该目录后，我们复制服务文件：
 
 ```bash
 cp ./sapi/fpm/php-fpm.service /usr/lib/systemd/system/
@@ -224,7 +224,7 @@ export PATH=$PATH:/usr/local/php/bin/
 写入后，并不会立刻生效，所以我们执行 `source /etc/profile` 执行完成后，我们运行 `php -v` 会输出 PHP 版本信息，差不多下面这样子：
 
 ```
-PHP 7.2.9 (cli) (built: Sep 18 2018 12:16:25) ( NTS )
+PHP 7.4.28 (cli) (built: Sep 18 2018 12:16:25) ( NTS )
 Copyright (c) 1997-2018 The PHP Group
 Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
 ```

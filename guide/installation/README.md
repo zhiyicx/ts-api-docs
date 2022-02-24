@@ -8,6 +8,11 @@ Plus (读音：**[plʌs]**，全称：`ThinkSNS+` **[θɪŋk es en es plʌs]**�
 
 如果你是有经验的 PHPer，那么你可以了解**现代流行框架**差异，Laravel 就是现代流行框架的佼佼者之一。
 
+##  服务器要求
+
+- CentOS8+
+- 2核4G 以上
+
 ## PHP 环境要求
 
 ::: danger 重点
@@ -16,7 +21,7 @@ Plus (读音：**[plʌs]**，全称：`ThinkSNS+` **[θɪŋk es en es plʌs]**�
 
 ### PHP 版本
 
-您的 PHP 必须大于或者等于 **7.2.5** 版本，当然，我们推荐 **7.3.** 版本。
+您的 PHP 必须大于或者等于 **7.4** 版本(咱不支持php8)，当然，我们推荐 **7.4.** 版本。
 
 ### 函数
 
@@ -57,24 +62,24 @@ Plus (读音：**[plʌs]**，全称：`ThinkSNS+` **[θɪŋk es en es plʌs]**�
 
 ## 数据库
 ::: warning
-😭 由于程序中加入了很多特殊的查询语句，ThinkSNS Plus 3现在暂时只支持 `mysql 5.7.9+`, 并且暂时不支持 ~~mysql 8.x~~
+ThinkSNS Plus 3现在支持 `mysql 5.7.9+、mysql 8.x`
 :::
 
 ## 教程说明
 
-从后面的教程开始，我们将从**零基础**开始教学，教学环境为 **CentOS** `7.4` 版本的 Linux。教学环境如下：
+从后面的教程开始，我们将从**零基础**开始教学，教学环境为 **CentOS** `8` 版本的 Linux。教学环境如下：
 
-- 教学使用服务器系统: **CentOS** `7.4`
+- 教学使用服务器系统: **CentOS** `8`
 - 教学者使用系统: **macOS**
 - SSH 工具: [**Termius**](https://itunes.apple.com/cn/app/id549039908/)
-- 教学 [PHP](http://php.net) 版本：**7.2**
+- 教学 [PHP](http://php.net) 版本：**7.4**
 - 教学 [MySQL](https://www.mysql.com/) 版本： **5.7**
 - 教学 Web 组件：[**Nginx**](http://nginx.org/)
 
 教学内容包括：
 
 - 登入 Linux
-- 安装 PHP 7.2
+- 安装 PHP 7.4
 - 安装 MySQL 5.7
 - 安装 Plus
 - Nginx 安装
