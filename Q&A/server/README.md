@@ -70,3 +70,38 @@ Syntax error or access violation: 1055 Expression #1 of ORDER BY clause is not i
 ```
 以上两种情况都是使用了数据库的`严格模式`造成的
 请修改配置文件 **storage/configure/plus.yml**中`mysql`连接中的**strict**为`false`
+
+
+### 6. Composer 错误
+
+1.  composer 编译 `syntax error`
+
+	```shell
+
+	Parse error: syntax error, unexpected '(' in phar:///usr/l	ocal/bin/composer/vendor/composer/autoload_real.php on line 3
+	
+	```
+	解决方案： 调整PHP版本
+
+
+2. putenv 禁用函数错误
+
+	```shell
+		putenv() has been disabled for security reasons
+	
+	```
+	`php` 配置的禁用禁用函数，删除 `putenv `
+
+
+
+###  Git 未安装
+
+```
+-bash: git: command not found
+```
+
+解决方案： 执行以下命令安装即可
+
+```shell
+yum install git
+```
