@@ -768,6 +768,9 @@ Status: 201 Created
 ```
 
 ### 购物车列表
+
+   旧版本适用，2022.6.20后版本请使用 [获取商品列表（按照商家分组）](###获取商品列表（按照商家分组）)
+
 ```http request
 POST /api/v2/mall/shopping-carts
 ```
@@ -921,6 +924,10 @@ POST /api/v2/mall/orders
 | `openid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前用户的openid |
 | `appid` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的appid |
 | `app_type` | `string` | **可选**，当`pay_method=WechatPay_Js`时需提供当前的APP类型，可选 app:公众号 micro:小程序，提供了此参数且没提供appid，系统将读取配置中的appid |
+| `with` | `string` | **可选**，附带关系,可选值: user,shopkeeper,expresses.company,refund.expresses.company,refund.negotiates,apply,appeal 购物车订单的子订单，非购物车下单不传递此项，|
+| `noGroupBy` | `integer` | **可选**， 0：只返回有效订单（有子订单的只返回子订单，不返回主订单），1：会返回主订单和子订单 |
+| `subOrders` | `integer` | **可选**， 0: 聚合订单返回的子订单多包裹了一层，1：聚合订单返回的子订单是二维数组 |
+
 
 成功响应：
 

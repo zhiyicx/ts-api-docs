@@ -140,6 +140,9 @@ Status: 200 OK
         "amount_tax_rate":0,
         // 浮点数，用户下单后平台对积分的抽成比例
         "score_tax_rate":0.1,
+        // 当author=verification允许的认证类型,允许发布商品的类型
+        // 多个类型配置在一个数组列表中，允许全部为 null
+        "allow_v10n_types":["user"]
         "share_commodity_ids":[ // 分享商品获取折扣对应商品id,暂未使用
             1,
             2,
@@ -156,7 +159,19 @@ Status: 200 OK
                 "height":38
             },
             "node":"public:2019/11/08/g2zrMpVaA77cVEjO2c5SSRMnnJJRGb2cAGVTlwYy0XcwIERPwfDLlubHwfq0jsjc.png"
-        }
+        },
+        // 最长等待收货时间
+        "default_confirm_receipt": 5,
+        // 允许最大反馈数量
+		"feedback_count": 2,
+        // 退货次数
+		"refund_count": 5,
+        // 退货说明
+		"refund_explain": "退货说明",
+        // 卖家同意退款后/协商退款买家操作退货期限
+		"refund_deliver_time": 4,
+        // 买家申请协商处理期限
+		"refund_negotiate_user_time": 4
     },
     "wechat_mini_program":{
         "exists":true,  // 是否有小程序，且部署好了
