@@ -22,15 +22,15 @@ title: 创建页面
 
 `layout.blade.php`
 
-<<< @/guide/dev/blog/codes/resources/views/layout.blade.php
+<<< @/v2/guide/dev/blog/codes/resources/views/layout.blade.php
 
 `header.blade.php`
 
-<<< @/guide/dev/blog/codes/resources/views/header.blade.php
+<<< @/v2/guide/dev/blog/codes/resources/views/header.blade.php
 
 `footer.blade.php`
 
-<<< @/guide/dev/blog/codes/resources/views/footer.blade.php
+<<< @/v2/guide/dev/blog/codes/resources/views/footer.blade.php
 
 `home.blade.php`
 ```php
@@ -89,12 +89,12 @@ class HomeController
 
 现在我们打开包的 `resources/views/header.blade.php` 文件，修改为下面的内容：
 
-<<< @/guide/dev/blog/codes/resources/views/header.blade.php
+<<< @/v2/guide/dev/blog/codes/resources/views/header.blade.php
 
 然后我们创建一个 `resources/views/headers/user.blade.php` 文件内容如下：
 
 
-<<< @/guide/dev/blog/codes/resources/views/headers/user.blade.php
+<<< @/v2/guide/dev/blog/codes/resources/views/headers/user.blade.php
 
 然后保存，我们就完成了用户的登录与退出（因为 Plus 自带登录页面，所以无需再写登录页面）
 

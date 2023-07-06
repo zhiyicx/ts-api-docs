@@ -111,11 +111,11 @@ php artisan package:handle plus-blog-dev make-model
 
 现在，我们打开应用下的 `database/migrations/` 目录，你会看到有一个 `create_blogs_table` 结尾的 PHP 文件，我已经将上面的表设计转化为迁移 PHP 代码，你只需要写入即可：
 
-<<< @/guide/dev/blog/codes/database/migrations/2018_09_30_040837_create_blogs_table.php
+<<< @/v2/guide/dev/blog/codes/database/migrations/2018_09_30_040837_create_blogs_table.php
 
 接下来，我们接着编写 `blog_articles` 迁移文件，和上面一样，我们找到 `create_blog_articles_table` 结尾的 PHP 文件，写入下面的内容：
 
-<<< @/guide/dev/blog/codes/database/migrations/2018_09_30_042237_create_blog_articles_table.php
+<<< @/v2/guide/dev/blog/codes/database/migrations/2018_09_30_042237_create_blog_articles_table.php
 
 ::: tip
 需要用到的 Laravel 知识👉[数据库迁移](https://laravel-china.org/docs/laravel/5.7/migrations/2291)
@@ -131,11 +131,11 @@ php artisan package:handle plus-blog-dev make-seeder
 
 然后我们输入 `Settings` 回车即可，会在 `database/seeds` 下面创建一个名为 `SettingsSeeder.php` 的文件。我们打开这个文件输入如下内容：
 
-<<< @/guide/dev/blog/codes/database/seeds/SettingsSeeder.php
+<<< @/v2/guide/dev/blog/codes/database/seeds/SettingsSeeder.php
 
 然后我们打开拓展包的 `database/seeds/DatabaseSeeder.php` 文件，在 `run` 方法中输入下面的高亮内容：
 
-<<< @/guide/dev/blog/codes/database/seeds/DatabaseSeeder.php{16}
+<<< @/v2/guide/dev/blog/codes/database/seeds/DatabaseSeeder.php{16}
 
 ::: tip
 需要用到的 Laravel 知识👉[数据填充](https://laravel-china.org/docs/laravel/5.7/seeding/2292)

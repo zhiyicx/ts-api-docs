@@ -8,13 +8,13 @@ title: 博客主页
 
 我们需要使用 `$blog->logo` 调用图片，但是我们数据库存储的数据是 `public:*.*` 这样的结构，所以，我们打开 `src/Models/Blog.php` 文件，在类内部添加下面的高亮代码：
 
-<<< @/guide/dev/blog/codes/src/Models/Blog.php{8,12,44,45,46,47,48,49,50,51}
+<<< @/v2/guide/dev/blog/codes/src/Models/Blog.php{8,12,44,45,46,47,48,49,50,51}
 
 ## 创建视图
 
 我们在包里面创建一个 `resources/views/blog-profile.blade.php` 文件写入下面的内容：
 
-<<< @/guide/dev/blog/codes/resources/views/blog-profile.blade.php
+<<< @/v2/guide/dev/blog/codes/resources/views/blog-profile.blade.php
 
 ## 我的博客跳转逻辑
 

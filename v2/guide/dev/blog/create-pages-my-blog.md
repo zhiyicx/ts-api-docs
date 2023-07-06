@@ -72,13 +72,13 @@ class HomeController extends Controller
 
 我们在包的 `resources/views` 下面创建一个名为 `create-blog.blade.php` 的文件，内容如下：
 
-<<< @/guide/dev/blog/codes/resources/views/create-blog.blade.php
+<<< @/v2/guide/dev/blog/codes/resources/views/create-blog.blade.php
 
 ## 创建博客逻辑
 
 首先，我们应该创建一个「[表单验证](https://laravel-china.org/docs/laravel/5.7/validation/2262)」，我们创建一个文件 `src/Web/Requests/CreateBlog.php`：
 
-<<< @/guide/dev/blog/codes/src/Web/Requests/CreateBlog.php
+<<< @/v2/guide/dev/blog/codes/src/Web/Requests/CreateBlog.php
 
 为了之后的快捷获取，以及创建的时候更加优雅，我们为 `User` 模型附加一个 `blog` 关系，我们打开包的 `src/Providers/ModelServiceProvider.php` 文件，在 `namespace` 下面，插入下面的代码：
 
@@ -178,7 +178,7 @@ public function getRouteKeyName()
 
 然后我们创建在包里面创建 `src/Web/Controllers/BlogController.php` 文件：
 
-<<< @/guide/dev/blog/codes/src/Web/Controllers/BlogController.php
+<<< @/v2/guide/dev/blog/codes/src/Web/Controllers/BlogController.php
 
 ## 文章关系
 
