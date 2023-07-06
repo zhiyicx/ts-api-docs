@@ -40,7 +40,8 @@ exif
 ```
 putenv
 symlink 
-proc_open 
+proc_open
+shell_exec 
 ```
 
 <img :src="$withBase('/assets/img/v3/guide/installation/16867170986024.jpg')" />
@@ -145,6 +146,9 @@ php artisan storage:link
 
 # 发布资源   
 php artisan vendor:publish --all
+
+#小程序端素材初始化
+php artisan wmc:init
 
 # 设置权限 
 chown -R www:www storage
