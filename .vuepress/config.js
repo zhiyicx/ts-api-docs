@@ -18,16 +18,10 @@ module.exports = {
         docsBranch: 'docs',
         search: true,
         lastUpdated: '更新时间',
-        nav: [{
-                text: '2.3文档➡️',
-                link: 'https://slimkit.github.io'
-            },
+        nav: [
             {
-                text: '学习指南',
-                items: [
-                    { text: '安装教程', link: '/guide/installation/' },
-                    { text: '升级指南', link: '/guide/upgrade/' },
-                ]
+                text: '安装教程',
+                link: '/v3/guide/installation/',
             },
             {
                 text: '数据字典',
@@ -41,36 +35,49 @@ module.exports = {
                 text: 'HTTP APIs',
                 items: [
                     // { text: '核心', link: '/core/api/v2/system' },
-                    { text: '序', link: '/api-v2/preface/' },
-                    { text: '系统配置', link: '/api-v2/config/' },
-                    { text: '登录/注册', link: '/api-v2/passport/' },
-                    { text: '用户', link: '/api-v2/user/' },
-                    { text: '动态', link: '/api-v2/feed/' },
-                    { text: '圈子', link: '/api-v2/circle/' },
-                    { text: '话题', link: '/api-v2/topic/' },
-                    { text: '资讯', link: '/api-v2/info/' },
-                    { text: '活动', link: '/api-v2/event/' },
-                    { text: '商城', link: '/api-v2/mall/' },
-                    { text: '知识', link: '/api-v2/knowledge/' },
-                    { text: '小程序', link: '/api-v2/mini-program/' },
-                    { text: '快递100', link: '/api-v2/kd100/' },
-                    { text: '礼物/打赏', link: '/api-v2/reward/' },
-                    { text: '任务', link: '/api-v2/task/' },
-                    { text: '问答', link: '/api-v2/wenda/' },
-                    { text: '条款,页面', link: '/api-v2/show-pages/' },
-                    { text: '省市区', link: '/api-v2/location/' },
-                    { text: '举报', link: '/api-v2/report/' },
-                    { text: '文件存储', link: '/api-v2/storage/' },
-                    { text: '环信', link: '/api-v2/easemob/' },
-                    { text: '验证码', link: '/api-v2/verification_code/' },
-                    { text: '标签', link: '/api-v2/tags/' },
-                    { text: '广告', link: '/api-v2/ad/' },
-                    { text: '积分', link: '/api-v2/currency/' },
+                    { text: '序', link: '/v2/api-v2/preface/' },
+                    { text: '系统配置', link: '/v2/api-v2/config/' },
+                    { text: '登录/注册', link: '/v2/api-v2/passport/' },
+                    { text: '用户', link: '/v2/api-v2/user/' },
+                    { text: '动态', link: '/v2/api-v2/feed/' },
+                    { text: '圈子', link: '/v2/api-v2/circle/' },
+                    { text: '话题', link: '/v2/api-v2/topic/' },
+                    { text: '资讯', link: '/v2/api-v2/info/' },
+                    { text: '活动', link: '/v2/api-v2/event/' },
+                    { text: '商城', link: '/v2/api-v2/mall/' },
+                    { text: '知识', link: '/v2/api-v2/knowledge/' },
+                    { text: '小程序', link: '/v2/api-v2/mini-program/' },
+                    { text: '快递100', link: '/v2/api-v2/kd100/' },
+                    { text: '礼物/打赏', link: '/v2/api-v2/reward/' },
+                    { text: '任务', link: '/v2/api-v2/task/' },
+                    { text: '问答', link: '/v2/api-v2/wenda/' },
+                    { text: '条款,页面', link: '/v2/api-v2/show-pages/' },
+                    { text: '省市区', link: '/v2/api-v2/location/' },
+                    { text: '举报', link: '/v2/api-v2/report/' },
+                    { text: '文件存储', link: '/v2/api-v2/storage/' },
+                    { text: '环信', link: '/v2/api-v2/easemob/' },
+                    { text: '验证码', link: '/v2/api-v2/verification_code/' },
+                    { text: '标签', link: '/v2/api-v2/tags/' },
+                    { text: '广告', link: '/v2/api-v2/ad/' },
+                    { text: '积分', link: '/v2/api-v2/currency/' },
                 ]
-            }
+            },
+            {
+                text: 'TS2.3',
+                items: [
+                    { text: '2.3文档', link: 'https://slimkit.github.io' },
+                    { text: '安装教程', link: '/v2/guide/installation/' },
+                    { text: '升级指南', link: '/v2/guide/upgrade/' },
+                ]
+            },
         ],
         sidebar: {
-            '/guide/installation/': [
+            '/v3/guide/installation/': [
+                '',
+                'server',
+                'windows',
+            ],
+            '/v2/guide/installation/': [
                 '',
                 'via-bt-panel',
                 'build-install-php',
@@ -79,10 +86,10 @@ module.exports = {
                 'install-plus',
                 'using-nginx-and-fpm-publish-website',
             ],
-            '/api-v2/preface/': [''],
-            '/api-v2/config/': [''],
-            '/api-v2/passport/': [''],
-            '/api-v2/user/': [
+            '/v2/api-v2/preface/': [''],
+            '/v2/api-v2/config/': [''],
+            '/v2/api-v2/passport/': [''],
+            '/v2/api-v2/user/': [
                 '',
                 'follow',
                 'vip',
@@ -90,54 +97,54 @@ module.exports = {
                 'notification',
                 'signin'
             ],
-            '/api-v2/info/': [''],
-            '/api-v2/event/': [
+            '/v2/api-v2/info/': [''],
+            '/v2/api-v2/event/': [
                 ''
             ],
-            '/api-v2/mall/': [
+            '/v2/api-v2/mall/': [
                 '',
                 'mall_brand',
                 'shop_info',
                 'refund',
             ],
-            '/api-v2/knowledge/': [
+            '/v2/api-v2/knowledge/': [
                 ''
             ],
-            '/api-v2/feed/': [
+            '/v2/api-v2/feed/': [
                 '',
                 'feeds-likes',
                 'feeds-collect',
                 'feeds-comments'
             ],
-            '/api-v2/circle/': [
+            '/v2/api-v2/circle/': [
                 ''
             ],
-            '/api-v2/topic/': [
+            '/v2/api-v2/topic/': [
                 ''
             ],
-            '/api-v2/kd100/': [
+            '/v2/api-v2/kd100/': [
                 ''
             ],
-            '/api-v2/mini-program/': [''],
-            '/api-v2/reward/': [''],
-            '/api-v2/task/': [
+            '/v2/api-v2/mini-program/': [''],
+            '/v2/api-v2/reward/': [''],
+            '/v2/api-v2/task/': [
                 '',
                 'checkin'
             ],
-            '/api-v2/wenda/': [''],
-            '/api-v2/show-pages/': [
+            '/v2/api-v2/wenda/': [''],
+            '/v2/api-v2/show-pages/': [
                 ''
             ],
-            '/api-v2/location/': [
+            '/v2/api-v2/location/': [
                 ''
             ],
-            '/api-v2/report/': [''],
-            '/api-v2/storage/': [''],
-            '/api-v2/easemob/': [''],
-            '/api-v2/verification/': [''],
-            '/api-v2/tags/': [''],
-            '/api-v2/ad/': [''],
-            '/api-v2/currency/': [''],
+            '/v2/api-v2/report/': [''],
+            '/v2/api-v2/storage/': [''],
+            '/v2/api-v2/easemob/': [''],
+            '/v2/api-v2/verification/': [''],
+            '/v2/api-v2/tags/': [''],
+            '/v2/api-v2/ad/': [''],
+            '/v2/api-v2/currency/': [''],
             '/Q&A/server/': [''],
             '/Q&A/android/': [''],
             '/Q&A/ios/': [''],

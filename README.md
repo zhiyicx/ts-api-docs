@@ -5,7 +5,7 @@ heroImage: /assets/img/plus.png
 
 actionText: 开始学习 →
 
-actionLink: /guide/installation/
+actionLink: /v3/guide/installation/
 
 footer: Apache-2.0 Licensed | Copyright © 2016-Present Chengdu ZhiYiChuangXiang Technology Co., Ltd. All rights reserved.
 
