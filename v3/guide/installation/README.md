@@ -19,4 +19,4 @@ TS3是 ThinkSNS 系列产品一个重要版本，是一个基于 [Latest Laravel
 
 Windows：[文档地址](/v3/guide/installation/windows.md)
 
-Mac：待完善
+Mac：[文档地址](/v3/guide/installation/mac.md)
