@@ -76,6 +76,7 @@ module.exports = {
                 '',
                 'server',
                 'windows',
+                'mac',
             ],
             '/v2/guide/installation/': [
                 '',
