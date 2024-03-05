@@ -97,7 +97,60 @@ filesystems.disks.public.url # https://域名/storage，例如：http://ts.cn/st
 
 
 
-## 三、创建项目站点
+## 三、配置以及项目编译
+
+1、打开终端，进入项目目录
+
+```
+cd 项目文件夹 
+```
+
+2、安装依赖
+
+```text
+composer install
+npm install
+```
+
+3、编译代码
+
+```
+npm run dev
+```
+
+4、迁移数据库  
+
+```text
+php artisan migrate
+```
+
+5、数据库初始化数据 
+
+```text
+php artisan db:seed
+```
+
+6、创建新密钥
+
+```text
+php artisan app:key-generate
+```
+
+7、上传文件软链 
+
+```text
+php artisan storage:link
+```
+
+8、发布资源
+
+```text
+php artisan vendor:publish --all
+```
+
+
+
+## 四、创建项目站点
 
 1、打开PhpWebStudy-Hosts-添加，name输入本地域名，例如:ts.cn
 
@@ -117,7 +170,7 @@ location / {
 
 
 
-## 四、创建数据库站点
+## 五、创建数据库站点
 
 1、下载phpMyAdmin
 
@@ -140,52 +193,6 @@ location / {
 8、浏览器输入**mysql.io**，账号root 密码默认为空，点击"登录"，进入管理页面后设置账号密码
 
 **该账号密码需要和plus.yml中sql账号信息保持一致**
-
-
-
-## 五、配置以及项目编译
-
-1、打开终端，进入项目目录
-
-```
-cd 项目文件夹 
-```
-
-2、安装依赖
-
-```text
-composer install
-```
-
-3、迁移数据库  
-
-```text
-php artisan migrate
-```
-
-4、数据库初始化数据 
-
-```text
-php artisan db:seed
-```
-
-5、创建新密钥
-
-```text
-php artisan app:key-generate
-```
-
-6、上传文件软链 
-
-```text
-php artisan storage:link
-```
-
-7、发布资源
-
-```text
-php artisan vendor:publish --all
-```
 
 
 
