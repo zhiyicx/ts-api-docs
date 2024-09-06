@@ -13,161 +13,179 @@ title: 商城
 ``` json
 
 {
-    "id": 1,
-    "user_id": 1,  // 商家 id
-    "category_id": 1,  // 分类id
-    "brand_id": 1, // 查询参数with需要携带 brands 才会返回此项和brand
-    "brand": {  // 品牌信息
-      "name": "品牌名字",
-      "desc": "品牌简介",
-      "avatar": "品牌图标",
-      "sub_avatar": "品牌小图标"
-     },
-    "photos": [   // 商品的图片信息，最多4张图片，或者其中一个为视频
-        {
-            "image": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
-                "vendor": "local",
-                "mime": "image/jpeg",
-                "size": 61587,
-                "dimension": {
-                    "width": 540,
-                    "height": 960
-                },
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            },
-            "video": {
-                "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9aTXBXeXJwNUJLYzZIWHYxbmRJMldRbnA4Y0pTOFNrcGRwRHV6WDVBMEhFSTRiNGhrOHY1cnZmZ3RTNVRwY3RpLm1wNA==",
-                "vendor": "local",
-                "mime": "video/mp4",
-                "size": 2088674,
-                "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-            }
-        }
-    ],
-    "title": "标题",  // 商品标题
-    "type": "score",   // 商品类型， score 积分商品， member 会员商品
-    "price": 100,      // 商品的价格
-    "score": 100,      // 所需积分数量 
-    "buying_read": "购买前必读内容，有内容时会在用户购买前弹窗提示用户，最多20000字符"
-    "extra": { // 如果 `type` 为 `member` 此项有，则不为null
-    	"low": 200,  // 低等级会员的价格 单位 分
-    	"middle": 150 // 高等级会员的价格 单位 分
-    },
-    "sku": [ // 商品规格
-        {
-          "name": "red",  // 规格名字
-          "extra": 2,     // 对应的规格需要额为支付的积分或者人民币分，根据type来确定
-          "inventory": 100  // 对应规格的库存数量
+  "id": 331, // 商品ID
+  "user_id": 17, // 商家用户ID
+  "type": "member", // 商品类型， score 积分商品， member 会员商品
+  "category_id": 3, // 分类id
+  "photos": [ // 商品的图片信息，最多4张图片，或者其中一个为视频
+    {
+      "image": {
+        "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2024/06/03/CNmMiCGzAGWnhbFCsIv8XWcc8gDKBprVrVtQyyZNq2mhnGesQZNNJNuhMAfJA0KU.jpg",
+        "vendor": "aliyun-oss",
+        "mime": "image/jpeg",
+        "size": 92077,
+        "dimension": {
+          "width": 975,
+          "height": 650
         },
-        {
-          "name": "green",
-          "extra": 3,
-          "inventory": 100
-        }
-    ],
-    "market_price": 0,    // 市场价格
-    "remote_areas":[{"新疆"}], //  可选，偏远地区，最多50个；偏远地区暂时将限制购买
-    "buy_limit_days": 7, // 限制购买的天数范围：1-65535；如果不限制，设置为0或null
-    "buy_limit_qty": 1,  // 限制购买的数量范围：1-65535；如果不限制，设置为0或null
-    "order_min_qty": 1,  // 每次下单最少购买数量，范围：1-65535；如果不限制，设置为0或null
-    "order_max_qty": 1,  // 每次下单最多购买数量，范围：1-65535；如果不限制，设置为0或null
-    "buy_conditions":{  // 已经设置的商品购买条件
-	     "topics": 0,    // 限制需要创建成功的圈子数量1-1000
-   		  "invite_users": 0,   // 限制需要邀请用户数量1-100000   		  "share_topics": 0,    // 限制需要分享圈子数量1-100000   		  "topic_feeds": 0,   // 限制需要圈子中发布的动态数量1-100000
-    	  "comments": 0, // 限制需要总发布的评论数量1-100000
-    	  "checkin": 0, // 限制连续签到数量1-100000
-    	  "share_commodities": 0, // 限制当前商品分享数量1-100000
-    },
-    "user_done_stats":{  // 已经完成的商品购买条件
-	     "topics": 0,    // 限制需要创建成功的圈子数量1-1000
-   		  "invite_users": 0,   // 限制需要邀请用户数量1-100000   		  "share_topics": 0,    // 限制需要分享圈子数量1-100000   		  "topic_feeds": 0,   // 限制需要圈子中发布的动态数量1-100000
-    	  "comments": 0, // 限制需要总发布的评论数量1-100000
-    	  "checkin": 0, // 限制连续签到数量1-100000
-    	  "share_commodities": 0, // 限制当前商品分享数量1-100000
-    },
-    "top_text": "顶部文字",
-    "bottom_text": "底部文字",
-    "content_images": [
-        {
-            "url": "http://domo.local.com/storage/public:MjAxOC8xMi8xNS9nd3hwb0V0eGtoMVpFTFlqUlAwRENYZUwyTnd0SzQ1eWdWQ24xN1h0ckI0WFhwdGU3SlFibmJXaEUyTklkUzk1LmpwZWc=",
-            "vendor": "local",
-            "mime": "image/jpeg",
-            "size": 61587,
-            "dimension": {
-                "width": 540,
-                "height": 960
-            },
-            "node": "public:2018/12/15/gwxpoEtxkh1ZELYjRP0DCXeL2NwtK45ygVCn17XtrB4XXpte7JQbnbWhE2NIdS95.jpeg"
-        }
-    ],
-    "views_count": 0,    // 浏览量
-    "shares_count": 0,   // 分享数量
-    "likes_count": 0,    // 喜欢数量
-    "orders_count": 0,   // 订单数量
-    "comments_count": 0, // 点评数量
-    "third_parties": {    // 对接淘宝商品，已废弃
-        "taobao": {
-            "id": "1234567890"
-        },
-        // 对应的其他平台商品
-    },
-    "liked": false, // 是否已收藏
-    "freight_qty": 3,    // 多少件内
-    "freight": 0,        // 邮费价格
-    "incr_qty": 1,       // 每增加多少件
-    "incr_freight": 3,   // 邮费增加价格
-    "created_at": "2019-04-16 09:34:20",
-    "updated_at": "2019-04-16 09:51:32",
-    "deleted_at": "2019-04-16 09:51:32",
-    "user": { // 卖家用户信息
-        "id": 1,
-        "name": "root",
-        "bio": null,
-        "sex": 0,
-        "location": null,
-        "avatar": null,
-        "bg": null,
-        "email_verified_at": null,
-        "phone_verified_at": null,
-        "feed_topics_count": 0,
-        "created_at": "2019-04-16 09:24:44",
-        "updated_at": "2019-04-16 09:24:44",
-        "deleted_at": null,
-        "verification": {
-          // 认证信息，如果没有则为 null
-        },
-        "has_follwing": false,
-        "has_follower": false
-    },
-    "shop_info": { // 卖家信息
-        "user_id": 4,
-        "is_original": null,
-        "qrCode": {  // 卖家微信二维码
-            "url": "http://ts.test/storage/public:MjAyMC8wNC8yNi9lOTk4SFdNT2FsbWRVQkNiek1UM2NCSDRnTkppT04xS2lXcWhqZ3VVVWpYemFDNFdXRDRwQ01UWVFKYVVvb1RFLkpQRw==",
-            "vendor": "local",
-            "mime": "image/jpeg",
-            "size": 320452,
-            "dimension": {
-              "width": 800,
-              "height": 800
-            },
-            "node": "public:2020/04/26/e998HWMOalmdUBCbzMT3cBH4gNJiON1KiWqhjguUUjXzaC4WWD4pCMTYQJaUooTE.JPG"
-        },
-        "weChat": "2341", // 卖家微信号
-        "phone": "12341"  // 卖家手机号
-    },
-    "category": { // 分类信息
-        "id": 1,
-        "name": "分类一",
-        "sort": 0,
-        "selling_count": 3,
-        "trashed_count": 1,
-        "created_at": "2019-04-16 09:25:48",
-        "updated_at": "2019-04-16 09:51:32",
-        "deleted_at": null,
-        "commodities_count": 4
+        "node": "public:2024/06/03/CNmMiCGzAGWnhbFCsIv8XWcc8gDKBprVrVtQyyZNq2mhnGesQZNNJNuhMAfJA0KU.jpg"
+      }
     }
+  ],
+  "title": "测试问题的会员商品", // 商品标题
+  "price": 0, // 商品的价格
+  "score": 0, // 所需积分数量 
+  "market_price": 1700, // 市场价格
+  "sku": [ // 有规格时的商品规格
+    {
+      "name": "red",  // 规格名字
+      "extra": 2,     // 对应的规格需要额为支付的积分或者人民币分，根据type来确定
+      "inventory": 100  // 对应规格的库存数量
+    },
+    {
+      "name": "green",
+      "extra": 3,
+      "inventory": 100
+    }
+  ],
+  "inventory": 3, // 无规格时的库存
+  "has_freight": false, // 是否有运费
+  "freight": 0, // 运费，单位：分
+  "remote_areas": [ // 可选，偏远地区，最多50个；偏远地区暂时将限制购买
+    "北京",
+    "山西",
+    "吉林"
+  ],
+  "views_count": 31, // 浏览量
+  "shares_count": 0, // 分享数量
+  "likes_count": 0,// 收藏数量
+  "orders_count": 1, // 订单数量
+  "sells_count": 0, // 卖出数量
+  "comments_count": 0, // 点评数量
+  "extra": { // 
+    "middle": 1500
+  },
+  "created_at": "2024-06-03T05:50:13Z", // 创建时间
+  "updated_at": "2024-06-17T09:31:02Z", // 更新时间
+  "liked": false, // 是否已收藏
+  "can_comment": false, // 是否能评论
+  "user": { // 卖家用户信息
+    "id": 17,
+    "name": "残残个电话",
+    "bio": "简介经过此方法的点点滴滴打电话夫妇红枫湖风景刚才嘻嘻哈哈行动复合型献愁供恨给哥带来惊喜深有感触，😍😍",
+    "sex": 2,
+    "location": "成都市 成华区",
+    "inviter": null,
+    "invite_code": "10ABCG",
+    "avatar": {
+      "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2022/03/10/fHSBiaYq9kMsGC7uINl1UE0JrME9hzUJybBRssD28H2CPizbgzj8p5uVSuSul7LV.jpeg",
+      "vendor": "aliyun-oss",
+      "mime": "image/jpeg",
+      "size": 384310,
+      "dimension": {
+        "width": 720,
+        "height": 720
+      },
+      "node": "public:2022/03/10/fHSBiaYq9kMsGC7uINl1UE0JrME9hzUJybBRssD28H2CPizbgzj8p5uVSuSul7LV.jpeg"
+    },
+    "feed_topics_count": 13,
+    "verification": {
+      "type": "user",
+      "state": 1,
+      "created_at": "2022-10-09T06:47:46Z",
+      "updated_at": "2023-09-07T06:48:18Z",
+      "desc": "打开空调开的",
+      "slogan": "一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十",
+      "id_card": {
+        "number": "510108199401212255",
+        "rear": {
+          "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2022/10/09/tAxheuMR4t66NkDhtjJL7LFdu5VukN0cLNxMz97qRyPo375hdp5ImargxnFaab54.png",
+          "vendor": "aliyun-oss",
+          "mime": "image/png",
+          "size": 341243,
+          "dimension": {
+            "width": 729,
+            "height": 459
+          },
+          "node": "public:2022/10/09/tAxheuMR4t66NkDhtjJL7LFdu5VukN0cLNxMz97qRyPo375hdp5ImargxnFaab54.png"
+        },
+        "front": {
+          "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2022/10/09/Z0xVCTv8IPZDkG1D0a8GyNFc72YghqjTOtRigE7lSjIhIfonZeaofGe6RZIbyZjH.png",
+          "vendor": "aliyun-oss",
+          "mime": "image/png",
+          "size": 483169,
+          "dimension": {
+            "width": 729,
+            "height": 459
+          },
+          "node": "public:2022/10/09/Z0xVCTv8IPZDkG1D0a8GyNFc72YghqjTOtRigE7lSjIhIfonZeaofGe6RZIbyZjH.png"
+        }
+      },
+      "real_name": "尽职尽责家",
+      "phone_number": "13800000000"
+    },
+    "has_follower": false,
+    "has_following": false,
+    "created_at": "2019-12-10T01:24:34Z",
+    "updated_at": "2024-08-16T07:04:48Z",
+    "disabled": false,
+    "commodities_count": 29,
+    "blacked": false,
+    "current_blocked": false,
+    "reward_score_count": 181
+  },
+  "category": { // 分类信息
+    "id": 3,
+    "name": "交话费",
+    "icon": {
+      "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2020/12/22/1tx7BcfptMlCtYmPsiA82GTyRVebWQBZXJ7nJM455KKgBk9f02YJPbCutQAxJPw2.jpg",
+      "vendor": "aliyun-oss",
+      "mime": "image/jpeg",
+      "size": 354054,
+      "dimension": {
+        "width": 768,
+        "height": 768
+      },
+      "node": "public:2020/12/22/1tx7BcfptMlCtYmPsiA82GTyRVebWQBZXJ7nJM455KKgBk9f02YJPbCutQAxJPw2.jpg"
+    },
+    "sort": 2,
+    "selling_count": 92,
+    "trashed_count": 7,
+    "created_at": "2020-03-30T17:25:15Z",
+    "updated_at": "2024-06-06T09:03:32Z",
+    "commodities_count": 99
+  },
+  "buying_read": null, // 购买须知
+  "shop_info": { // 商家信息
+    "user_id": 17,
+    "is_original": 0,
+    "qrCode": null,
+    "weChat": null,
+    "phone": null
+  },
+  "brand_id": 6, // 品牌ID
+  "brand": { // 品牌信息
+    "id": 6,
+    "name": "Prof. Edwina Bernhard", // 品牌名称
+    "desc": "Consectetur praesentium aliquid voluptas sequi repudiandae consequatur expedita.", // 品牌简介
+    "avatar": { // 品牌图标
+      "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2019/11/28/YHM9W4p61GOFFG7SWeaXJysENQzAQAU0O5rURGpweCFfxN0Q4vb9ipYIhOH0MN6f.jpeg",
+      "vendor": "aliyun-oss",
+      "mime": "image/jpeg",
+      "size": 614475,
+      "dimension": {
+        "width": 720,
+        "height": 720
+      },
+      "node": "public:2019/11/28/YHM9W4p61GOFFG7SWeaXJysENQzAQAU0O5rURGpweCFfxN0Q4vb9ipYIhOH0MN6f.jpeg"
+    },
+    "sub_avatar": null, // 品牌小图标
+    "audit": true, // 品牌状态
+    "recommend": true,
+    "commodities_count": 0, // 商品数量
+    "deleted_at": null,
+    "sort": 800
+  }
 }
 
 ```
@@ -180,32 +198,62 @@ title: 商城
 ```json5
 {
   // 成为店主的条件，对店主的定义，可选:
-  // verification 表示认证用户即为商家
-  // ability 表示需要具有特定权限的用户为商家
-  "shopkeeper": "verification",
+    // verification 表示认证用户即为商家
+    // ability 表示需要具有特定权限的用户为商家
+  "shopkeeper": "ability",
   // 当shopkeeper=ability时需要检查的权限名称
   "ability_name": "mall:shopkeeper",
-  // 当shopkeeper=verification允许的认证类型
-  // 多个类型配置在一个数组列表中，允许全部设置为 null
-  "allow_v10n_types": null,
   // 商品定价政策，可选：
-  // price 仅价格，积分只能设置0
-  // score 仅积分，价格只能设置0
-  // both  需要同时设置价格和积分
+   	// price 仅价格，积分只能设置0
+   	// score 仅积分，价格只能设置0
+   	// both  需要同时设置价格和积分
   "pricing_policy": "both",
   // 如果 pricing_policy=both 则配置积分所占百分比
   "score_min_percent": 0,
   // 浮点数，用户下单后平台对金额的抽成比例
-  "amount_tax_rate": 0,
+  "amount_tax_rate": 0.2,
   // 浮点数，用户下单后平台对积分的抽成比例
-  "score_tax_rate": 0,
-  // 分享后可获取优惠的商品ID
-  // 一个或多个配置在一个数组中，null表示全部
-  "share_commodity_ids": null,
-  // 每个分享抵扣多少分钱(人民币分)
-  "share_every_discount": 400,
-  // “全部|推荐”分类的图标，没有配置则为null
-  "all_categories_icon": {/*storage info*/}
+  "score_tax_rate": 0.2,
+  // 当author=verification允许的认证类型,允许发布商品的类型
+  // 多个类型配置在一个数组列表中，允许全部为 null
+  "allow_v10n_types":["user"],
+  "share_commodity_ids": [ // 分享商品获取折扣对应商品id,暂未使用
+      1,
+      2,
+      3
+  ],
+  "share_every_discount": 4, // 暂未使用,分享获取折扣
+  "all_categories_icon": { // 商城页面，推荐分类的图标
+      "url": "https://new-ts-plus.oss-cn-shanghai.aliyuncs.com/2022/11/23/BEPmnAwCYgnwYJKdWnpFuwInEbFxTNjd6mV5CGqZtWUXwSXGgwBJgxGhhBTsO7FI.png",
+      "vendor": "aliyun-oss",
+      "mime": "image/png",
+      "size": 8895,
+      "dimension": {
+          "width": 90,
+          "height": 90
+      },
+      "node": "public:2022/11/23/BEPmnAwCYgnwYJKdWnpFuwInEbFxTNjd6mV5CGqZtWUXwSXGgwBJgxGhhBTsO7FI.png"
+  },
+  // 最长等待收货时间
+  "default_confirm_receipt": 7,
+  // 允许最大反馈数量
+  "feedback_count": 2,
+  // 退货次数
+  "refund_count": 5,
+  // 退货说明
+  "refund_explain": "退货说明",
+  // 卖家同意退款后/协商退款买家操作退货期限
+  "refund_deliver_time": 4,
+  // 买家申请协商处理期限
+  "refund_negotiate_user_time": 4,
+  // 以下是下单关于微信小程序提醒的模板
+  "order_template_id": "T6R9rtoyyo9J48J4dFFLgJoCs05_k7v-cH72jbKnWXI",
+  "express_template_id": "4YcQ0BfiUAh2WXZm39G1M3r61H3-BgVYoownwqdv9fk",
+  "receipt_template_id": "wwc8PwtFBjIXtqt8w_XM3GidfwH46S0QsJgsgBjob7E",
+  "refund_template_id": "01fQ-zzlEBUcrY15BiceeQpl9yaMZ-IczrHpfXqR3d8",
+  "refund_result_template_id": "cCelPaoDXFhLGYc-o1CrsHq3J0ZTWUz6pRiM2SqQFKA",
+  "return_template_id": "0-OXKI30aQIpPWuyMbuhagl1uAgan_kBzm1_V8nfu8Y",
+  "return_result_template_id": "0-OXKI30aQIpPWuyMbuhao6FDHACaALJqQP_hMwIux8"
 }
 ```
 

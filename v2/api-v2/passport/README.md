@@ -23,13 +23,10 @@ POST api/v2/users
 
 | 名称 | 类型 | 描述 |
 |:----:|:----:|----|
-| phone | `string` |  Required without email, User China phone bumber. |
-| email | `string` |  Required withput phone, User E-Mail.|
+| phone | `string` |  Required, User China phone bumber. |
 | name | `string`  | Required, User registerByPhone name. |
-| password | `string`  |  用户密码，长度最小可无，最大不能超过 64 位4 |
-| verifiableType | `string`  | Required, Notification serve verification type. `mail` `sms`|
-| verifiableCode | `string`  | Required, Verification code.|
-
+| verifiable_type | `string`  | Required, Notification serve verification type. `sms`|
+| verifiable_code | `string`  | Required, Verification code.|
 
 ### 响应
 
@@ -38,18 +35,16 @@ Status: 200 OK
 ```
 ```json
 {
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vcGx1cy5pby9hcGkvdjIvYXV0aC9sb2dpbiIsImlhdCI6MTUxNTU3NDE0MSwiZXhwIjoxNTE1NTc3NzQxLCJuYmYiOjE1MTU1NzQxNDEsImp0aSI6Imx1MWtFcDd1UjZpWnoxV3giLCJzdWIiOjEsInBydiI6IjQ4ZTQ1MzgzMWNlYmE1ZTU3YTQ3NWU2ODY0OWNmZGVlNmU5N2Q4ZDIifQ.0_u1dgb-rSr2o7nIx4Q1n1NNcr1LMAtgTbKsFFdUvmg",
-    "token_type": "bearer",
-    "expires_in": 60,
-    "refresh_ttl": 20160
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21lcmdlLnRoaW5rc25zLXBsdXMuY29tL2FwaS92Mi91c2VycyIsImlhdCI6MTcyNTUwMTYxOSwiZXhwIjoxNzI2Nzk3NjE5LCJuYmYiOjE3MjU1MDE2MTksImp0aSI6ImhCaUZxTmpVWmtWUkI1ZHkiLCJzdWIiOjM4MDQsInBydiI6IjQ4ZTQ1MzgzMWNlYmE1ZTU3YTQ3NWU2ODY0OWNmZGVlNmU5N2Q4ZDIifQ.1G3iHlaQqf-U_XD1lpGSyxaUDPMN5vs1kPDZ7CV61NM",
+    "ttl": 21600,
+    "refresh_ttl": 43200
 }
 ```
 
 | 字段 | 描述 |
 |:----:|----|
-| access_token | 授权 Token |
 | token_type | Token 类型 |
-| expires_in | 过期时间，单位分钟 |
+| ttl | 过期时间，单位分钟 |
 | refresh_ttl | 刷新过期时间，单位分钟 |
 
 

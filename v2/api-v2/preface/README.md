@@ -28,9 +28,10 @@ curl -v -H "Accept: application/json" https://plus.io/api/v2/bootstrappers
 
 ## 时区说明
 
-所有的时间都会是 **UTC** 格式：
+所有的时间都会是ISO 8601格式， **UTC** 时区：
 
 > YYYY-MM-DD HH:MM:SS
+> 如：2024-01-08T03:50:16Z
 
 
 ## 参数 
