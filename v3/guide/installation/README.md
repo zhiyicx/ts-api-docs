@@ -9,7 +9,7 @@ TS3是 ThinkSNS 系列产品一个重要版本，是一个基于 [Latest Laravel
 
 ### 服务器端
 
-服务端支持CentOS 7+，PHP 7.4，mysql 5.7，2核4G 以上
+服务端支持CentOS 7+，PHP 8.1+，mysql 5.7，2核4G 以上
 
 安装教程：[文档地址](/v3/guide/installation/server.md)
 
@@ -20,3 +20,7 @@ TS3是 ThinkSNS 系列产品一个重要版本，是一个基于 [Latest Laravel
 Windows：[文档地址](/v3/guide/installation/windows.md)
 
 Mac：[文档地址](/v3/guide/installation/mac.md)
+
+### 更新版本
+
+[文档地址](/v3/guide/installation/upgrade.md)
