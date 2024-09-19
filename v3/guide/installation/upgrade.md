@@ -20,6 +20,7 @@ fileinfo
 opcache
 redis
 exif
+mbstring
 ```
 <img :src="$withBase('/assets/img/v3/guide/installation/1725588348796.png')" />
 
@@ -63,6 +64,13 @@ composer install
 3、清理程序缓存
 ```
 php artisan optimize:clear
+```
+
+4、支付需要重新配置
+```
+微信需要申请API3密钥后，在后台重新配置
+
+支付宝需要重新生成证书密钥配置支付宝后，在后台重新配置
 ```
 
 ## 三、更新问题
