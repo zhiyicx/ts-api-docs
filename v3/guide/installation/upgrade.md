@@ -2,16 +2,16 @@
 title: 升级Laravel与PHP
 ---
 
-PHP从7.4升级到8.1+，涉及到很多新功能与优化项，包括命名参数、联合类型、注解、构造器属性提升、match 表达式、nullsafe 运算符、JIT，并改进了类型系统、错误处理、语法一致性。以及性能改进
+PHP从7.4升级到8.1+，涉及到很多新功能与优化项，包括命名参数、联合类型、注解、构造器属性提升、match 表达式、nullsafe 运算符、JIT，并改进了类型系统、错误处理、语法一致性。以及性能改进。
 
 
-Laravel从8升级到10，涉及到HTTP客户端改进，还有新的Eloquent关联关系类型以及其他各种错误修复和可用性改进
+Laravel从8升级到10，涉及到HTTP客户端改进，还有新的Eloquent关联关系类型以及其他各种错误修复和可用性改进。
 
 ## 一、环境安装
 
-1、更新php 至 8.1/8.2/8.3
+1、更新php 至 8.1或8.2或8.3
 
-在宝塔面板上面的软件商店安装
+在宝塔面板上面的软件商店安装即可
 
 2、PHP安装以下扩展
 
@@ -37,7 +37,7 @@ shell_exec
 4、设置PHP命令行版本为新安装的php
 <img :src="$withBase('/assets/img/v3/guide/installation/1725588495769.png')" />
 
-5、要求 Composer 2.2.0 或更高版本
+5、要求 Composer 2.2.0 或更高版本，升级Composer
 ```
 composer self-update
 ```
@@ -71,9 +71,11 @@ php artisan optimize:clear
 微信需要申请API3密钥后，在后台重新配置
 
 支付宝需要重新生成证书密钥配置支付宝后，在后台重新配置
+
+微信或支付宝具体操作参考对应开放平台文档
 ```
 
-## 三、更新问题
+## 三、可能遇见问题
 
 ### （一）宝塔安装PHP8报错 configure: error: iconv does not support errno
 
