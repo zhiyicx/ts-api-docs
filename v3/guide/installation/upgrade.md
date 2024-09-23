@@ -9,7 +9,7 @@ Laravel从8升级到10，涉及到HTTP客户端改进，还有新的Eloquent关�
 
 ## 一、环境安装
 
-1、更新php 至 8.1或8.2或8.3
+1、更新php 至 8.1或8.2，暂不支持8.3版本
 
 在宝塔面板上面的软件商店安装即可
 
@@ -119,7 +119,7 @@ ln -s /usr/local/libiconv/lib/libiconv.so /usr/lib/libiconv.so
 chattr +i /www/server/panel/install/php.sh
 ```
 
-6、重新在宝塔面上面安装 php8.3 就可以安装成功了
+6、重新在宝塔面上面安装 php8.2 就可以安装成功了
 
 
 
