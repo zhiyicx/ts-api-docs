@@ -19,7 +19,7 @@ if [ -f /usr/bin/curl ];then curl -sSO https://download.bt.cn/install/install_pa
 ## 二、环境安装  
 ### 1. 选择LNMP
 1. mysql选择5.7
-2. PHP选择7.4
+2. PHP选择8.1
 3. nginx选择默认
 4. 选择编译安装（**重要**）
 

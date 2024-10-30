@@ -13,7 +13,7 @@ title: windows本地安装
 <img :src="$withBase('/assets/img/v3/guide/installation/16877682316371.jpg')" />
 
 
-### 2. 安装php7.4
+### 2. 安装php8.1
 <p></p>
 <img :src="$withBase('/assets/img/v3/guide/installation/16877682700886.jpg')" />
 
@@ -106,7 +106,7 @@ location / {
 ### 1. 进入命令工具
 ```
 1. 网站管理设置--进入composer
-2. php版本选择php7.4
+2. php版本选择php8.1
 3. 确认。进入下一步骤
 ```
 

@@ -20,16 +20,16 @@ brew update 待执行完毕后，使用**brew -v**查看版本
 brew install  icu4c
 ```
 
-3、安装PHP 7.4
+3、安装PHP 8.1
 
 ```text
 brew tap shivammathur/php
 
-brew install shivammathur/php/php@7.4
+brew install shivammathur/php/php@8.1
 ```
 
 执行完毕后，**Php -v**查看版本
-如果输出PHP 7.4.33即可，如果报错则可能是icu4c版本不对，或者其他问题根据提示进行排查处理
+如果输出PHP 8.1即可，如果报错则可能是icu4c版本不对，或者其他问题根据提示进行排查处理
 
 4、安装PhpWebStudy
 
@@ -49,7 +49,7 @@ nginx需要配置最大文件限制，否则上传视频会报错。选中nginx-
 client_max_body_size 20M;
 ```
 
-**注意版本PHP 7.4.33，Mysql 5.7，redis 7.0**
+**注意版本PHP 8.1，Mysql 5.7，redis 7.0**
 
 4、安装nvm
 

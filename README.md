@@ -10,8 +10,8 @@ actionLink: /v3/guide/installation/
 footer: Apache-2.0 Licensed | Copyright © 2016-Present Chengdu ZhiYiChuangXiang Technology Co., Ltd. All rights reserved.
 
 features:
-    - title: PHP 7
-      details: 使用 PHP 7 并使用「严格模式」进行开发，增强代码可读性的同时，强类型约束避免许多弱级异常！
+    - title: PHP 8
+      details: 使用 PHP 8 并使用「严格模式」进行开发，增强代码可读性的同时，强类型约束避免许多弱级异常！
     - title: Latest Laravel
       details: 每周检查 PATCH 版本升级，按照 Laravel 发布周期每半年进行 MINOR 版本升级，底层更加稳健！
     - title: REST APIs
